@@ -1,0 +1,1153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Barcode4JReport" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="25" bottomMargin="2" uuid="432a7055-07f0-43d2-8d4c-00337bfe4d0a">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<style name="Barcode" fontName="DejaVu Sans" fontSize="10"/>
+	<parameter name="BARCODE" class="java.lang.String"/>
+	<parameter name="prdName" class="java.lang.String"/>
+	<title>
+		<band/>
+	</title>
+	<detail>
+		<band height="789">
+			<rectangle radius="6">
+				<reportElement positionType="FixRelativeToBottom" mode="Transparent" x="8" y="11" width="130" height="60" uuid="beb4fabc-e32d-4e64-bdbf-163fadbb6edf">
+					<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+					<property name="com.jaspersoft.studio.unit." value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Dotted"/>
+				</graphicElement>
+			</rectangle>
+			<componentElement>
+				<reportElement style="Barcode" x="26" y="24" width="100" height="35" uuid="35e15c85-135e-4e4a-ada4-3caab948d304"/>
+				<c:EAN13 xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<c:codeExpression><![CDATA[$P{BARCODE}]]></c:codeExpression>
+				</c:EAN13>
+			</componentElement>
+			<rectangle radius="6">
+				<reportElement positionType="FixRelativeToBottom" mode="Transparent" x="145" y="11" width="130" height="60" uuid="7456a8ce-a5f0-40ee-9744-e08e4f504062">
+					<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+					<property name="com.jaspersoft.studio.unit." value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Dotted"/>
+				</graphicElement>
+			</rectangle>
+			<componentElement>
+				<reportElement style="Barcode" x="163" y="24" width="100" height="35" uuid="445c09e8-7122-471b-bc21-b0c8c913435b"/>
+				<c:EAN13 xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<c:codeExpression><![CDATA[$P{BARCODE}]]></c:codeExpression>
+				</c:EAN13>
+			</componentElement>
+			<rectangle radius="6">
+				<reportElement positionType="FixRelativeToBottom" mode="Transparent" x="282" y="11" width="130" height="60" uuid="5a95a277-8d5b-4cf0-9658-89dd7f91986f">
+					<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+					<property name="com.jaspersoft.studio.unit." value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Dotted"/>
+				</graphicElement>
+			</rectangle>
+			<componentElement>
+				<reportElement style="Barcode" x="298" y="24" width="100" height="35" uuid="b8ae97f9-22e1-4e98-a852-e5105ef5c251"/>
+				<c:EAN13 xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<c:codeExpression><![CDATA[$P{BARCODE}]]></c:codeExpression>
+				</c:EAN13>
+			</componentElement>
+			<rectangle radius="6">
+				<reportElement positionType="FixRelativeToBottom" mode="Transparent" x="419" y="11" width="130" height="60" uuid="9e0d81e2-8291-4f0e-99fd-47344aa75e2f">
+					<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+					<property name="com.jaspersoft.studio.unit." value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Dotted"/>
+				</graphicElement>
+			</rectangle>
+			<componentElement>
+				<reportElement style="Barcode" x="435" y="24" width="100" height="35" uuid="17905eff-eb9d-4487-b1eb-3e223d268a0a"/>
+				<c:EAN13 xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<c:codeExpression><![CDATA[$P{BARCODE}]]></c:codeExpression>
+				</c:EAN13>
+			</componentElement>
+			<rectangle radius="6">
+				<reportElement positionType="FixRelativeToBottom" mode="Transparent" x="8" y="71" width="130" height="60" uuid="c2396cce-7e61-48d0-8073-9e5f0fc6e415">
+					<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+					<property name="com.jaspersoft.studio.unit." value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Dotted"/>
+				</graphicElement>
+			</rectangle>
+			<componentElement>
+				<reportElement style="Barcode" x="26" y="84" width="100" height="35" uuid="9009e0bd-5664-4673-89df-542bbd0e7bf8"/>
+				<c:EAN13 xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<c:codeExpression><![CDATA[$P{BARCODE}]]></c:codeExpression>
+				</c:EAN13>
+			</componentElement>
+			<rectangle radius="6">
+				<reportElement positionType="FixRelativeToBottom" mode="Transparent" x="145" y="71" width="130" height="60" uuid="17b890c0-be0b-4e56-b032-7c2096da2a5c">
+					<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+					<property name="com.jaspersoft.studio.unit." value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Dotted"/>
+				</graphicElement>
+			</rectangle>
+			<componentElement>
+				<reportElement style="Barcode" x="163" y="84" width="100" height="35" uuid="d680d424-3b82-48f8-baac-19a9e98492e7"/>
+				<c:EAN13 xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<c:codeExpression><![CDATA[$P{BARCODE}]]></c:codeExpression>
+				</c:EAN13>
+			</componentElement>
+			<rectangle radius="6">
+				<reportElement positionType="FixRelativeToBottom" mode="Transparent" x="282" y="71" width="130" height="60" uuid="6110b40d-06bc-4eaf-aa49-ace4340f8b06">
+					<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+					<property name="com.jaspersoft.studio.unit." value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Dotted"/>
+				</graphicElement>
+			</rectangle>
+			<componentElement>
+				<reportElement style="Barcode" x="298" y="84" width="100" height="35" uuid="b2dedb8e-c74a-46ed-a532-64606d4935fb"/>
+				<c:EAN13 xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<c:codeExpression><![CDATA[$P{BARCODE}]]></c:codeExpression>
+				</c:EAN13>
+			</componentElement>
+			<rectangle radius="6">
+				<reportElement positionType="FixRelativeToBottom" mode="Transparent" x="419" y="71" width="130" height="60" uuid="1f428527-c8c0-45ae-a4ac-54b4423c7cc9">
+					<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+					<property name="com.jaspersoft.studio.unit." value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Dotted"/>
+				</graphicElement>
+			</rectangle>
+			<componentElement>
+				<reportElement style="Barcode" x="435" y="84" width="100" height="35" uuid="3633ac85-ab32-4f1c-88ba-82db70ed1434"/>
+				<c:EAN13 xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<c:codeExpression><![CDATA[$P{BARCODE}]]></c:codeExpression>
+				</c:EAN13>
+			</componentElement>
+			<rectangle radius="6">
+				<reportElement positionType="FixRelativeToBottom" mode="Transparent" x="8" y="131" width="130" height="60" uuid="f76a3e75-acc3-4845-a3b0-6661cebad15e">
+					<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+					<property name="com.jaspersoft.studio.unit." value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Dotted"/>
+				</graphicElement>
+			</rectangle>
+			<componentElement>
+				<reportElement style="Barcode" x="26" y="144" width="100" height="35" uuid="c364b4b6-e015-40bc-9bbc-561e40cfe611"/>
+				<c:EAN13 xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<c:codeExpression><![CDATA[$P{BARCODE}]]></c:codeExpression>
+				</c:EAN13>
+			</componentElement>
+			<rectangle radius="6">
+				<reportElement positionType="FixRelativeToBottom" mode="Transparent" x="145" y="131" width="130" height="60" uuid="9485ddde-6443-499e-90ba-650799ccb2c8">
+					<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+					<property name="com.jaspersoft.studio.unit." value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Dotted"/>
+				</graphicElement>
+			</rectangle>
+			<componentElement>
+				<reportElement style="Barcode" x="163" y="144" width="100" height="35" uuid="f178313a-43c0-4c5b-8dd2-e22c294b7822"/>
+				<c:EAN13 xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<c:codeExpression><![CDATA[$P{BARCODE}]]></c:codeExpression>
+				</c:EAN13>
+			</componentElement>
+			<rectangle radius="6">
+				<reportElement positionType="FixRelativeToBottom" mode="Transparent" x="282" y="131" width="130" height="60" uuid="de143f86-29d6-4fae-950f-1dfd97d091b9">
+					<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+					<property name="com.jaspersoft.studio.unit." value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Dotted"/>
+				</graphicElement>
+			</rectangle>
+			<componentElement>
+				<reportElement style="Barcode" x="298" y="144" width="100" height="35" uuid="ed75a754-7dea-4e3c-9f12-790a803c1d81"/>
+				<c:EAN13 xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<c:codeExpression><![CDATA[$P{BARCODE}]]></c:codeExpression>
+				</c:EAN13>
+			</componentElement>
+			<rectangle radius="6">
+				<reportElement positionType="FixRelativeToBottom" mode="Transparent" x="419" y="131" width="130" height="60" uuid="6131054f-83fd-4c0c-8bee-7804b878b4fa">
+					<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+					<property name="com.jaspersoft.studio.unit." value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Dotted"/>
+				</graphicElement>
+			</rectangle>
+			<componentElement>
+				<reportElement style="Barcode" x="435" y="144" width="100" height="35" uuid="ac2bf363-4436-48fb-979d-ee4e19ca8888"/>
+				<c:EAN13 xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<c:codeExpression><![CDATA[$P{BARCODE}]]></c:codeExpression>
+				</c:EAN13>
+			</componentElement>
+			<rectangle radius="6">
+				<reportElement positionType="FixRelativeToBottom" mode="Transparent" x="8" y="191" width="130" height="60" uuid="5fc64a3c-5dc2-4815-af87-8652d9872eb5">
+					<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+					<property name="com.jaspersoft.studio.unit." value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Dotted"/>
+				</graphicElement>
+			</rectangle>
+			<componentElement>
+				<reportElement style="Barcode" x="26" y="204" width="100" height="35" uuid="4c9eb8d6-f998-4cb4-98a3-6985979668eb"/>
+				<c:EAN13 xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<c:codeExpression><![CDATA[$P{BARCODE}]]></c:codeExpression>
+				</c:EAN13>
+			</componentElement>
+			<rectangle radius="6">
+				<reportElement positionType="FixRelativeToBottom" mode="Transparent" x="145" y="191" width="130" height="60" uuid="618909a9-e6af-4f4f-bdbe-6b3a83668858">
+					<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+					<property name="com.jaspersoft.studio.unit." value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Dotted"/>
+				</graphicElement>
+			</rectangle>
+			<componentElement>
+				<reportElement style="Barcode" x="163" y="204" width="100" height="35" uuid="caaa001b-a967-4157-a8ef-b1b48cd526cc"/>
+				<c:EAN13 xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<c:codeExpression><![CDATA[$P{BARCODE}]]></c:codeExpression>
+				</c:EAN13>
+			</componentElement>
+			<rectangle radius="6">
+				<reportElement positionType="FixRelativeToBottom" mode="Transparent" x="282" y="191" width="130" height="60" uuid="9ac0bf40-b30c-484f-966c-d334b2cf3b55">
+					<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+					<property name="com.jaspersoft.studio.unit." value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Dotted"/>
+				</graphicElement>
+			</rectangle>
+			<componentElement>
+				<reportElement style="Barcode" x="298" y="204" width="100" height="35" uuid="1105fed3-6045-4716-99ac-2bb5c65986ae"/>
+				<c:EAN13 xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<c:codeExpression><![CDATA[$P{BARCODE}]]></c:codeExpression>
+				</c:EAN13>
+			</componentElement>
+			<rectangle radius="6">
+				<reportElement positionType="FixRelativeToBottom" mode="Transparent" x="419" y="191" width="130" height="60" uuid="83f4df10-b5ef-4826-8acd-dcc55396dcef">
+					<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+					<property name="com.jaspersoft.studio.unit." value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Dotted"/>
+				</graphicElement>
+			</rectangle>
+			<componentElement>
+				<reportElement style="Barcode" x="435" y="204" width="100" height="35" uuid="b7ad61f9-e690-4932-ba23-51d03cd1742a"/>
+				<c:EAN13 xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<c:codeExpression><![CDATA[$P{BARCODE}]]></c:codeExpression>
+				</c:EAN13>
+			</componentElement>
+			<rectangle radius="6">
+				<reportElement positionType="FixRelativeToBottom" mode="Transparent" x="8" y="251" width="130" height="60" uuid="f84c13ce-237b-42ff-9fd2-780cab242c1e">
+					<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+					<property name="com.jaspersoft.studio.unit." value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Dotted"/>
+				</graphicElement>
+			</rectangle>
+			<componentElement>
+				<reportElement style="Barcode" x="26" y="264" width="100" height="35" uuid="3a51a44e-070e-443a-86ea-2bcb0b5efdb3"/>
+				<c:EAN13 xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<c:codeExpression><![CDATA[$P{BARCODE}]]></c:codeExpression>
+				</c:EAN13>
+			</componentElement>
+			<rectangle radius="6">
+				<reportElement positionType="FixRelativeToBottom" mode="Transparent" x="145" y="251" width="130" height="60" uuid="87241aca-e2f2-4d49-8e5a-85785e5b1b9b">
+					<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+					<property name="com.jaspersoft.studio.unit." value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Dotted"/>
+				</graphicElement>
+			</rectangle>
+			<componentElement>
+				<reportElement style="Barcode" x="163" y="264" width="100" height="35" uuid="169d7326-10f2-47d4-800b-82b12f0b63e9"/>
+				<c:EAN13 xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<c:codeExpression><![CDATA[$P{BARCODE}]]></c:codeExpression>
+				</c:EAN13>
+			</componentElement>
+			<rectangle radius="6">
+				<reportElement positionType="FixRelativeToBottom" mode="Transparent" x="282" y="251" width="130" height="60" uuid="aaefc164-3624-4067-96dd-56c0d0d6cb2b">
+					<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+					<property name="com.jaspersoft.studio.unit." value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Dotted"/>
+				</graphicElement>
+			</rectangle>
+			<componentElement>
+				<reportElement style="Barcode" x="298" y="264" width="100" height="35" uuid="416bcc1c-e5ea-4021-b092-6f234b1a3c3e"/>
+				<c:EAN13 xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<c:codeExpression><![CDATA[$P{BARCODE}]]></c:codeExpression>
+				</c:EAN13>
+			</componentElement>
+			<rectangle radius="6">
+				<reportElement positionType="FixRelativeToBottom" mode="Transparent" x="419" y="251" width="130" height="60" uuid="5a6ebc56-cfcc-4a23-b78b-0cc01b33d654">
+					<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+					<property name="com.jaspersoft.studio.unit." value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Dotted"/>
+				</graphicElement>
+			</rectangle>
+			<componentElement>
+				<reportElement style="Barcode" x="435" y="264" width="100" height="35" uuid="e4158966-0700-4112-97b1-9a3906a6a955"/>
+				<c:EAN13 xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<c:codeExpression><![CDATA[$P{BARCODE}]]></c:codeExpression>
+				</c:EAN13>
+			</componentElement>
+			<rectangle radius="6">
+				<reportElement positionType="FixRelativeToBottom" mode="Transparent" x="8" y="311" width="130" height="60" uuid="5633d400-dd5b-4a52-afa3-c44cf3a99385">
+					<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+					<property name="com.jaspersoft.studio.unit." value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Dotted"/>
+				</graphicElement>
+			</rectangle>
+			<componentElement>
+				<reportElement style="Barcode" x="26" y="324" width="100" height="35" uuid="b2a1dcd9-96fa-4569-8aa6-ac3d6d5c8461"/>
+				<c:EAN13 xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<c:codeExpression><![CDATA[$P{BARCODE}]]></c:codeExpression>
+				</c:EAN13>
+			</componentElement>
+			<rectangle radius="6">
+				<reportElement positionType="FixRelativeToBottom" mode="Transparent" x="145" y="311" width="130" height="60" uuid="3383d15c-40fc-48a7-a22e-15b81fbfe262">
+					<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+					<property name="com.jaspersoft.studio.unit." value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Dotted"/>
+				</graphicElement>
+			</rectangle>
+			<componentElement>
+				<reportElement style="Barcode" x="163" y="324" width="100" height="35" uuid="689c53d0-6e3d-4ae9-9185-7db994f87309"/>
+				<c:EAN13 xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<c:codeExpression><![CDATA[$P{BARCODE}]]></c:codeExpression>
+				</c:EAN13>
+			</componentElement>
+			<rectangle radius="6">
+				<reportElement positionType="FixRelativeToBottom" mode="Transparent" x="282" y="311" width="130" height="60" uuid="e494f80a-08da-4d05-b86a-97c1832540d3">
+					<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+					<property name="com.jaspersoft.studio.unit." value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Dotted"/>
+				</graphicElement>
+			</rectangle>
+			<componentElement>
+				<reportElement style="Barcode" x="298" y="324" width="100" height="35" uuid="17ce9789-0388-4127-af0a-3667fed0e5cf"/>
+				<c:EAN13 xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<c:codeExpression><![CDATA[$P{BARCODE}]]></c:codeExpression>
+				</c:EAN13>
+			</componentElement>
+			<rectangle radius="6">
+				<reportElement positionType="FixRelativeToBottom" mode="Transparent" x="419" y="311" width="130" height="60" uuid="ff368b68-8d5f-42bc-9c75-327c0fd52c62">
+					<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+					<property name="com.jaspersoft.studio.unit." value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Dotted"/>
+				</graphicElement>
+			</rectangle>
+			<componentElement>
+				<reportElement style="Barcode" x="435" y="324" width="100" height="35" uuid="595c82f2-6f5b-4f09-96af-a4d33c951043"/>
+				<c:EAN13 xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<c:codeExpression><![CDATA[$P{BARCODE}]]></c:codeExpression>
+				</c:EAN13>
+			</componentElement>
+			<rectangle radius="6">
+				<reportElement positionType="FixRelativeToBottom" mode="Transparent" x="8" y="371" width="130" height="60" uuid="0762cc7a-a5b8-408b-bec7-0dfe1897a95a">
+					<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+					<property name="com.jaspersoft.studio.unit." value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Dotted"/>
+				</graphicElement>
+			</rectangle>
+			<componentElement>
+				<reportElement style="Barcode" x="26" y="384" width="100" height="35" uuid="34014743-ba84-4d0a-a3c2-10eb48854d5d"/>
+				<c:EAN13 xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<c:codeExpression><![CDATA[$P{BARCODE}]]></c:codeExpression>
+				</c:EAN13>
+			</componentElement>
+			<rectangle radius="6">
+				<reportElement positionType="FixRelativeToBottom" mode="Transparent" x="145" y="371" width="130" height="60" uuid="092a8674-b15c-48a9-966a-8a2f5d3c45c2">
+					<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+					<property name="com.jaspersoft.studio.unit." value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Dotted"/>
+				</graphicElement>
+			</rectangle>
+			<componentElement>
+				<reportElement style="Barcode" x="163" y="384" width="100" height="35" uuid="c71e67de-b945-4da2-85d7-60d40cfda938"/>
+				<c:EAN13 xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<c:codeExpression><![CDATA[$P{BARCODE}]]></c:codeExpression>
+				</c:EAN13>
+			</componentElement>
+			<rectangle radius="6">
+				<reportElement positionType="FixRelativeToBottom" mode="Transparent" x="282" y="371" width="130" height="60" uuid="9f8e1cdf-235c-4a10-ba1c-711ee5c44814">
+					<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+					<property name="com.jaspersoft.studio.unit." value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Dotted"/>
+				</graphicElement>
+			</rectangle>
+			<componentElement>
+				<reportElement style="Barcode" x="298" y="384" width="100" height="35" uuid="4733408e-60f0-42e2-8209-364deecfff81"/>
+				<c:EAN13 xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<c:codeExpression><![CDATA[$P{BARCODE}]]></c:codeExpression>
+				</c:EAN13>
+			</componentElement>
+			<rectangle radius="6">
+				<reportElement positionType="FixRelativeToBottom" mode="Transparent" x="419" y="371" width="130" height="60" uuid="1ef25a03-f482-4a71-b587-c4132a3acd9c">
+					<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+					<property name="com.jaspersoft.studio.unit." value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Dotted"/>
+				</graphicElement>
+			</rectangle>
+			<componentElement>
+				<reportElement style="Barcode" x="435" y="384" width="100" height="35" uuid="646f0e5a-6922-4700-bf32-d5b7964edea3"/>
+				<c:EAN13 xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<c:codeExpression><![CDATA[$P{BARCODE}]]></c:codeExpression>
+				</c:EAN13>
+			</componentElement>
+			<rectangle radius="6">
+				<reportElement positionType="FixRelativeToBottom" mode="Transparent" x="8" y="431" width="130" height="60" uuid="1f9e7c4e-0d94-42fd-9ca2-fe70f9479cc9">
+					<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+					<property name="com.jaspersoft.studio.unit." value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Dotted"/>
+				</graphicElement>
+			</rectangle>
+			<componentElement>
+				<reportElement style="Barcode" x="26" y="444" width="100" height="35" uuid="94a9d1c9-f873-4b9c-b99e-09d79f0594d4"/>
+				<c:EAN13 xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<c:codeExpression><![CDATA[$P{BARCODE}]]></c:codeExpression>
+				</c:EAN13>
+			</componentElement>
+			<rectangle radius="6">
+				<reportElement positionType="FixRelativeToBottom" mode="Transparent" x="145" y="431" width="130" height="60" uuid="eb96b1f2-cd9e-4e4b-8364-63aa5d7528f6">
+					<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+					<property name="com.jaspersoft.studio.unit." value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Dotted"/>
+				</graphicElement>
+			</rectangle>
+			<componentElement>
+				<reportElement style="Barcode" x="163" y="444" width="100" height="35" uuid="3a55b42a-57b4-4a37-9522-b82be64a99a6"/>
+				<c:EAN13 xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<c:codeExpression><![CDATA[$P{BARCODE}]]></c:codeExpression>
+				</c:EAN13>
+			</componentElement>
+			<rectangle radius="6">
+				<reportElement positionType="FixRelativeToBottom" mode="Transparent" x="282" y="431" width="130" height="60" uuid="00691ae9-5816-4970-b4d2-a285ff888f71">
+					<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+					<property name="com.jaspersoft.studio.unit." value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Dotted"/>
+				</graphicElement>
+			</rectangle>
+			<componentElement>
+				<reportElement style="Barcode" x="298" y="444" width="100" height="35" uuid="9bfdffa6-b3d3-430d-a941-f76480c20778"/>
+				<c:EAN13 xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<c:codeExpression><![CDATA[$P{BARCODE}]]></c:codeExpression>
+				</c:EAN13>
+			</componentElement>
+			<rectangle radius="6">
+				<reportElement positionType="FixRelativeToBottom" mode="Transparent" x="419" y="431" width="130" height="60" uuid="380f2b8a-0fea-4693-938a-e82da42ce6fc">
+					<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+					<property name="com.jaspersoft.studio.unit." value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Dotted"/>
+				</graphicElement>
+			</rectangle>
+			<componentElement>
+				<reportElement style="Barcode" x="435" y="444" width="100" height="35" uuid="7249bd14-c7d7-445f-8667-fa096f9c74c4"/>
+				<c:EAN13 xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<c:codeExpression><![CDATA[$P{BARCODE}]]></c:codeExpression>
+				</c:EAN13>
+			</componentElement>
+			<rectangle radius="6">
+				<reportElement positionType="FixRelativeToBottom" mode="Transparent" x="8" y="491" width="130" height="60" uuid="4c5f5930-e025-41c6-8087-0c1967b3f39d">
+					<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+					<property name="com.jaspersoft.studio.unit." value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Dotted"/>
+				</graphicElement>
+			</rectangle>
+			<componentElement>
+				<reportElement style="Barcode" x="26" y="504" width="100" height="35" uuid="939558b0-d53e-4474-ad9b-3a08d373d2ed"/>
+				<c:EAN13 xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<c:codeExpression><![CDATA[$P{BARCODE}]]></c:codeExpression>
+				</c:EAN13>
+			</componentElement>
+			<rectangle radius="6">
+				<reportElement positionType="FixRelativeToBottom" mode="Transparent" x="145" y="491" width="130" height="60" uuid="56e3c4ca-25e6-44e2-abc2-0c2ee1a2e938">
+					<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+					<property name="com.jaspersoft.studio.unit." value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Dotted"/>
+				</graphicElement>
+			</rectangle>
+			<componentElement>
+				<reportElement style="Barcode" x="163" y="504" width="100" height="35" uuid="0215ee3c-da1a-4d8f-9ac8-4ef5097a5a0e"/>
+				<c:EAN13 xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<c:codeExpression><![CDATA[$P{BARCODE}]]></c:codeExpression>
+				</c:EAN13>
+			</componentElement>
+			<rectangle radius="6">
+				<reportElement positionType="FixRelativeToBottom" mode="Transparent" x="282" y="491" width="130" height="60" uuid="b123f989-9d16-40e6-b11b-f7a8395cd4c2">
+					<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+					<property name="com.jaspersoft.studio.unit." value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Dotted"/>
+				</graphicElement>
+			</rectangle>
+			<componentElement>
+				<reportElement style="Barcode" x="298" y="504" width="100" height="35" uuid="4543da05-8a6c-4156-a345-88c7a05f1e60"/>
+				<c:EAN13 xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<c:codeExpression><![CDATA[$P{BARCODE}]]></c:codeExpression>
+				</c:EAN13>
+			</componentElement>
+			<rectangle radius="6">
+				<reportElement positionType="FixRelativeToBottom" mode="Transparent" x="419" y="491" width="130" height="60" uuid="347c7888-a438-41fa-9977-91bb0ee85bd3">
+					<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+					<property name="com.jaspersoft.studio.unit." value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Dotted"/>
+				</graphicElement>
+			</rectangle>
+			<componentElement>
+				<reportElement style="Barcode" x="435" y="504" width="100" height="35" uuid="283cf79a-5d7f-4a48-8181-138587ff8c1a"/>
+				<c:EAN13 xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<c:codeExpression><![CDATA[$P{BARCODE}]]></c:codeExpression>
+				</c:EAN13>
+			</componentElement>
+			<rectangle radius="6">
+				<reportElement positionType="FixRelativeToBottom" mode="Transparent" x="8" y="551" width="130" height="60" uuid="d7c67225-dc90-4f76-bcaf-2f2783f749bb">
+					<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+					<property name="com.jaspersoft.studio.unit." value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Dotted"/>
+				</graphicElement>
+			</rectangle>
+			<componentElement>
+				<reportElement style="Barcode" x="26" y="564" width="100" height="35" uuid="57d81342-1410-4854-9d38-648db4ccc996"/>
+				<c:EAN13 xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<c:codeExpression><![CDATA[$P{BARCODE}]]></c:codeExpression>
+				</c:EAN13>
+			</componentElement>
+			<rectangle radius="6">
+				<reportElement positionType="FixRelativeToBottom" mode="Transparent" x="145" y="551" width="130" height="60" uuid="8754c0e7-a495-4a9c-bc7f-ba6b6d3b52b7">
+					<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+					<property name="com.jaspersoft.studio.unit." value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Dotted"/>
+				</graphicElement>
+			</rectangle>
+			<componentElement>
+				<reportElement style="Barcode" x="163" y="564" width="100" height="35" uuid="9e011603-8fc9-4572-9c0f-8aa7e82f28bc"/>
+				<c:EAN13 xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<c:codeExpression><![CDATA[$P{BARCODE}]]></c:codeExpression>
+				</c:EAN13>
+			</componentElement>
+			<rectangle radius="6">
+				<reportElement positionType="FixRelativeToBottom" mode="Transparent" x="282" y="551" width="130" height="60" uuid="bc0197db-af48-4941-90b7-952d2b58252e">
+					<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+					<property name="com.jaspersoft.studio.unit." value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Dotted"/>
+				</graphicElement>
+			</rectangle>
+			<componentElement>
+				<reportElement style="Barcode" x="298" y="564" width="100" height="35" uuid="725f7365-a3f4-4706-a02f-2d9a13c78f17"/>
+				<c:EAN13 xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<c:codeExpression><![CDATA[$P{BARCODE}]]></c:codeExpression>
+				</c:EAN13>
+			</componentElement>
+			<rectangle radius="6">
+				<reportElement positionType="FixRelativeToBottom" mode="Transparent" x="419" y="551" width="130" height="60" uuid="800ea6cf-e84d-47c6-acf9-4101f2ca16d3">
+					<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+					<property name="com.jaspersoft.studio.unit." value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Dotted"/>
+				</graphicElement>
+			</rectangle>
+			<componentElement>
+				<reportElement style="Barcode" x="435" y="564" width="100" height="35" uuid="4d79afb4-1bb7-489b-b959-adaf1eb19231"/>
+				<c:EAN13 xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<c:codeExpression><![CDATA[$P{BARCODE}]]></c:codeExpression>
+				</c:EAN13>
+			</componentElement>
+			<rectangle radius="6">
+				<reportElement positionType="FixRelativeToBottom" mode="Transparent" x="8" y="611" width="130" height="60" uuid="8c78180b-a296-439b-b73b-f97f6cbbae4d">
+					<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+					<property name="com.jaspersoft.studio.unit." value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Dotted"/>
+				</graphicElement>
+			</rectangle>
+			<componentElement>
+				<reportElement style="Barcode" x="26" y="624" width="100" height="35" uuid="10dd1276-989d-4a17-9a2f-88b8f0dcf7d2"/>
+				<c:EAN13 xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<c:codeExpression><![CDATA[$P{BARCODE}]]></c:codeExpression>
+				</c:EAN13>
+			</componentElement>
+			<rectangle radius="6">
+				<reportElement positionType="FixRelativeToBottom" mode="Transparent" x="145" y="611" width="130" height="60" uuid="77f52853-3c5d-424b-a42c-05ce5dcea720">
+					<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+					<property name="com.jaspersoft.studio.unit." value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Dotted"/>
+				</graphicElement>
+			</rectangle>
+			<componentElement>
+				<reportElement style="Barcode" x="163" y="624" width="100" height="35" uuid="8de3e211-cb48-40d0-816c-e66d46301207"/>
+				<c:EAN13 xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<c:codeExpression><![CDATA[$P{BARCODE}]]></c:codeExpression>
+				</c:EAN13>
+			</componentElement>
+			<rectangle radius="6">
+				<reportElement positionType="FixRelativeToBottom" mode="Transparent" x="282" y="611" width="130" height="60" uuid="b3b80426-c019-48f4-9992-57076472fdc0">
+					<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+					<property name="com.jaspersoft.studio.unit." value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Dotted"/>
+				</graphicElement>
+			</rectangle>
+			<componentElement>
+				<reportElement style="Barcode" x="298" y="624" width="100" height="35" uuid="464a2c6b-21e8-4e72-af52-b908bc793f6e"/>
+				<c:EAN13 xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<c:codeExpression><![CDATA[$P{BARCODE}]]></c:codeExpression>
+				</c:EAN13>
+			</componentElement>
+			<rectangle radius="6">
+				<reportElement positionType="FixRelativeToBottom" mode="Transparent" x="419" y="611" width="130" height="60" uuid="a93fd1a6-dc14-4dc7-b23e-5f26ca16cf00">
+					<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+					<property name="com.jaspersoft.studio.unit." value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Dotted"/>
+				</graphicElement>
+			</rectangle>
+			<componentElement>
+				<reportElement style="Barcode" x="435" y="624" width="100" height="35" uuid="f34f5533-f149-44b5-8814-9da94a6347af"/>
+				<c:EAN13 xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<c:codeExpression><![CDATA[$P{BARCODE}]]></c:codeExpression>
+				</c:EAN13>
+			</componentElement>
+			<rectangle radius="6">
+				<reportElement positionType="FixRelativeToBottom" mode="Transparent" x="8" y="671" width="130" height="60" uuid="b8d8ae0e-891a-4ee8-a658-886598084514">
+					<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+					<property name="com.jaspersoft.studio.unit." value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Dotted"/>
+				</graphicElement>
+			</rectangle>
+			<componentElement>
+				<reportElement style="Barcode" x="26" y="684" width="100" height="35" uuid="8187c20e-73e6-474a-aabe-58dc520e7796"/>
+				<c:EAN13 xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<c:codeExpression><![CDATA[$P{BARCODE}]]></c:codeExpression>
+				</c:EAN13>
+			</componentElement>
+			<rectangle radius="6">
+				<reportElement positionType="FixRelativeToBottom" mode="Transparent" x="145" y="671" width="130" height="60" uuid="267a5cf5-a2d5-4543-82ce-d9c46c33e565">
+					<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+					<property name="com.jaspersoft.studio.unit." value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Dotted"/>
+				</graphicElement>
+			</rectangle>
+			<componentElement>
+				<reportElement style="Barcode" x="163" y="684" width="100" height="35" uuid="62004a89-24a7-4ee2-aea5-a81f1d61e556"/>
+				<c:EAN13 xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<c:codeExpression><![CDATA[$P{BARCODE}]]></c:codeExpression>
+				</c:EAN13>
+			</componentElement>
+			<rectangle radius="6">
+				<reportElement positionType="FixRelativeToBottom" mode="Transparent" x="282" y="671" width="130" height="60" uuid="a39c6388-907e-4465-ba29-67c84b895930">
+					<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+					<property name="com.jaspersoft.studio.unit." value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Dotted"/>
+				</graphicElement>
+			</rectangle>
+			<componentElement>
+				<reportElement style="Barcode" x="298" y="684" width="100" height="35" uuid="adab4f49-ee7c-4a24-a484-ae2a5b97a817"/>
+				<c:EAN13 xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<c:codeExpression><![CDATA[$P{BARCODE}]]></c:codeExpression>
+				</c:EAN13>
+			</componentElement>
+			<rectangle radius="6">
+				<reportElement positionType="FixRelativeToBottom" mode="Transparent" x="419" y="671" width="130" height="60" uuid="262cd6d7-3070-4c3e-93f2-e0115d094be9">
+					<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+					<property name="com.jaspersoft.studio.unit." value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Dotted"/>
+				</graphicElement>
+			</rectangle>
+			<componentElement>
+				<reportElement style="Barcode" x="435" y="684" width="100" height="35" uuid="3f1635aa-57fc-4029-ad71-f39c7ff7d73a"/>
+				<c:EAN13 xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<c:codeExpression><![CDATA[$P{BARCODE}]]></c:codeExpression>
+				</c:EAN13>
+			</componentElement>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="26">
+			<textField>
+				<reportElement x="189" y="1" width="188" height="25" uuid="ee746e85-349e-46cc-abcc-7ad42e2cd8b4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{prdName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="377" y="1" width="188" height="25" uuid="3561b8cd-8343-4725-8d84-0982be7da738"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{BARCODE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="2" y="1" width="188" height="25" uuid="f2138c85-38c2-4044-94d6-1a61ec348187"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{BARCODE}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

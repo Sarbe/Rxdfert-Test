@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Barcode4JReport" pageWidth="595" pageHeight="842" columnWidth="565" leftMargin="15" rightMargin="15" topMargin="25" bottomMargin="2" uuid="432a7055-07f0-43d2-8d4c-00337bfe4d0a">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<style name="Barcode" fontName="DejaVu Sans" fontSize="10"/>
+	<parameter name="BARCODE" class="java.lang.String"/>
+	<parameter name="prdName" class="java.lang.String"/>
+	<title>
+		<band/>
+	</title>
+	<detail>
+		<band height="789">
+			<componentElement>
+				<reportElement style="Barcode" x="30" y="4" width="136" height="51" uuid="35e15c85-135e-4e4a-ada4-3caab948d304"/>
+				<c:EAN13 xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<c:codeExpression><![CDATA[$P{BARCODE}]]></c:codeExpression>
+				</c:EAN13>
+			</componentElement>
+			<componentElement>
+				<reportElement style="Barcode" x="230" y="4" width="136" height="51" uuid="995d2d77-ac97-41e9-9f48-3cc078d1652c"/>
+				<c:EAN13 xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<c:codeExpression><![CDATA[$P{BARCODE}]]></c:codeExpression>
+				</c:EAN13>
+			</componentElement>
+			<componentElement>
+				<reportElement style="Barcode" x="426" y="4" width="136" height="51" uuid="aa9039c1-3d70-4ba3-90dd-cccc9fe4aeb4"/>
+				<c:EAN13 xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<c:codeExpression><![CDATA[$P{BARCODE}]]></c:codeExpression>
+				</c:EAN13>
+			</componentElement>
+			<componentElement>
+				<reportElement style="Barcode" x="30" y="108" width="136" height="51" uuid="4256d524-d325-462a-981a-423383924a4a"/>
+				<c:EAN13 xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<c:codeExpression><![CDATA[$P{BARCODE}]]></c:codeExpression>
+				</c:EAN13>
+			</componentElement>
+			<componentElement>
+				<reportElement style="Barcode" x="230" y="108" width="136" height="51" uuid="bfae1a82-d9f6-4c9e-a7b6-7c64b35f0e34"/>
+				<c:EAN13 xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<c:codeExpression><![CDATA[$P{BARCODE}]]></c:codeExpression>
+				</c:EAN13>
+			</componentElement>
+			<componentElement>
+				<reportElement style="Barcode" x="426" y="108" width="136" height="51" uuid="09b677c9-9155-47df-8912-776789c8bbcd"/>
+				<c:EAN13 xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<c:codeExpression><![CDATA[$P{BARCODE}]]></c:codeExpression>
+				</c:EAN13>
+			</componentElement>
+			<componentElement>
+				<reportElement style="Barcode" x="30" y="209" width="136" height="51" uuid="1cfb85fc-dac1-4d69-8afe-edd5e9d0ce66"/>
+				<c:EAN13 xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<c:codeExpression><![CDATA[$P{BARCODE}]]></c:codeExpression>
+				</c:EAN13>
+			</componentElement>
+			<componentElement>
+				<reportElement style="Barcode" x="230" y="209" width="136" height="51" uuid="0f993dbc-c32f-4ac1-8dfe-def7b71deaec"/>
+				<c:EAN13 xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<c:codeExpression><![CDATA[$P{BARCODE}]]></c:codeExpression>
+				</c:EAN13>
+			</componentElement>
+			<componentElement>
+				<reportElement style="Barcode" x="426" y="209" width="136" height="51" uuid="314e64a2-cc86-4ee0-bf08-01584c9f1251"/>
+				<c:EAN13 xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<c:codeExpression><![CDATA[$P{BARCODE}]]></c:codeExpression>
+				</c:EAN13>
+			</componentElement>
+			<componentElement>
+				<reportElement style="Barcode" x="30" y="316" width="136" height="51" uuid="64914cc9-7571-4446-ab04-3e3de10e3b6f"/>
+				<c:EAN13 xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<c:codeExpression><![CDATA[$P{BARCODE}]]></c:codeExpression>
+				</c:EAN13>
+			</componentElement>
+			<componentElement>
+				<reportElement style="Barcode" x="230" y="316" width="136" height="51" uuid="23f51b0b-95c7-4e9c-8f04-0fb8264f3f1c"/>
+				<c:EAN13 xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<c:codeExpression><![CDATA[$P{BARCODE}]]></c:codeExpression>
+				</c:EAN13>
+			</componentElement>
+			<componentElement>
+				<reportElement style="Barcode" x="426" y="316" width="136" height="51" uuid="362170b6-72c0-4aef-ae20-5cf92f0f5bce"/>
+				<c:EAN13 xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<c:codeExpression><![CDATA[$P{BARCODE}]]></c:codeExpression>
+				</c:EAN13>
+			</componentElement>
+			<componentElement>
+				<reportElement style="Barcode" x="30" y="422" width="136" height="51" uuid="6bed64ae-8756-4c8c-a1c5-e3dd7b89e6de"/>
+				<c:EAN13 xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<c:codeExpression><![CDATA[$P{BARCODE}]]></c:codeExpression>
+				</c:EAN13>
+			</componentElement>
+			<componentElement>
+				<reportElement style="Barcode" x="230" y="422" width="136" height="51" uuid="eb1201e5-3d97-4c06-8fa6-47679c02f131"/>
+				<c:EAN13 xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<c:codeExpression><![CDATA[$P{BARCODE}]]></c:codeExpression>
+				</c:EAN13>
+			</componentElement>
+			<componentElement>
+				<reportElement style="Barcode" x="426" y="422" width="136" height="51" uuid="a1676619-2fb3-43b1-9967-60905271b9d4"/>
+				<c:EAN13 xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<c:codeExpression><![CDATA[$P{BARCODE}]]></c:codeExpression>
+				</c:EAN13>
+			</componentElement>
+			<componentElement>
+				<reportElement style="Barcode" x="30" y="518" width="136" height="51" uuid="980df8da-551f-48f6-b976-91f5543892ce"/>
+				<c:EAN13 xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<c:codeExpression><![CDATA[$P{BARCODE}]]></c:codeExpression>
+				</c:EAN13>
+			</componentElement>
+			<componentElement>
+				<reportElement style="Barcode" x="230" y="518" width="136" height="51" uuid="85b71995-6646-44fe-875c-0ec4cff4f682"/>
+				<c:EAN13 xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<c:codeExpression><![CDATA[$P{BARCODE}]]></c:codeExpression>
+				</c:EAN13>
+			</componentElement>
+			<componentElement>
+				<reportElement style="Barcode" x="426" y="518" width="136" height="51" uuid="8e83d587-8d89-4ace-b211-01eb51101e8a"/>
+				<c:EAN13 xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<c:codeExpression><![CDATA[$P{BARCODE}]]></c:codeExpression>
+				</c:EAN13>
+			</componentElement>
+			<componentElement>
+				<reportElement style="Barcode" x="30" y="618" width="136" height="51" uuid="ee41082f-a059-48ad-91cf-6e423f6c92ce"/>
+				<c:EAN13 xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<c:codeExpression><![CDATA[$P{BARCODE}]]></c:codeExpression>
+				</c:EAN13>
+			</componentElement>
+			<componentElement>
+				<reportElement style="Barcode" x="230" y="618" width="136" height="51" uuid="48c7f24f-ca17-4b4a-b843-3a09a526e096"/>
+				<c:EAN13 xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<c:codeExpression><![CDATA[$P{BARCODE}]]></c:codeExpression>
+				</c:EAN13>
+			</componentElement>
+			<componentElement>
+				<reportElement style="Barcode" x="426" y="618" width="136" height="51" uuid="eb5cf3a6-2f4b-4b30-9f57-790424b59337"/>
+				<c:EAN13 xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<c:codeExpression><![CDATA[$P{BARCODE}]]></c:codeExpression>
+				</c:EAN13>
+			</componentElement>
+			<componentElement>
+				<reportElement style="Barcode" x="30" y="715" width="136" height="51" uuid="968137e3-71d2-4c18-968e-d07de57dc047"/>
+				<c:EAN13 xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<c:codeExpression><![CDATA[$P{BARCODE}]]></c:codeExpression>
+				</c:EAN13>
+			</componentElement>
+			<componentElement>
+				<reportElement style="Barcode" x="230" y="715" width="136" height="51" uuid="e57c6ff8-3c96-4c67-bfe0-9605a57f53ae"/>
+				<c:EAN13 xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<c:codeExpression><![CDATA[$P{BARCODE}]]></c:codeExpression>
+				</c:EAN13>
+			</componentElement>
+			<componentElement>
+				<reportElement style="Barcode" x="426" y="715" width="136" height="51" uuid="f522afaa-947d-496e-8adc-a1df8fa2a339"/>
+				<c:EAN13 xmlns:c="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<c:codeExpression><![CDATA[$P{BARCODE}]]></c:codeExpression>
+				</c:EAN13>
+			</componentElement>
+			<textField>
+				<reportElement x="30" y="57" width="136" height="20" uuid="c761ac46-ee95-4f75-9c7d-c08c42a4698d"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{prdName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="233" y="57" width="136" height="20" uuid="26f8eab0-acfd-4ba2-b9b9-6c93ae5bc268"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{prdName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="426" y="57" width="136" height="20" uuid="2e509e1e-c446-4072-90c1-ee286cfc925b"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{prdName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="426" y="161" width="136" height="20" uuid="206de28e-c3d7-4d00-b1fe-1e9ba6d641db"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{prdName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="30" y="161" width="136" height="20" uuid="a1dd6b1e-0e9b-4ed9-85e4-a5fc0e191b86"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{prdName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="230" y="161" width="136" height="20" uuid="f4f99df5-02e3-4f85-a9f2-e3b93c44cfb6"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{prdName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="30" y="262" width="136" height="20" uuid="d55a23b3-9df0-4870-a515-2d806ed551fe"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{prdName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="230" y="262" width="136" height="20" uuid="8ae91612-e435-462f-adaf-1b8e70f72dba"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{prdName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="426" y="262" width="136" height="20" uuid="9c19340d-8e16-4f78-9b70-750b6b9dda6d"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{prdName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="230" y="369" width="136" height="20" uuid="a5d3e7f6-af02-4f94-bd9a-2cf1558b0535"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{prdName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="426" y="369" width="136" height="20" uuid="5eb0f507-1e48-49dd-8870-8e4fa47deb1a"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{prdName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="30" y="369" width="136" height="20" uuid="176b540f-289f-465d-b80b-f68f4dff8028"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{prdName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="426" y="475" width="136" height="20" uuid="e63ede6c-a605-4002-86e4-d1f889e3f4ed"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{prdName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="230" y="474" width="136" height="20" uuid="783a3d7a-b158-43a3-9f03-dfad717bfb75"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{prdName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="30" y="474" width="136" height="20" uuid="93890e64-3ed3-4855-956f-c660462a575a"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{prdName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="426" y="571" width="136" height="20" uuid="3548dde5-84de-452a-8c43-3e15d1d2a268"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{prdName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="230" y="569" width="136" height="20" uuid="af01a151-7806-45cd-a2bc-800e0fe7ca6a"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{prdName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="30" y="571" width="136" height="20" uuid="f10f63d0-ac7b-4ec0-a6d8-79c3e37b3a67"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{prdName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="30" y="671" width="136" height="20" uuid="3e0c3ee7-84fc-4e9c-858d-1afccfe8f0de"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{prdName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="233" y="671" width="136" height="20" uuid="57aac8b1-17f1-41d5-95ca-43f291cad4e6"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{prdName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="426" y="671" width="136" height="20" uuid="31a791f9-2d93-4d57-bfee-fcb0f2b4a451"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{prdName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="30" y="765" width="136" height="20" uuid="bda97517-afdd-4f6f-a726-aabe8a1e6fe5"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{prdName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="230" y="766" width="136" height="20" uuid="39e99345-02be-48ce-8689-f2c4b33f21e7"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{prdName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="426" y="766" width="136" height="20" uuid="a5cd9564-2554-46f8-bef6-422f7599b63f"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph leftIndent="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{prdName}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="26">
+			<textField>
+				<reportElement x="189" y="1" width="188" height="25" uuid="ee746e85-349e-46cc-abcc-7ad42e2cd8b4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{prdName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="377" y="1" width="188" height="25" uuid="3561b8cd-8343-4725-8d84-0982be7da738"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{BARCODE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="2" y="1" width="188" height="25" uuid="f2138c85-38c2-4044-94d6-1a61ec348187"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{BARCODE}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>
