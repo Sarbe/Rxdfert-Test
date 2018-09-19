@@ -14,7 +14,7 @@ public interface CustomerDetailsRepository extends JpaRepository<CustomerDetails
 	
 	public List<CustomerDetails> findByCustomerType(String custType);
 
-	@Query("Select distinct c from CustomerDetails c WHERE c.customerType = ?1")
+	@Query("Select distinct c from CustomerDetails c WHERE c.customerType = ?1 ORDER BY c.partyName ASC")
 	public List<CustomerDetails> findDistinctDetails(String custType);
 
 	

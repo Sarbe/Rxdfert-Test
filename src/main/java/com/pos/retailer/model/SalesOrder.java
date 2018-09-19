@@ -104,7 +104,7 @@ public class SalesOrder implements Serializable {
 	/////////////// Override Setter
 
 	public void setGrandTotal(double grandTotal) {
-		this.grandTotal = AppConstant.roundedValueToNumber(grandTotal);
+		this.grandTotal = AppConstant.roundedValue(grandTotal);
 	}
 
 	public void setDiscount(double discount) {
@@ -124,7 +124,7 @@ public class SalesOrder implements Serializable {
 	}
 
 	public void setOutstandingAmount(double outstandingAmount) {
-		this.outstandingAmount = AppConstant.roundedValue(taxAmount);
+		this.outstandingAmount = AppConstant.roundedValue(outstandingAmount);
 	}
 
 	///////////////////////////////

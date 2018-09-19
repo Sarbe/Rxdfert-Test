@@ -36,4 +36,6 @@ public interface InventoryOrderService {
 
 	InventoryOrder receivePaymentDetails(String orderId, PaymentDetails payment) throws GenericException;
 
+	InventoryOrderDto recal(String orderId);
+
 }

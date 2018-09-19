@@ -65,7 +65,7 @@ public class InventoryOrderController {
 	}
 
 	@GetMapping("/status/{status}")
-	public ResponseEntity<?> getAllOrdersByStatus(@PathVariable String ...status) {
+	public ResponseEntity<?> getAllOrdersByStatus(@PathVariable String... status) {
 		return new ResponseWrapper<List<InventoryOrder>>(HttpStatus.OK,
 				this.inventoryOrderService.getAllInvOrdersByStatus(Arrays.asList(status))).sendResponse();
 	}
@@ -161,4 +161,10 @@ public class InventoryOrderController {
 				paymentHistoryService.getPaymentHistory(orderId, AppConstant.PURCHASE)).sendResponse();
 	}
 
+	////////
+
+	@GetMapping("/recalc/{orderId}")
+	private ResponseEntity<?> gerecalculatetOrderPaymentHistory(@PathVariable String orderId) {
+		return new ResponseWrapper<>(HttpStatus.OK, inventoryOrderService.recal(orderId)).sendResponse();
+	}
 }

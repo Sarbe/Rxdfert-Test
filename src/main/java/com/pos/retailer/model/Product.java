@@ -96,9 +96,7 @@ public class Product extends Auditable implements Serializable {
 		this.stockQty -= qty;
 	}
 
-	public void setDiscount(double discount) {
-		this.discount = AppConstant.roundedValue(discount);
-	}
+	
 
 	@Override
 	public String toString() {
@@ -106,13 +104,13 @@ public class Product extends Auditable implements Serializable {
 	}
 
 	// override setter
+	
+	public void setDiscount(double discount) {
+		this.discount = AppConstant.roundedValue(discount);
+	}
 
 	public void setBuyPrice(double buyPrice) {
 		this.buyPrice = AppConstant.roundedValue(buyPrice);
-	}
-
-	public double getDiscount() {
-		return discount;
 	}
 
 	public void setMaxRetailPrice(double maxRetailPrice) {
@@ -128,11 +126,11 @@ public class Product extends Auditable implements Serializable {
 	}
 
 	public void setThresholdQty(double thresholdQty) {
-		this.thresholdQty = AppConstant.roundedValueToNumber(thresholdQty);
+		this.thresholdQty = AppConstant.roundedValue(thresholdQty);
 	}
 
 	public void setStockQty(double stockQty) {
-		this.stockQty = AppConstant.roundedValueToNumber(stockQty);
+		this.stockQty = AppConstant.roundedValue(stockQty);
 	}
 
 }

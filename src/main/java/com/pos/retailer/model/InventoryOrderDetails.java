@@ -87,7 +87,7 @@ public class InventoryOrderDetails extends Auditable implements Serializable {
 
 
 	public void setTotalAmount(double totalAmount) {
-        this.totalAmount =   AppConstant.roundedValueToNumber(totalAmount);
+        this.totalAmount =   AppConstant.roundedValue(totalAmount);
 	}
 
 

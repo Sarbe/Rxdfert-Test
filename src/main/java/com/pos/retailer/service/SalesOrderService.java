@@ -5,6 +5,7 @@ import java.util.List;
 import com.pos.retailer.exception.GenericException;
 import com.pos.retailer.model.CustomerDetails;
 import com.pos.retailer.model.PaymentDetails;
+import com.pos.retailer.model.SalesDto;
 import com.pos.retailer.model.SalesOrder;
 import com.pos.retailer.model.SalesOrderDto;
 
@@ -37,4 +38,6 @@ public interface SalesOrderService {
 	SalesOrderDto receivePayment(String orderId, PaymentDetails payment) throws GenericException;
 
 	List<SalesOrder> getAllSalesOrdersByStatus(List<String> status);
+
+	SalesOrderDto reCalc(String orderId) throws GenericException;
 }

@@ -202,10 +202,10 @@ public class SalesOrderServiceImpl implements SalesOrderService {
 			// transactions.add(transc);
 		}
 
-		salesOrder.setGrandTotal(AppConstant.roundedValue(orderGrandTotal));
-		salesOrder.setOutstandingAmount(AppConstant.roundedValue(orderGrandTotal));
-		salesOrder.setSubTotal(AppConstant.roundedValue(orderSubTotal));
-		salesOrder.setTaxAmount(AppConstant.roundedValue(orderTotalTax));
+		salesOrder.setGrandTotal(orderGrandTotal);
+		salesOrder.setOutstandingAmount(orderGrandTotal);
+		salesOrder.setSubTotal(orderSubTotal);
+		salesOrder.setTaxAmount(orderTotalTax);
 		salesOrder.setTotalMrp(mrpTotalTax);
 		// salesOrder.setDiscount(mrpTotalTax - orderGrandTotal);
 
@@ -259,30 +259,32 @@ public class SalesOrderServiceImpl implements SalesOrderService {
 		// instantDisc);
 
 		dbSalesOrder.setOutstandingAmount(dbSalesOrder.getOutstandingAmount() - payment.getPaidAmount() - instantDisc);
-		//String salePaymentType = StringUtils.stripToEmpty(dbSalesOrder.getPaymentType());
+		// String salePaymentType =
+		// StringUtils.stripToEmpty(dbSalesOrder.getPaymentType());
 		dbSalesOrder.setPaymentType(payment.getPaymentMode());
-		
+
 		if (dbSalesOrder.getOutstandingAmount() == 0) {
 			dbSalesOrder.setSettled(true);
 			payment.setPaymentMode(AppConstant.PAY_NOW);
 		} else {
 			dbSalesOrder.setSettled(false);
 		}
-		
-//		if (payment.getPaymentMode().equals(AppConstant.PAY_NOW) || salePaymentType.equals(AppConstant.PAY_NOW)) {
-//			dbSalesOrder.setPaymentType(payment.getPaymentMode());
-//			dbSalesOrder.setSettled(true);
-//		} else if (payment.getPaymentMode().equals(AppConstant.PAY_LATER)
-//				|| salePaymentType.equals(AppConstant.PAY_LATER)) {
-//			dbSalesOrder.setPaymentType(payment.getPaymentMode());
-//
-//			if (dbSalesOrder.getOutstandingAmount() == 0) {
-//				dbSalesOrder.setSettled(true);
-//			} else {
-//				dbSalesOrder.setSettled(false);
-//			}
-//
-//		}
+
+		// if (payment.getPaymentMode().equals(AppConstant.PAY_NOW) ||
+		// salePaymentType.equals(AppConstant.PAY_NOW)) {
+		// dbSalesOrder.setPaymentType(payment.getPaymentMode());
+		// dbSalesOrder.setSettled(true);
+		// } else if (payment.getPaymentMode().equals(AppConstant.PAY_LATER)
+		// || salePaymentType.equals(AppConstant.PAY_LATER)) {
+		// dbSalesOrder.setPaymentType(payment.getPaymentMode());
+		//
+		// if (dbSalesOrder.getOutstandingAmount() == 0) {
+		// dbSalesOrder.setSettled(true);
+		// } else {
+		// dbSalesOrder.setSettled(false);
+		// }
+		//
+		// }
 
 		// set status
 		dbSalesOrder.setOrderSts(AppConstant.ORDER_CONFIRMED);
@@ -394,6 +396,48 @@ public class SalesOrderServiceImpl implements SalesOrderService {
 
 	}
 
-	
-	
+	@Override
+	public SalesOrderDto reCalc(String orderId) throws GenericException {
+
+		SalesOrder sorder = salesOrderRepository.findByOrderId(orderId).get();
+		List<SalesOrderDetails> salesOrderDetails = salesOrderDetailRepository.findByOrderId(orderId);
+		if (salesOrderDetails == null || salesOrderDetails.isEmpty()) {
+			throw new GenericException("No details found");
+		}
+
+		// Amount Calculation
+		double orderSubTotal = 0;
+		double orderGrandTotal = 0;
+		double orderTotalTax = 0;
+		double mrpTotalTax = 0;
+
+		for (SalesOrderDetails salesOrderDtl : salesOrderDetails) {
+			Product product = productService.getProductByBarcode(salesOrderDtl.getBarcode());
+			salesOrderDtl.calculateAmount(product);
+			// save order
+			salesOrderDetailRepository.save(salesOrderDtl);
+
+			// recalculate for sales order
+			orderGrandTotal += salesOrderDtl.getTotalAmount();
+			orderSubTotal += salesOrderDtl.getSubTotal();
+			orderTotalTax += salesOrderDtl.getTax();
+			mrpTotalTax += salesOrderDtl.getMrp() * salesOrderDtl.getQty();
+
+		}
+
+		sorder.setGrandTotal(orderGrandTotal);
+		sorder.setOutstandingAmount(orderGrandTotal);
+		sorder.setSubTotal(orderSubTotal);
+		sorder.setTaxAmount(orderTotalTax);
+		sorder.setTotalMrp(mrpTotalTax);
+
+		sorder = salesOrderRepository.save(sorder);
+
+		SalesOrderDto sdto = new SalesOrderDto();
+		sdto.setSales(sorder);
+		sdto.setSalesDetails(salesOrderDetailRepository.findByOrderId(orderId));
+
+		return sdto;
+	}
+
 }

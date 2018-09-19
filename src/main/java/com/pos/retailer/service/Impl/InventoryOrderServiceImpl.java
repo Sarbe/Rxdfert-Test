@@ -77,10 +77,10 @@ public class InventoryOrderServiceImpl implements InventoryOrderService {
 
 	@Override
 	public List<InventoryOrder> getAllInvOrdersByStatus(List<String> status) {
-		
-		if(status.contains("ALL"))
+
+		if (status.contains("ALL"))
 			return inventoryOrderRepository.findAll();
-		else 
+		else
 			return inventoryOrderRepository.findByOrderStsInOrderByActivityDtDesc(status);
 	}
 
@@ -305,24 +305,22 @@ public class InventoryOrderServiceImpl implements InventoryOrderService {
 		InventoryOrder invOrder = getInvOrderById(orderId);
 
 		// update stocks
-		/*if (invOrder.getOrderSts().equals(AppConstant.ORDER_CONFIRMED)) {
-			List<InventoryOrderDetails> invOrderDetails = inventoryOrderDetailRepository.findByOrderId(orderId);
+		/*
+		 * if (invOrder.getOrderSts().equals(AppConstant.ORDER_CONFIRMED)) {
+		 * List<InventoryOrderDetails> invOrderDetails =
+		 * inventoryOrderDetailRepository.findByOrderId(orderId);
+		 * 
+		 * if (invOrderDetails != null && !invOrderDetails.isEmpty()) {
+		 * 
+		 * for (InventoryOrderDetails invOrderDtl : invOrderDetails) { Product inventory
+		 * = inventoryRepository.findByBarcode(invOrderDtl.getBarcode()).get();
+		 * inventory.decreaseStockQty(invOrderDtl.getQty()); // increase
+		 * inventoryRepository.save(inventory); } } }
+		 * 
+		 * inventoryOrderRepository.deleteById(orderId); // delete order details
+		 * inventoryOrderDetailRepository.deleteAllByOrderId(orderId);
+		 */
 
-			if (invOrderDetails != null && !invOrderDetails.isEmpty()) {
-
-				for (InventoryOrderDetails invOrderDtl : invOrderDetails) {
-					Product inventory = inventoryRepository.findByBarcode(invOrderDtl.getBarcode()).get();
-					inventory.decreaseStockQty(invOrderDtl.getQty()); // increase
-					inventoryRepository.save(inventory);
-				}
-			}
-		}
-
-		inventoryOrderRepository.deleteById(orderId);
-		// delete order details
-		inventoryOrderDetailRepository.deleteAllByOrderId(orderId);
-		*/
-		
 		if (!invOrder.getOrderSts().equals(AppConstant.ORDER_CONFIRMED)) {
 			inventoryOrderRepository.deleteById(orderId); // delete order details
 			inventoryOrderDetailRepository.deleteAllByOrderId(orderId);
@@ -330,5 +328,33 @@ public class InventoryOrderServiceImpl implements InventoryOrderService {
 			throw new GenericException("Cannot delete as Order has already Confirmed.");
 		}
 
+	}
+
+	@Override
+	public InventoryOrderDto recal(String orderId) {
+		InventoryOrder invOrder = inventoryOrderRepository.findByOrderId(orderId).get();
+
+		List<InventoryOrderDetails> invOrderDetails = inventoryOrderDetailRepository.findByOrderId(orderId);
+
+		double orderTotal = 0;
+		for (InventoryOrderDetails invOrderDtl : invOrderDetails) {
+
+			invOrderDtl.calculateAmount();
+			inventoryOrderDetailRepository.save(invOrderDtl);
+
+			orderTotal += invOrderDtl.getTotalAmount();
+		}
+
+		invOrder.setGrandTotal(orderTotal);
+		invOrder.setOutstandingAmount(invOrder.getGrandTotal());
+
+		// save
+		invOrder = inventoryOrderRepository.save(invOrder);
+		
+		InventoryOrderDto invdto = new InventoryOrderDto();
+		invdto.setPurchase(invOrder);
+		invdto.setPurchaseDetails(inventoryOrderDetailRepository.findByOrderId(orderId));
+
+		return invdto;
 	}
 }

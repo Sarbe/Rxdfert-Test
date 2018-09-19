@@ -99,14 +99,15 @@ public class InventoryOrderDetailsServiceImpl implements InventoryOrderDetailsSe
 
 			// Price Calculation for order detail
 			orderDetail.calculateAmount();
-
+			orderDetail = inventoryOrderDetailRepository.save(orderDetail);
+			
 			// Price Calculation for order
 			double orderTotal = calculateOrderAmount(invOrder.getOrderId());
 			invOrder.setGrandTotal(orderTotal);
 
 			// Price Calculation
 			// orderDetail.calculateAmount();
-			return inventoryOrderDetailRepository.save(orderDetail);
+			return orderDetail;
 		}
 
 	}

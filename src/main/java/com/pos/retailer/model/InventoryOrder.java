@@ -93,7 +93,7 @@ public class InventoryOrder extends Auditable implements Serializable {
 	}
 
 	public void setGrandTotal(double grandTotal) {
-		this.grandTotal = AppConstant.roundedValueToNumber(grandTotal);
+		this.grandTotal = AppConstant.roundedValue(grandTotal);
 	}
 
 	public void setTax(double tax) {
@@ -101,7 +101,7 @@ public class InventoryOrder extends Auditable implements Serializable {
 	}
 
 	public void setOutstandingAmount(double outstandingAmount) {
-		this.outstandingAmount = AppConstant.roundedValueToNumber(outstandingAmount);
+		this.outstandingAmount = AppConstant.roundedValue(outstandingAmount);
 	}
 	////////
 

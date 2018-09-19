@@ -51,10 +51,11 @@ public class AppConstant {
 		return BigDecimal.valueOf(amount).setScale(2, RoundingMode.HALF_UP).doubleValue();
 		
 	}
-	
-	public static double roundedValueToNumber(double amount) {
-		return BigDecimal.valueOf(amount).setScale(0, RoundingMode.FLOOR).doubleValue();
-	}
+//	
+//	public static double roundedValueToNumber(double amount) {
+//		return BigDecimal.valueOf(amount).setScale(0, RoundingMode.FLOOR).doubleValue();
+//	}
+//	
 	
 	
 	public static void chckInvSts() throws GenericException {

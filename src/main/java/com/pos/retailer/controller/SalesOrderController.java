@@ -203,4 +203,12 @@ public class SalesOrderController {
 		return new ResponseWrapper<>(HttpStatus.OK, paymentHistoryService.getPaymentHistory(orderId, AppConstant.SALES))
 				.sendResponse();
 	}
+
+	@GetMapping("recalc/{orderId}")
+	private ResponseEntity<?> recalculate(@PathVariable String orderId) throws GenericException {
+		
+		 SalesOrderDto sdto = salesOrderService.reCalc(orderId);
+		return new ResponseWrapper<>(HttpStatus.OK, sdto).sendResponse();
+
+	}
 }

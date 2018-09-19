@@ -44,6 +44,7 @@ public class SalesOrderDetailsServiceImpl implements SalesOrderDetailsService {
 		return salesOrderDetailRepository.findByOrderId(orderId);
 	}
 
+	// unused
 	@Override
 	public SalesOrderDetails saveOrderDetail(String orderId, String barcode) throws GenericException {
 
@@ -94,7 +95,7 @@ public class SalesOrderDetailsServiceImpl implements SalesOrderDetailsService {
 			orderGrandTotal += salesOrderDtl.getTotalAmount();
 			orderSubTotal += salesOrderDtl.getSubTotal();
 			orderTotalTax += salesOrderDtl.getTax();
-			mrpTotalTax = salesOrderDtl.getMrp() * salesOrderDtl.getQty();
+			mrpTotalTax += salesOrderDtl.getMrp() * salesOrderDtl.getQty();
 		}
 
 		salesOrder.setGrandTotal(orderGrandTotal);
@@ -124,7 +125,7 @@ public class SalesOrderDetailsServiceImpl implements SalesOrderDetailsService {
 		if (!product.isAvailability() || product.getStockQty() < 1) {
 			throw new GenericException("Product is not available");
 		}
-		
+
 		// verify input
 		if (qty < 1)
 			throw new GenericException("Quantity cannot be less than 1.");
@@ -144,11 +145,19 @@ public class SalesOrderDetailsServiceImpl implements SalesOrderDetailsService {
 			saleOrderDtl = new SalesOrderDetails(barcode, product, qty, orderId);
 		}
 
+		// calculate order detail price
 		saleOrderDtl.calculateAmount(product);
+
+		saleOrderDtl = salesOrderDetailRepository.save(saleOrderDtl);
+
+		// order Price Calculation
+		calculateOrderPrice(salesOrder);
+		// save sale Order
 		salesOrder.setOrderSts(AppConstant.ORDER_SAVED);
 		salesOrderRepository.save(salesOrder);
 
-		return salesOrderDetailRepository.save(saleOrderDtl);
+		// save sale Order details
+		return saleOrderDtl;
 	}
 
 	@Override
@@ -193,8 +202,7 @@ public class SalesOrderDetailsServiceImpl implements SalesOrderDetailsService {
 	}
 
 	@Override
-	public SalesOrderDetails changeQty(String orderId, Long orderDtlId, int qty)
-			throws GenericException {
+	public SalesOrderDetails changeQty(String orderId, Long orderDtlId, int qty) throws GenericException {
 
 		SalesOrder salesOrder = commonOrderService.getSalesOrderByOrderId(orderId);
 		if (salesOrder.getOrderSts().equals(AppConstant.ORDER_CONFIRMED))
@@ -212,9 +220,9 @@ public class SalesOrderDetailsServiceImpl implements SalesOrderDetailsService {
 				throw new GenericException("Quantity cannot be less than 1.");
 			else if (qty > product.getStockQty())
 				throw new GenericException("Insufficient stock for " + product.getProductName());
-			
+
 			saleOrderDtl.setQty(qty);
-			
+
 			// calculate order details amount
 			saleOrderDtl.calculateAmount(product);
 			// calculate order amount
@@ -228,7 +236,6 @@ public class SalesOrderDetailsServiceImpl implements SalesOrderDetailsService {
 
 	}
 
-	
 	@Override
 	public void deleteOrderDetailById(String orderId, Long orderDtlId) throws GenericException {
 
@@ -241,11 +248,9 @@ public class SalesOrderDetailsServiceImpl implements SalesOrderDetailsService {
 		if (!optSaleOrderDtl.isPresent())
 			throw new GenericException("Details not found.");
 
-		SalesOrderDetails salesOrderDtl = optSaleOrderDtl.get();
+		// SalesOrderDetails salesOrderDtl = optSaleOrderDtl.get();
 		salesOrderDetailRepository.deleteById(orderDtlId);
 
-		Product product = productService.getProductByBarcode(salesOrderDtl.getBarcode());
-		salesOrderDtl.calculateAmount(product);
 		// calculate order amount
 		calculateOrderPrice(salesOrder);
 		salesOrderRepository.save(salesOrder);
