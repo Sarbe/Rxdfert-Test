@@ -2,6 +2,7 @@ package com.pos.retailer.model;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -84,6 +85,16 @@ public class InventoryOrder extends Auditable implements Serializable {
 	public InventoryOrder(String orderId) {
 		this.orderId = orderId;
 
+	}
+	
+	public void calculateOrderAmount(List<InventoryOrderDetails> invOrderDetails){
+		double orderTotal = 0;
+		for (InventoryOrderDetails invOrderDtl : invOrderDetails) {
+			orderTotal += invOrderDtl.getTotalAmount();
+		}
+		
+		setGrandTotal(orderTotal);
+		setOutstandingAmount(orderTotal);
 	}
 
 	/// Setter override

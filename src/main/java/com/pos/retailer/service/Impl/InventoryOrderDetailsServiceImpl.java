@@ -51,7 +51,7 @@ public class InventoryOrderDetailsServiceImpl implements InventoryOrderDetailsSe
 	}
 
 	@Override
-	public InventoryOrderDetails saveOrderDetail(String orderId, InventoryOrderDetails orderDetail)
+	public InventoryOrderDetails addOrderDetail(String orderId, InventoryOrderDetails orderDetail)
 			throws GenericException {
 
 		orderDetail.setOrderId(orderId);
@@ -87,9 +87,8 @@ public class InventoryOrderDetailsServiceImpl implements InventoryOrderDetailsSe
 			orderDetail = inventoryOrderDetailRepository.save(orderDetail);
 
 			// Price Calculation for order
-			double orderTotal = calculateOrderAmount(invOrder.getOrderId());
-			invOrder.setGrandTotal(orderTotal);
-
+			List<InventoryOrderDetails> invOrderDetails = getOrderDetailsByOrderId(invOrder.getOrderId());
+			invOrder.calculateOrderAmount(invOrderDetails);
 			inventoryOrderRepository.save(invOrder);
 
 			return orderDetail;
@@ -103,24 +102,26 @@ public class InventoryOrderDetailsServiceImpl implements InventoryOrderDetailsSe
 			orderDetail = inventoryOrderDetailRepository.save(orderDetail);
 			
 			// Price Calculation for order
-			double orderTotal = calculateOrderAmount(invOrder.getOrderId());
-			invOrder.setGrandTotal(orderTotal);
-
+			List<InventoryOrderDetails> invOrderDetails = getOrderDetailsByOrderId(invOrder.getOrderId());
+			invOrder.calculateOrderAmount(invOrderDetails);
 			return orderDetail;
 		}
 
 	}
 
-	private double calculateOrderAmount(String orderId) {
-		List<InventoryOrderDetails> invOrderDetails = getOrderDetailsByOrderId(orderId);
+	/*private void calculateOrderAmount(InventoryOrder invOrder) {
+		List<InventoryOrderDetails> invOrderDetails = getOrderDetailsByOrderId(invOrder.getOrderId());
 		double orderTotal = 0;
 		for (InventoryOrderDetails invOrderDtl : invOrderDetails) {
 			orderTotal += invOrderDtl.getTotalAmount();
 		}
-		return orderTotal;
+		
+		invOrder.setGrandTotal(orderTotal);
+		invOrder.setOutstandingAmount(orderTotal);
 
-	}
+	}*/
 
+	//unused
 	@Override
 	public InventoryOrderDetails changeQtyByOne(String orderId, Long orderDtlId, String changeType)
 			throws GenericException {
@@ -148,51 +149,44 @@ public class InventoryOrderDetailsServiceImpl implements InventoryOrderDetailsSe
 
 		// Order Detail Price Calculation
 		dbOrderDetail.calculateAmount();
-
+		dbOrderDetail = inventoryOrderDetailRepository.save(dbOrderDetail);
 		// order price calculation
-		double orderTotal = calculateOrderAmount(invOrder.getOrderId());
-		invOrder.setGrandTotal(orderTotal);
-		// invOrder.setOutstandingAmount(orderTotal);
-
+		List<InventoryOrderDetails> invOrderDetails = getOrderDetailsByOrderId(invOrder.getOrderId());
+		invOrder.calculateOrderAmount(invOrderDetails);
 		inventoryOrderRepository.save(invOrder);
-		return inventoryOrderDetailRepository.save(dbOrderDetail);
+		
+		return dbOrderDetail;
 
 	}
 	
-	public InventoryOrderDetails changeQtye(String orderId, Long orderDtlId, String changeType)
+	@Override
+	public InventoryOrderDetails changeQty(String orderId, Long orderDtlId, int qty)
 			throws GenericException {
 
 		InventoryOrder invOrder = commonOrderService.getInventoryOrderByOrderId(orderId);
 		if (invOrder.getOrderSts().equals(AppConstant.ORDER_CONFIRMED))
 			throw new GenericException("Order has already been confirmed.");
 
-		InventoryOrderDetails dbOrderDetail = inventoryOrderDetailRepository.findByOrderDetailIdAndOrderId(orderDtlId,
-				orderId);
+		Optional<InventoryOrderDetails> optDbOrderDetail = inventoryOrderDetailRepository.findByOrderDetailId(orderDtlId);
 
-		if (dbOrderDetail == null) // if order details not present
+		if (!optDbOrderDetail.isPresent()) // if order details not present
 			throw new GenericException("Details not found.");
 
-		if (changeType.equals(AppConstant.QTY_SUB) && dbOrderDetail.getQty() == 1) {
+		InventoryOrderDetails dbOrderDetail = optDbOrderDetail.get();
+		
+		if (qty < 1) {			
 			throw new GenericException("Quantity cannot be less than 1.");
 		}
 
-		if (changeType.equals(AppConstant.QTY_ADD))
-			dbOrderDetail.increaseQty(1);
-		else if (changeType.equals(AppConstant.QTY_SUB))
-			dbOrderDetail.decreaseQty(1);
-		else
-			return dbOrderDetail;
-
 		// Order Detail Price Calculation
 		dbOrderDetail.calculateAmount();
-
+		dbOrderDetail = inventoryOrderDetailRepository.save(dbOrderDetail);
 		// order price calculation
-		double orderTotal = calculateOrderAmount(invOrder.getOrderId());
-		invOrder.setGrandTotal(orderTotal);
-		// invOrder.setOutstandingAmount(orderTotal);
-
+		List<InventoryOrderDetails> invOrderDetails = getOrderDetailsByOrderId(invOrder.getOrderId());
+		invOrder.calculateOrderAmount(invOrderDetails);
 		inventoryOrderRepository.save(invOrder);
-		return inventoryOrderDetailRepository.save(dbOrderDetail);
+		
+		return dbOrderDetail;
 
 	}
 
@@ -210,13 +204,10 @@ public class InventoryOrderDetailsServiceImpl implements InventoryOrderDetailsSe
 			throw new GenericException("Details not found.");
 
 		inventoryOrderDetailRepository.deleteById(orderDtlid);
-		// Order Detail Price Calculation
-		dbOrderDetail.calculateAmount();
 
 		// order price calculation
-		double orderTotal = calculateOrderAmount(invOrder.getOrderId());
-		invOrder.setGrandTotal(orderTotal);
-
+		List<InventoryOrderDetails> invOrderDetails = getOrderDetailsByOrderId(invOrder.getOrderId());
+		invOrder.calculateOrderAmount(invOrderDetails);
 		inventoryOrderRepository.save(invOrder);
 
 	}

@@ -11,7 +11,7 @@ import com.pos.retailer.model.Product;
 
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
-	// public Optional<Product> findByProductId(Long productId);
+	public Optional<Product> findByProductId(Long productId);
 
 	public Optional<Product> findByBarcode(String barcode);
 
@@ -24,6 +24,8 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 	@Query("SELECT productName FROM Product I ORDER BY productName ASC")
 	@Cacheable("products")
 	public List<String> findAllProductName();
+	
+	public List<Product> findAllByOrderByProductNameAsc();
 
 	public Optional<Product> findByBarcodeAndAvailabilityTrue(String barcode);
 
@@ -32,10 +34,10 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 	@Query("select p from Product p WHERE stockQty <= thresholdQty")
 	List<Product> findByThresholdQtyLessThanStockQty();
 
-	/*@Query(nativeQuery = false, value = "select distinct(p.category) from Product p order by p.category")
+	@Query(nativeQuery = false, value = "select distinct(p.category) from Product p order by p.category")
 	public List<String> findDistinctCategoryOrderByCategory();
 	
-	List<Product> findByCategoryOrderByProductName(String category);*/
+	List<Product> findByCategoryOrderByProductName(String category);
 
 	
 

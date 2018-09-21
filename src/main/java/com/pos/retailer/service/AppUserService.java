@@ -8,7 +8,7 @@ import com.pos.retailer.model.AppUser;
 public interface AppUserService {
 	AppUser save(AppUser user);
 	List<AppUser> getAllUsers();
-	void update(Long userid, AppUser user) throws GenericException;
+	//void update(Long userid, AppUser user) throws GenericException;
 	void changeUserStaus(String loogedInUser, String userName) throws GenericException;
-	void updatePassword(Long userid, AppUser user) throws GenericException;
+	//void updatePassword(Long userid, AppUser user) throws GenericException;
 }

@@ -20,7 +20,7 @@ public interface InventoryOrderService {
 
 	String getInvOrderStatus(String id) throws GenericException;
 
-	InventoryOrder confirmInventoryOrder(String orderId, InventoryOrder invOrder) throws GenericException;
+	InventoryOrder submitOrder(String orderId, InventoryOrder invOrder) throws GenericException;
 
 	List<CustomerDetails> getUniqueVendorDetails();
 

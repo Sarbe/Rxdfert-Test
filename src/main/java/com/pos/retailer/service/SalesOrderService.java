@@ -5,7 +5,6 @@ import java.util.List;
 import com.pos.retailer.exception.GenericException;
 import com.pos.retailer.model.CustomerDetails;
 import com.pos.retailer.model.PaymentDetails;
-import com.pos.retailer.model.SalesDto;
 import com.pos.retailer.model.SalesOrder;
 import com.pos.retailer.model.SalesOrderDto;
 
@@ -23,7 +22,7 @@ public interface SalesOrderService {
 
 	void deleteSalesOrder(String orderId) throws GenericException;
 
-	SalesOrder confirmSalesOrder(String orderId, SalesOrder salesOrder) throws GenericException;
+	SalesOrder submitSalesOrder(String orderId, SalesOrder salesOrder) throws GenericException;
 
 	SalesOrder updatePaymentDetails(String orderId, PaymentDetails payment) throws GenericException;
 

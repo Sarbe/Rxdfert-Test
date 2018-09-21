@@ -46,7 +46,7 @@ public class SalesOrderDetailsServiceImpl implements SalesOrderDetailsService {
 
 	// unused
 	@Override
-	public SalesOrderDetails saveOrderDetail(String orderId, String barcode) throws GenericException {
+	public SalesOrderDetails addOrderDetail(String orderId, String barcode) throws GenericException {
 
 		SalesOrder salesOrder = commonOrderService.getSalesOrderByOrderId(orderId);
 		if (salesOrder.getOrderSts().equals(AppConstant.ORDER_CONFIRMED))
@@ -78,33 +78,12 @@ public class SalesOrderDetailsServiceImpl implements SalesOrderDetailsService {
 		// order detail Price Calculation
 		dbSaleOrderDtl.calculateAmount(product);
 		// order Price Calculation
-		calculateOrderPrice(salesOrder);
+		List<SalesOrderDetails> salesOrderDetails = salesOrderDetailRepository.findByOrderId(salesOrder.getOrderId());
+		salesOrder.calculateOrderPrice(salesOrderDetails);
+
 		salesOrderRepository.save(salesOrder);
 
 		return salesOrderDetailRepository.save(dbSaleOrderDtl);
-	}
-
-	private void calculateOrderPrice(SalesOrder salesOrder) {
-		List<SalesOrderDetails> salesOrderDetails = salesOrderDetailRepository.findByOrderId(salesOrder.getOrderId());
-		double orderSubTotal = 0;
-		double orderGrandTotal = 0;
-		double orderTotalTax = 0;
-		double mrpTotalTax = 0;
-
-		for (SalesOrderDetails salesOrderDtl : salesOrderDetails) {
-			orderGrandTotal += salesOrderDtl.getTotalAmount();
-			orderSubTotal += salesOrderDtl.getSubTotal();
-			orderTotalTax += salesOrderDtl.getTax();
-			mrpTotalTax += salesOrderDtl.getMrp() * salesOrderDtl.getQty();
-		}
-
-		salesOrder.setGrandTotal(orderGrandTotal);
-		salesOrder.setOutstandingAmount(orderGrandTotal);
-		salesOrder.setSubTotal(orderSubTotal);
-		salesOrder.setTaxAmount(orderTotalTax);
-		salesOrder.setTotalMrp(mrpTotalTax);
-		salesOrder.setDiscount(mrpTotalTax - orderGrandTotal);
-
 	}
 
 	@Override
@@ -147,11 +126,11 @@ public class SalesOrderDetailsServiceImpl implements SalesOrderDetailsService {
 
 		// calculate order detail price
 		saleOrderDtl.calculateAmount(product);
-
 		saleOrderDtl = salesOrderDetailRepository.save(saleOrderDtl);
 
 		// order Price Calculation
-		calculateOrderPrice(salesOrder);
+		List<SalesOrderDetails> salesOrderDetails = salesOrderDetailRepository.findByOrderId(salesOrder.getOrderId());
+		salesOrder.calculateOrderPrice(salesOrderDetails);
 		// save sale Order
 		salesOrder.setOrderSts(AppConstant.ORDER_SAVED);
 		salesOrderRepository.save(salesOrder);
@@ -160,6 +139,7 @@ public class SalesOrderDetailsServiceImpl implements SalesOrderDetailsService {
 		return saleOrderDtl;
 	}
 
+	//unused
 	@Override
 	public SalesOrderDetails changeQtyByOne(String orderId, Long orderDtlId, String changeType)
 			throws GenericException {
@@ -190,11 +170,15 @@ public class SalesOrderDetailsServiceImpl implements SalesOrderDetailsService {
 				return saleOrderDtl;
 			// calculate order details amount
 			saleOrderDtl.calculateAmount(product);
+			saleOrderDtl = salesOrderDetailRepository.save(saleOrderDtl);
+			
 			// calculate order amount
-			calculateOrderPrice(salesOrder);
+			List<SalesOrderDetails> salesOrderDetails = salesOrderDetailRepository.findByOrderId(salesOrder.getOrderId());
+			salesOrder.calculateOrderPrice(salesOrderDetails);
+
 			salesOrderRepository.save(salesOrder);
 
-			return salesOrderDetailRepository.save(saleOrderDtl);
+			return saleOrderDtl;
 		} else {
 			throw new GenericException("Cannot perform the operation.");
 		}
@@ -225,16 +209,40 @@ public class SalesOrderDetailsServiceImpl implements SalesOrderDetailsService {
 
 			// calculate order details amount
 			saleOrderDtl.calculateAmount(product);
+			saleOrderDtl = salesOrderDetailRepository.save(saleOrderDtl);
 			// calculate order amount
-			calculateOrderPrice(salesOrder);
+			List<SalesOrderDetails> salesOrderDetails = salesOrderDetailRepository.findByOrderId(salesOrder.getOrderId());
+			salesOrder.calculateOrderPrice(salesOrderDetails);
+
 			salesOrderRepository.save(salesOrder);
 
-			return salesOrderDetailRepository.save(saleOrderDtl);
+			return saleOrderDtl;
 		} else {
 			throw new GenericException("Order Details not found");
 		}
 
 	}
+
+//	private void calculateOrderPrice(SalesOrder salesOrder) {
+//		List<SalesOrderDetails> salesOrderDetails = salesOrderDetailRepository.findByOrderId(salesOrder.getOrderId());
+//		double orderSubTotal = 0;
+//		double orderGrandTotal = 0;
+//		double orderTotalTax = 0;
+//		double mrpTotalTax = 0;
+//
+//		for (SalesOrderDetails salesOrderDtl : salesOrderDetails) {
+//			orderGrandTotal += salesOrderDtl.getTotalAmount();
+//			orderSubTotal += salesOrderDtl.getSubTotal();
+//			orderTotalTax += salesOrderDtl.getTax();
+//			mrpTotalTax += salesOrderDtl.getMrp() * salesOrderDtl.getQty();
+//		}
+//
+//		salesOrder.setGrandTotal(orderGrandTotal);
+//		salesOrder.setOutstandingAmount(orderGrandTotal);
+//		salesOrder.setSubTotal(orderSubTotal);
+//		salesOrder.setTaxAmount(orderTotalTax);
+//		salesOrder.setTotalMrp(mrpTotalTax);
+//	}
 
 	@Override
 	public void deleteOrderDetailById(String orderId, Long orderDtlId) throws GenericException {
@@ -252,7 +260,9 @@ public class SalesOrderDetailsServiceImpl implements SalesOrderDetailsService {
 		salesOrderDetailRepository.deleteById(orderDtlId);
 
 		// calculate order amount
-		calculateOrderPrice(salesOrder);
+		List<SalesOrderDetails> salesOrderDetails = salesOrderDetailRepository.findByOrderId(salesOrder.getOrderId());
+		salesOrder.calculateOrderPrice(salesOrderDetails);
+
 		salesOrderRepository.save(salesOrder);
 	}
 }

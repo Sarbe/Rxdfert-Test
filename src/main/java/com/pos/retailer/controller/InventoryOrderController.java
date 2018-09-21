@@ -101,7 +101,7 @@ public class InventoryOrderController {
 			throws GenericException {
 		chckInvSts();
 		return new ResponseWrapper<>("Purchase Confirmed", HttpStatus.OK,
-				inventoryOrderService.confirmInventoryOrder(orderId, invOrder)).sendResponse();
+				inventoryOrderService.submitOrder(orderId, invOrder)).sendResponse();
 	}
 
 	@PostMapping("/{orderId}/payment")
@@ -134,7 +134,7 @@ public class InventoryOrderController {
 	private ResponseEntity<?> saveOrderDetail(@PathVariable String orderId,
 			@RequestBody InventoryOrderDetails orderDetail) throws GenericException {
 		chckInvSts();
-		return new ResponseWrapper<>(HttpStatus.OK, inventoryOrderDetailsService.saveOrderDetail(orderId, orderDetail))
+		return new ResponseWrapper<>(HttpStatus.OK, inventoryOrderDetailsService.addOrderDetail(orderId, orderDetail))
 				.sendResponse();
 	}
 
@@ -152,6 +152,14 @@ public class InventoryOrderController {
 		chckInvSts();
 		return new ResponseWrapper<>(HttpStatus.OK,
 				inventoryOrderDetailsService.changeQtyByOne(orderId, orderDtlId, changeType)).sendResponse();
+	}
+	
+	@GetMapping("/{orderId}/{orderDtlId}/{qty}")
+	private ResponseEntity<?> changeOrderQuantity(@PathVariable String orderId, @PathVariable Long orderDtlId,
+			@PathVariable int qty) throws GenericException {
+		chckInvSts();
+		return new ResponseWrapper<>(HttpStatus.OK, inventoryOrderDetailsService.changeQty(orderId, orderDtlId, qty))
+				.sendResponse();
 	}
 
 	//////////////

@@ -152,7 +152,8 @@ public class SalesOrderServiceImpl implements SalesOrderService {
 	}
 
 	@Override
-	public SalesOrder confirmSalesOrder(String orderId, SalesOrder salesOrder) throws GenericException {
+	public SalesOrder submitSalesOrder(String orderId, SalesOrder salesOrder) throws GenericException {
+
 		SalesOrder dbSalesOrder = getSalesOrderById(orderId);
 		if (dbSalesOrder.getOrderSts().equals(AppConstant.ORDER_CONFIRMED))
 			throw new GenericException("Order has already been confirmed");
@@ -174,59 +175,35 @@ public class SalesOrderServiceImpl implements SalesOrderService {
 		}
 
 		// Amount Calculation
-		double orderSubTotal = 0;
-		double orderGrandTotal = 0;
-		double orderTotalTax = 0;
-		double mrpTotalTax = 0;
+		// double orderSubTotal = 0;
+		// double orderGrandTotal = 0;
+		// double orderTotalTax = 0;
+		// double mrpTotalTax = 0;
+		//
+		// for (SalesOrderDetails salesOrderDtl : salesOrderDetails) {
+		//
+		// orderGrandTotal += salesOrderDtl.getTotalAmount();
+		// orderSubTotal += salesOrderDtl.getSubTotal();
+		// orderTotalTax += salesOrderDtl.getTax();
+		// mrpTotalTax += salesOrderDtl.getMrp() * salesOrderDtl.getQty();
+		// }
+		//
+		// salesOrder.setGrandTotal(orderGrandTotal);
+		// salesOrder.setOutstandingAmount(orderGrandTotal);
+		// salesOrder.setSubTotal(orderSubTotal);
+		// salesOrder.setTaxAmount(orderTotalTax);
+		// salesOrder.setTotalMrp(mrpTotalTax);
 
-		for (SalesOrderDetails salesOrderDtl : salesOrderDetails) {
-
-			orderGrandTotal += salesOrderDtl.getTotalAmount();
-			orderSubTotal += salesOrderDtl.getSubTotal();
-			orderTotalTax += salesOrderDtl.getTax();
-
-			mrpTotalTax += salesOrderDtl.getMrp() * salesOrderDtl.getQty();
-
-			// Product inventory =
-			// productRepository.findByBarcode(salesOrderDtl.getBarcode()).get();
-			// inventory.decreaseStockQty(salesOrderDtl.getQty());// decrease
-			// productRepository.save(inventory);
-
-			// transc = new InventoryTransaction(salesOrderDtl.getProductName(),
-			// salesOrderDtl.getBarcode(),
-			// salesOrderDtl.getUom(), AppConstant.STOCK_OUT, salesOrderDtl.getQty(),
-			// dbSalesOrder.getPartyName(),
-			// dbSalesOrder.getGstinNumber(), "Stocking Out for sales : " +
-			// dbSalesOrder.getOrderId());
-			//
-			// transactions.add(transc);
-		}
-
-		salesOrder.setGrandTotal(orderGrandTotal);
-		salesOrder.setOutstandingAmount(orderGrandTotal);
-		salesOrder.setSubTotal(orderSubTotal);
-		salesOrder.setTaxAmount(orderTotalTax);
-		salesOrder.setTotalMrp(mrpTotalTax);
-		// salesOrder.setDiscount(mrpTotalTax - orderGrandTotal);
+		salesOrder.calculateOrderPrice(salesOrderDetails);
 
 		salesOrder.setOrderSts(AppConstant.ORDER_SAVED);
-
 		salesOrder.setSettled(false);
-
-		// save to inventory Transaction
-		// productService.addInventoryTransactions(transactions);
 
 		// save customer Details
 		customerService.saveCustomer(customer);
 
 		// save
 		return salesOrderRepository.save(salesOrder);
-
-		// SalesOrderDto sdto = new SalesOrderDto();
-		// sdto.setSales(dbSalesOrder);
-		// sdto.setSalesDetails(salesOrderDetails);
-		//
-		// return sdto;
 	}
 
 	@Override
@@ -269,22 +246,6 @@ public class SalesOrderServiceImpl implements SalesOrderService {
 		} else {
 			dbSalesOrder.setSettled(false);
 		}
-
-		// if (payment.getPaymentMode().equals(AppConstant.PAY_NOW) ||
-		// salePaymentType.equals(AppConstant.PAY_NOW)) {
-		// dbSalesOrder.setPaymentType(payment.getPaymentMode());
-		// dbSalesOrder.setSettled(true);
-		// } else if (payment.getPaymentMode().equals(AppConstant.PAY_LATER)
-		// || salePaymentType.equals(AppConstant.PAY_LATER)) {
-		// dbSalesOrder.setPaymentType(payment.getPaymentMode());
-		//
-		// if (dbSalesOrder.getOutstandingAmount() == 0) {
-		// dbSalesOrder.setSettled(true);
-		// } else {
-		// dbSalesOrder.setSettled(false);
-		// }
-		//
-		// }
 
 		// set status
 		dbSalesOrder.setOrderSts(AppConstant.ORDER_CONFIRMED);
@@ -430,6 +391,10 @@ public class SalesOrderServiceImpl implements SalesOrderService {
 		sorder.setSubTotal(orderSubTotal);
 		sorder.setTaxAmount(orderTotalTax);
 		sorder.setTotalMrp(mrpTotalTax);
+
+		// check if any payment done
+		double paidAmount = paymentHistoryService.getTotalPayment(orderId, AppConstant.SALES);
+		sorder.setOutstandingAmount(sorder.getOutstandingAmount() - paidAmount);
 
 		sorder = salesOrderRepository.save(sorder);
 

@@ -9,5 +9,7 @@ public interface PaymentHistoryService {
 	List<PaymentHistory> getPaymentHistory(String orderId, String orderType);
 
 	void savePaymentDetails(PaymentHistory details);
+	
+	public double getTotalPayment(String orderId, String orderType);
 
 }

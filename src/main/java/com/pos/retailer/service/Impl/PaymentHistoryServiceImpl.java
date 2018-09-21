@@ -28,5 +28,10 @@ public class PaymentHistoryServiceImpl implements PaymentHistoryService {
 		paymentHistoryRepository.save(details);
 
 	}
+
+	@Override
+	public double getTotalPayment(String orderId, String orderType) {
+		return paymentHistoryRepository.getTotalAmountPaid(orderId, orderType);
+	}
 	
 }

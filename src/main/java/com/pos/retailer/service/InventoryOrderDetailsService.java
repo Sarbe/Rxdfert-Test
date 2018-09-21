@@ -9,12 +9,14 @@ public interface InventoryOrderDetailsService {
 
 	InventoryOrderDetails getOrderDetailById(Long orderDtlId) throws GenericException;
 
-	InventoryOrderDetails saveOrderDetail(String orderId, InventoryOrderDetails orderDetail) throws GenericException;
+	InventoryOrderDetails addOrderDetail(String orderId, InventoryOrderDetails orderDetail) throws GenericException;
 
 	void deleteOrderDetailById(String orderDtlid, Long orderDetailId) throws GenericException;
 
 	List<InventoryOrderDetails> getOrderDetailsByOrderId(String orderId);
 
 	InventoryOrderDetails changeQtyByOne(String orderId, Long orderDtlId, String changeType) throws GenericException;
+
+	InventoryOrderDetails changeQty(String orderId, Long orderDtlId, int qty) throws GenericException;
 
 }

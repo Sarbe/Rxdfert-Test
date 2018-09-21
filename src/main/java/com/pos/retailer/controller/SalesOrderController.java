@@ -124,7 +124,7 @@ public class SalesOrderController {
 		chckInvSts();
 
 		return new ResponseWrapper<>("Purchase Confirmed", HttpStatus.OK,
-				salesOrderService.confirmSalesOrder(orderId, salesOrder)).sendResponse();
+				salesOrderService.submitSalesOrder(orderId, salesOrder)).sendResponse();
 	}
 
 	@PostMapping("/{orderId}/payment")

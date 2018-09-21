@@ -119,16 +119,6 @@ public class InventoryOrderServiceImpl implements InventoryOrderService {
 	@Override
 	public List<CustomerDetails> getUniqueVendorDetails() {
 		return customerService.getUniqueDetails(AppConstant.VENDOR);
-		/*
-		 * List<VendorDetails> vendors = new ArrayList<>(); if (datas != null &&
-		 * !datas.isEmpty())
-		 * 
-		 * datas.forEach((data) -> { if (data != null && data.length > 0) { String
-		 * partyNm = (data[0] == null) ? "" : data[0].toString(); String gstin =
-		 * (data[1] == null) ? "" : data[1].toString(); if (!partyNm.isEmpty() &&
-		 * !gstin.isEmpty()) vendors.add(new VendorDetails(partyNm, gstin)); } });
-		 * return vendors;
-		 */
 	}
 
 	@Override
@@ -149,7 +139,7 @@ public class InventoryOrderServiceImpl implements InventoryOrderService {
 	}
 
 	@Override
-	public InventoryOrder confirmInventoryOrder(String orderId, InventoryOrder invOrder) throws GenericException {
+	public InventoryOrder submitOrder(String orderId, InventoryOrder invOrder) throws GenericException {
 
 		InventoryOrder dbInvOrder = getInvOrderById(orderId);
 		if (dbInvOrder.getOrderSts().equals(AppConstant.ORDER_CONFIRMED))
@@ -163,8 +153,6 @@ public class InventoryOrderServiceImpl implements InventoryOrderService {
 			throw new GenericException("Please enter vendor Details.");
 		}
 
-		// InventoryTransaction transc = null;
-		// List<InventoryTransaction> transactions = new ArrayList<>();
 
 		List<InventoryOrderDetails> invOrderDetails = inventoryOrderDetailRepository.findByOrderId(orderId);
 
@@ -172,21 +160,14 @@ public class InventoryOrderServiceImpl implements InventoryOrderService {
 			throw new GenericException("Please add some item to order first.");
 		}
 
-		double orderTotal = 0;
-		for (InventoryOrderDetails invOrderDtl : invOrderDetails) {
-			orderTotal += invOrderDtl.getTotalAmount();
-		}
-
-		invOrder.setGrandTotal(orderTotal);
+		
+		invOrder.calculateOrderAmount(invOrderDetails); // not required but still...
+		
 		invOrder.setOrderSts(AppConstant.ORDER_SAVED);
-		invOrder.setOutstandingAmount(invOrder.getGrandTotal());
 		invOrder.setSettled(false);
 
 		// save
 		inventoryOrderRepository.save(invOrder);
-
-		// save to inventory Transaction
-		// productService.addInventoryTransactions(transactions);
 
 		// save customer Details
 		customerService.saveCustomer(customer);
@@ -198,10 +179,6 @@ public class InventoryOrderServiceImpl implements InventoryOrderService {
 	@Override
 	public InventoryOrder receivePaymentDetails(String orderId, PaymentDetails payment) throws GenericException {
 		InventoryOrder dbInvOrder = getInvOrderById(orderId);
-
-		// to be received only if in SAVED status.
-		// if (dbInvOrder.getOrderSts().equals(AppConstant.ORDER_CONFIRMED))
-		// throw new GenericException("Order has already been confirmed");
 
 		if (dbInvOrder.getOutstandingAmount() == 0 || dbInvOrder.isSettled()) {
 			throw new GenericException("No Payment due.");
@@ -228,6 +205,8 @@ public class InventoryOrderServiceImpl implements InventoryOrderService {
 				dbInvOrder.getOutstandingAmount());
 		paymentHistoryService.savePaymentDetails(history);
 
+		
+		// update stock
 		InventoryTransaction transc = null;
 		List<InventoryTransaction> transactions = new ArrayList<>();
 
@@ -236,6 +215,8 @@ public class InventoryOrderServiceImpl implements InventoryOrderService {
 		for (InventoryOrderDetails invOrderDtl : invOrderDetails) {
 			Product inventory = productRepository.findByBarcode(invOrderDtl.getBarcode()).get();
 			inventory.increaseStockQty(invOrderDtl.getQty()); // increase
+			
+			// if required ???
 			// inventory.setBuyPrice(invOrderDtl.getBuyPrice());// update buy price
 			// inventory.setMaxRetailPrice(invOrderDtl.getMaxRetailPrice());
 			productRepository.save(inventory);
@@ -250,9 +231,7 @@ public class InventoryOrderServiceImpl implements InventoryOrderService {
 
 		// save to inventory Transaction
 		productService.addInventoryTransactions(transactions);
-
 		return inventoryOrderRepository.save(dbInvOrder);
-
 	}
 
 	@Override
@@ -279,17 +258,6 @@ public class InventoryOrderServiceImpl implements InventoryOrderService {
 
 		dbInvOrder.setOutstandingAmount(dbInvOrder.getOutstandingAmount() - payment.getPaidAmount());
 
-		/*
-		 * if (payment.getPaymentMode().equals(AppConstant.PAY_NOW)) {
-		 * invOrder.setPaymentMode(payment.getPaymentMode()); invOrder.setSettled(true);
-		 * } else if (payment.getPaymentMode().equals(AppConstant.PAY_LATER)) {
-		 * invOrder.setPaymentMode(payment.getPaymentMode());
-		 * 
-		 * if (invOrder.getOutstandingAmount() == 0) { invOrder.setSettled(true); } else
-		 * { invOrder.setSettled(false); }
-		 * 
-		 * }
-		 */
 		// save
 		PaymentHistory history = new PaymentHistory(AppConstant.PURCHASE, dbInvOrder.getOrderId().toString(),
 				payment.getPaymentMode(), dbInvOrder.getGrandTotal(), payment.getPaidAmount(),
@@ -303,25 +271,6 @@ public class InventoryOrderServiceImpl implements InventoryOrderService {
 	@Override
 	public void deleteInvOrder(String orderId) throws GenericException {
 		InventoryOrder invOrder = getInvOrderById(orderId);
-
-		// update stocks
-		/*if (invOrder.getOrderSts().equals(AppConstant.ORDER_CONFIRMED)) {
-			List<InventoryOrderDetails> invOrderDetails = inventoryOrderDetailRepository.findByOrderId(orderId);
-
-			if (invOrderDetails != null && !invOrderDetails.isEmpty()) {
-
-				for (InventoryOrderDetails invOrderDtl : invOrderDetails) {
-					Product inventory = productRepository.findByBarcode(invOrderDtl.getBarcode()).get();
-					inventory.decreaseStockQty(invOrderDtl.getQty()); // increase
-					productRepository.save(inventory);
-				}
-			}
-		}
-
-		inventoryOrderRepository.deleteById(orderId);
-		// delete order details
-		inventoryOrderDetailRepository.deleteAllByOrderId(orderId);
-		*/
 		
 		if (!invOrder.getOrderSts().equals(AppConstant.ORDER_CONFIRMED)) {
 			inventoryOrderRepository.deleteById(orderId); // delete order details
@@ -340,7 +289,6 @@ public class InventoryOrderServiceImpl implements InventoryOrderService {
 
 		double orderTotal = 0;
 		for (InventoryOrderDetails invOrderDtl : invOrderDetails) {
-
 			invOrderDtl.calculateAmount();
 			inventoryOrderDetailRepository.save(invOrderDtl);
 
@@ -349,10 +297,15 @@ public class InventoryOrderServiceImpl implements InventoryOrderService {
 
 		invOrder.setGrandTotal(orderTotal);
 		invOrder.setOutstandingAmount(invOrder.getGrandTotal());
+		
+		// check if any transaction has done
+		double paidAmount = paymentHistoryService.getTotalPayment(orderId, AppConstant.PURCHASE);
+		invOrder.setOutstandingAmount(invOrder.getOutstandingAmount() - paidAmount);
 
 		// save
 		invOrder = inventoryOrderRepository.save(invOrder);
-		
+
+		// verify op
 		InventoryOrderDto invdto = new InventoryOrderDto();
 		invdto.setPurchase(invOrder);
 		invdto.setPurchaseDetails(inventoryOrderDetailRepository.findByOrderId(orderId));

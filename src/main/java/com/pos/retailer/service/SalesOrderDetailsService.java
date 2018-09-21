@@ -15,7 +15,7 @@ public interface SalesOrderDetailsService {
 
 	SalesOrderDetails changeQtyByOne(String orderId, Long orderDtlId, String changeType) throws GenericException;
 
-	SalesOrderDetails saveOrderDetail(String orderId, String barcode) throws GenericException;
+	SalesOrderDetails addOrderDetail(String orderId, String barcode) throws GenericException;
 
 	//SalesOrderDetails changeQuantity(String orderId, Long orderDtlId, int quantity) throws GenericException;
 

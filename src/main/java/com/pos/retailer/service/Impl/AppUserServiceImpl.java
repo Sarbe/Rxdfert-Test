@@ -42,7 +42,15 @@ public class AppUserServiceImpl implements UserDetailsService, AppUserService {
 
 	@Override
 	public AppUser save(AppUser user) {
-		user.setActive(true);
+		Optional<AppUser> optDbUser = usersRepository.findByUsername(user.getUsername());
+		if (optDbUser.isPresent()) { // existing
+			if (user.isChangePassword())
+				user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+		} else { // new
+			user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+			user.setActive(true);
+		}
+
 		return usersRepository.save(user);
 	}
 
@@ -53,23 +61,23 @@ public class AppUserServiceImpl implements UserDetailsService, AppUserService {
 
 	}
 
-	@Override
-	public void update(Long userId, AppUser user) throws GenericException {
-		Optional<AppUser> dbOptUser = usersRepository.findById(userId);
-		if (!dbOptUser.isPresent()) {
-			throw new GenericException("User details not present");
-		}
-
-		AppUser dbUser = dbOptUser.get();
-		dbUser.setFirstName(user.getFirstName());
-		dbUser.setFirstName(user.getLastName());
-		dbUser.setFirstName(user.getUsername());
-		dbUser.setActive(user.isActive());
-		if (user.isChangePassword())
-			dbUser.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-
-		usersRepository.save(dbUser);
-	}
+//	@Override
+//	public AppUser update(Long userId, AppUser user) throws GenericException {
+//		Optional<AppUser> dbOptUser = usersRepository.findById(userId);
+//		if (!dbOptUser.isPresent()) {
+//			throw new GenericException("User details not present");
+//		}
+//
+//		AppUser dbUser = dbOptUser.get();
+//		dbUser.setFirstName(user.getFirstName());
+//		dbUser.setFirstName(user.getLastName());
+//		dbUser.setFirstName(user.getUsername());
+//		dbUser.setActive(user.isActive());
+//		if (user.isChangePassword())
+//			dbUser.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+//
+//		return usersRepository.save(dbUser);
+//	}
 
 	@Override
 	public void changeUserStaus(String loogedInUser, String userName) throws GenericException {
@@ -86,7 +94,7 @@ public class AppUserServiceImpl implements UserDetailsService, AppUserService {
 		usersRepository.save(dbUser);
 	}
 
-	@Override
+	/*@Override
 	public void updatePassword(Long userId, AppUser user) throws GenericException {
 		Optional<AppUser> dbOptUser = usersRepository.findById(userId);
 		if (!dbOptUser.isPresent()) {
@@ -97,5 +105,5 @@ public class AppUserServiceImpl implements UserDetailsService, AppUserService {
 		dbUser.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 		usersRepository.save(dbUser);
 
-	}
+	}*/
 }

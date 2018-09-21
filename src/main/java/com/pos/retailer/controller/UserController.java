@@ -5,12 +5,10 @@ import java.security.Principal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,9 +25,6 @@ public class UserController {
 	@Autowired
 	private AppUserService appUserService;
 
-	@Autowired
-	private BCryptPasswordEncoder bCryptPasswordEncoder;
-
 	@GetMapping
 	public ResponseEntity<?> getAllUserDetails() {
 		return new ResponseWrapper<>("All User Details", HttpStatus.OK, appUserService.getAllUsers()).sendResponse();
@@ -37,23 +32,23 @@ public class UserController {
 
 	@PostMapping("/sign-up")
 	public ResponseEntity<?> signUp(@RequestBody AppUser user) {
-		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+		
 		return new ResponseWrapper<>("User Details Saved", HttpStatus.OK, appUserService.save(user)).sendResponse();
 	}
 
-	@PutMapping("/{userid}")
+	/*@PutMapping("/{userid}")
 	public ResponseEntity<?> updateUser(@PathVariable Long userid, @RequestBody AppUser user) throws GenericException {
 
 		appUserService.update(userid, user);
 		return new ResponseWrapper<>("User Details Saved", HttpStatus.OK, null).sendResponse();
-	}
+	}*/
 
-	@PostMapping("/{userId}/updatePassword")
+	/*@PostMapping("/{userId}/updatePassword")
 	public ResponseEntity<?> updatePassword(@PathVariable Long userId, @RequestBody AppUser user) throws GenericException {
 
 		appUserService.updatePassword(userId, user);
 		return new ResponseWrapper<>("Password updated", HttpStatus.OK, null).sendResponse();
-	}
+	}*/
 
 	
 	@DeleteMapping("/{userName}")

@@ -38,11 +38,9 @@ public class Product extends Auditable implements Serializable {
 	@Size(max = 15)
 	private String barcode;
 
-	/*
-	 * @Size(max = 50)
-	 * 
-	 * @Column(name = "category") private String category;
-	 */
+	@Size(max = 50)
+	@Column(name = "category")
+	private String category;
 
 	@Size(max = 50)
 	@Column(name = "product_name", nullable = false, unique = true)
@@ -96,15 +94,13 @@ public class Product extends Auditable implements Serializable {
 		this.stockQty -= qty;
 	}
 
-	
-
 	@Override
 	public String toString() {
 		return ReflectionToStringBuilder.toString(this, ToStringStyle.SHORT_PREFIX_STYLE);
 	}
 
 	// override setter
-	
+
 	public void setDiscount(double discount) {
 		this.discount = AppConstant.roundedValue(discount);
 	}

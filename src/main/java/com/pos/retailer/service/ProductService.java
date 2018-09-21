@@ -30,14 +30,14 @@ public interface ProductService {
 	Product getProductByBarcodeAndAvilability(String barcode);
 
 	/////////// Transaction
-	void closeInventory()  throws GenericException;
+	void closeInventory() throws GenericException;
 
 	void openInnventory() throws GenericException;
 
 	void addInventoryTransactions(List<InventoryTransaction> transactions);
 
 	void addInventoryTransaction(InventoryTransaction transactions);
-	
+
 	List<InventoryTransaction> getTransactionsByDate(LocalDate startDt, LocalDate endDate);
 
 	boolean checkInvnetoryClosingStatus();
@@ -46,11 +46,8 @@ public interface ProductService {
 
 	List<InventoryTransaction> getTracsactionDataNative(LocalDate startDate, LocalDate endDate) throws GenericException;
 
-//	List<String> getDistinctCategory();
-//
-//	List<Product> getProductsByCategory(String categoryName);
+	List<String> getDistinctCategory();
 
-
-	
+	List<Product> getProductsByCategory(String categoryName);
 
 }

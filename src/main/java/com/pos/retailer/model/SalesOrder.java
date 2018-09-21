@@ -2,6 +2,7 @@ package com.pos.retailer.model;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -101,6 +102,28 @@ public class SalesOrder implements Serializable {
 		this.orderId = orderId;
 	}
 
+	
+	public void calculateOrderPrice(List<SalesOrderDetails> salesOrderDetails) {
+		//List<SalesOrderDetails> salesOrderDetails = salesOrderDetailRepository.findByOrderId(salesOrder.getOrderId());
+		double orderSubTotal = 0;
+		double orderGrandTotal = 0;
+		double orderTotalTax = 0;
+		double mrpTotalTax = 0;
+
+		for (SalesOrderDetails salesOrderDtl : salesOrderDetails) {
+			orderGrandTotal += salesOrderDtl.getTotalAmount();
+			orderSubTotal += salesOrderDtl.getSubTotal();
+			orderTotalTax += salesOrderDtl.getTax();
+			mrpTotalTax += salesOrderDtl.getMrp() * salesOrderDtl.getQty();
+		}
+
+		setGrandTotal(orderGrandTotal);
+		setOutstandingAmount(orderGrandTotal);
+		setSubTotal(orderSubTotal);
+		setTaxAmount(orderTotalTax);
+		setTotalMrp(mrpTotalTax);
+	}
+	
 	/////////////// Override Setter
 
 	public void setGrandTotal(double grandTotal) {

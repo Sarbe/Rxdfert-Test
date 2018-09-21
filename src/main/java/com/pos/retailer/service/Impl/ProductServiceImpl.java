@@ -102,6 +102,7 @@ public class ProductServiceImpl implements ProductService {
 		}
 
 		product.setProductName(product.getProductName().toUpperCase().trim());
+		product.setCategory(product.getCategory().toUpperCase().trim());
 
 		InventoryTransaction transc = new InventoryTransaction(product.getProductName(), product.getBarcode(),
 				product.getUom(), AppConstant.STOCK_OPEN, product.getStockQty(), "Adding product");
@@ -256,15 +257,17 @@ public class ProductServiceImpl implements ProductService {
 
 	}
 
-//	@Override
-//	public List<String> getDistinctCategory() {
-//		return productRepository.findDistinctCategoryOrderByCategory();
-//		
-//	}
-//
-//	@Override
-//	public List<Product> getProductsByCategory(String categoryName) {
-//		return productRepository.findByCategoryOrderByProductName(categoryName);
-//	}
+	@Override
+	public List<String> getDistinctCategory() {
+		return productRepository.findDistinctCategoryOrderByCategory();
+
+	}
+
+	@Override
+	public List<Product> getProductsByCategory(String categoryName) {
+		if (StringUtils.trimToEmpty(categoryName).equals("ALL"))
+			return productRepository.findAllByOrderByProductNameAsc();
+		return productRepository.findByCategoryOrderByProductName(categoryName);
+	}
 
 }
