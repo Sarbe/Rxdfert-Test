@@ -12,7 +12,7 @@ public interface CustomerDetailsRepository extends JpaRepository<CustomerDetails
 
 	public Optional<CustomerDetails> findByContactNbrAndCustomerType(String contactNbr, String custType);
 	
-	public List<CustomerDetails> findByCustomerType(String custType);
+	public List<CustomerDetails> findByCustomerTypeOrderByPartyName(String custType);
 
 	@Query("Select distinct c from CustomerDetails c WHERE c.customerType = ?1 ORDER BY c.partyName ASC")
 	public List<CustomerDetails> findDistinctDetails(String custType);

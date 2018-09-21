@@ -44,7 +44,7 @@ public class SalesOrderServiceImpl implements SalesOrderService {
 	private SalesOrderDetailRepository salesOrderDetailRepository;
 
 	@Autowired
-	ProductRepository inventoryRepository;
+	ProductRepository productRepository;
 
 	@Autowired
 	SequenceGeneratorService sequenceGenerator;
@@ -188,9 +188,9 @@ public class SalesOrderServiceImpl implements SalesOrderService {
 			mrpTotalTax += salesOrderDtl.getMrp() * salesOrderDtl.getQty();
 
 			// Product inventory =
-			// inventoryRepository.findByBarcode(salesOrderDtl.getBarcode()).get();
+			// productRepository.findByBarcode(salesOrderDtl.getBarcode()).get();
 			// inventory.decreaseStockQty(salesOrderDtl.getQty());// decrease
-			// inventoryRepository.save(inventory);
+			// productRepository.save(inventory);
 
 			// transc = new InventoryTransaction(salesOrderDtl.getProductName(),
 			// salesOrderDtl.getBarcode(),
@@ -301,9 +301,9 @@ public class SalesOrderServiceImpl implements SalesOrderService {
 		List<SalesOrderDetails> salesOrderDetails = salesOrderDetailRepository.findByOrderId(orderId);
 		for (SalesOrderDetails salesOrderDtl : salesOrderDetails) {
 
-			Product inventory = inventoryRepository.findByBarcode(salesOrderDtl.getBarcode()).get();
+			Product inventory = productRepository.findByBarcode(salesOrderDtl.getBarcode()).get();
 			inventory.decreaseStockQty(salesOrderDtl.getQty());// decrease
-			inventoryRepository.save(inventory);
+			productRepository.save(inventory);
 
 			transc = new InventoryTransaction(salesOrderDtl.getProductName(), salesOrderDtl.getBarcode(),
 					salesOrderDtl.getUom(), AppConstant.STOCK_OUT, salesOrderDtl.getQty(), dbSalesOrder.getPartyName(),
@@ -377,9 +377,9 @@ public class SalesOrderServiceImpl implements SalesOrderService {
 		 * null && !salesOrderDetails.isEmpty()) {
 		 * 
 		 * for (SalesOrderDetails salesOrderDtl : salesOrderDetails) { Product inventory
-		 * = inventoryRepository.findByBarcode(salesOrderDtl.getBarcode()).get();
+		 * = productRepository.findByBarcode(salesOrderDtl.getBarcode()).get();
 		 * inventory.increaseStockQty(salesOrderDtl.getQty());
-		 * inventoryRepository.save(inventory);
+		 * productRepository.save(inventory);
 		 * 
 		 * } } }
 		 * 

@@ -41,7 +41,7 @@ public class InventoryOrderServiceImpl implements InventoryOrderService {
 	private InventoryOrderDetailRepository inventoryOrderDetailRepository;
 
 	@Autowired
-	ProductRepository inventoryRepository;
+	ProductRepository productRepository;
 
 	@Autowired
 	PaymentHistoryService paymentHistoryService;
@@ -234,11 +234,11 @@ public class InventoryOrderServiceImpl implements InventoryOrderService {
 		List<InventoryOrderDetails> invOrderDetails = inventoryOrderDetailRepository.findByOrderId(orderId);
 
 		for (InventoryOrderDetails invOrderDtl : invOrderDetails) {
-			Product inventory = inventoryRepository.findByBarcode(invOrderDtl.getBarcode()).get();
+			Product inventory = productRepository.findByBarcode(invOrderDtl.getBarcode()).get();
 			inventory.increaseStockQty(invOrderDtl.getQty()); // increase
 			// inventory.setBuyPrice(invOrderDtl.getBuyPrice());// update buy price
 			// inventory.setMaxRetailPrice(invOrderDtl.getMaxRetailPrice());
-			inventoryRepository.save(inventory);
+			productRepository.save(inventory);
 
 			transc = new InventoryTransaction(invOrderDtl.getProductName(), invOrderDtl.getBarcode(),
 					invOrderDtl.getUom(), AppConstant.STOCK_IN, invOrderDtl.getQty(), dbInvOrder.getPartyName(),
@@ -305,22 +305,24 @@ public class InventoryOrderServiceImpl implements InventoryOrderService {
 		InventoryOrder invOrder = getInvOrderById(orderId);
 
 		// update stocks
-		/*
-		 * if (invOrder.getOrderSts().equals(AppConstant.ORDER_CONFIRMED)) {
-		 * List<InventoryOrderDetails> invOrderDetails =
-		 * inventoryOrderDetailRepository.findByOrderId(orderId);
-		 * 
-		 * if (invOrderDetails != null && !invOrderDetails.isEmpty()) {
-		 * 
-		 * for (InventoryOrderDetails invOrderDtl : invOrderDetails) { Product inventory
-		 * = inventoryRepository.findByBarcode(invOrderDtl.getBarcode()).get();
-		 * inventory.decreaseStockQty(invOrderDtl.getQty()); // increase
-		 * inventoryRepository.save(inventory); } } }
-		 * 
-		 * inventoryOrderRepository.deleteById(orderId); // delete order details
-		 * inventoryOrderDetailRepository.deleteAllByOrderId(orderId);
-		 */
+		/*if (invOrder.getOrderSts().equals(AppConstant.ORDER_CONFIRMED)) {
+			List<InventoryOrderDetails> invOrderDetails = inventoryOrderDetailRepository.findByOrderId(orderId);
 
+			if (invOrderDetails != null && !invOrderDetails.isEmpty()) {
+
+				for (InventoryOrderDetails invOrderDtl : invOrderDetails) {
+					Product inventory = productRepository.findByBarcode(invOrderDtl.getBarcode()).get();
+					inventory.decreaseStockQty(invOrderDtl.getQty()); // increase
+					productRepository.save(inventory);
+				}
+			}
+		}
+
+		inventoryOrderRepository.deleteById(orderId);
+		// delete order details
+		inventoryOrderDetailRepository.deleteAllByOrderId(orderId);
+		*/
+		
 		if (!invOrder.getOrderSts().equals(AppConstant.ORDER_CONFIRMED)) {
 			inventoryOrderRepository.deleteById(orderId); // delete order details
 			inventoryOrderDetailRepository.deleteAllByOrderId(orderId);

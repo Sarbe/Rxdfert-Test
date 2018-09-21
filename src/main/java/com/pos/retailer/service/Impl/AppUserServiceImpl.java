@@ -48,7 +48,8 @@ public class AppUserServiceImpl implements UserDetailsService, AppUserService {
 
 	@Override
 	public List<AppUser> getAllUsers() {
-		return usersRepository.findByRolesIn(Arrays.asList(AppConstant.ROLE_ADMIN, AppConstant.ROLE_CLERK));
+		return usersRepository
+				.findByRolesInOrderByUsername(Arrays.asList(AppConstant.ROLE_ADMIN, AppConstant.ROLE_CLERK));
 
 	}
 

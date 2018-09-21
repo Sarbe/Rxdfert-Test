@@ -13,8 +13,6 @@ import org.apache.commons.lang.builder.ToStringStyle;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import lombok.Getter;
 import lombok.Setter;
 
@@ -66,9 +64,9 @@ public class AppUser extends Auditable {
 
 	}
 
-	/*@JsonIgnore
-	public void setPassword(String password) {
-		this.password = password;
-	}*/
+	/*
+	 * @JsonIgnore public void setPassword(String password) { this.password =
+	 * password; }
+	 */
 
 }

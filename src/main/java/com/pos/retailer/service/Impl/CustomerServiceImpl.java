@@ -18,7 +18,7 @@ public class CustomerServiceImpl implements CustomerService {
 	
 	@Override
 	public List<CustomerDetails> getAllPartyDetailsOfCustType(String custType){
-		return customerDetailRepository.findByCustomerType(custType);
+		return customerDetailRepository.findByCustomerTypeOrderByPartyName(custType);
 	}
 	
 	@Override

@@ -13,7 +13,7 @@ public interface AppUserRepository extends JpaRepository<AppUser, Long> {
 	
 	AppUser findByUsernameIgnoreCase(String userName);
 
-	List<AppUser> findByRolesIn(List<String> roles);
+	List<AppUser> findByRolesInOrderByUsername(List<String> roles);
 
 	Optional<AppUser> findByUsername(String userName);
 

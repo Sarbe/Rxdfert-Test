@@ -84,6 +84,7 @@ public class InventoryOrderDetailsServiceImpl implements InventoryOrderDetailsSe
 
 			// Price Calculation for order detail
 			dbOrderDetail.calculateAmount();
+			orderDetail = inventoryOrderDetailRepository.save(orderDetail);
 
 			// Price Calculation for order
 			double orderTotal = calculateOrderAmount(invOrder.getOrderId());
@@ -91,7 +92,7 @@ public class InventoryOrderDetailsServiceImpl implements InventoryOrderDetailsSe
 
 			inventoryOrderRepository.save(invOrder);
 
-			return inventoryOrderDetailRepository.save(dbOrderDetail);
+			return orderDetail;
 		} else {
 
 			orderDetail.setMaxRetailPrice(optionalProduct.get().getMaxRetailPrice());
@@ -105,8 +106,6 @@ public class InventoryOrderDetailsServiceImpl implements InventoryOrderDetailsSe
 			double orderTotal = calculateOrderAmount(invOrder.getOrderId());
 			invOrder.setGrandTotal(orderTotal);
 
-			// Price Calculation
-			// orderDetail.calculateAmount();
 			return orderDetail;
 		}
 
@@ -124,6 +123,43 @@ public class InventoryOrderDetailsServiceImpl implements InventoryOrderDetailsSe
 
 	@Override
 	public InventoryOrderDetails changeQtyByOne(String orderId, Long orderDtlId, String changeType)
+			throws GenericException {
+
+		InventoryOrder invOrder = commonOrderService.getInventoryOrderByOrderId(orderId);
+		if (invOrder.getOrderSts().equals(AppConstant.ORDER_CONFIRMED))
+			throw new GenericException("Order has already been confirmed.");
+
+		InventoryOrderDetails dbOrderDetail = inventoryOrderDetailRepository.findByOrderDetailIdAndOrderId(orderDtlId,
+				orderId);
+
+		if (dbOrderDetail == null) // if order details not present
+			throw new GenericException("Details not found.");
+
+		if (changeType.equals(AppConstant.QTY_SUB) && dbOrderDetail.getQty() == 1) {
+			throw new GenericException("Quantity cannot be less than 1.");
+		}
+
+		if (changeType.equals(AppConstant.QTY_ADD))
+			dbOrderDetail.increaseQty(1);
+		else if (changeType.equals(AppConstant.QTY_SUB))
+			dbOrderDetail.decreaseQty(1);
+		else
+			return dbOrderDetail;
+
+		// Order Detail Price Calculation
+		dbOrderDetail.calculateAmount();
+
+		// order price calculation
+		double orderTotal = calculateOrderAmount(invOrder.getOrderId());
+		invOrder.setGrandTotal(orderTotal);
+		// invOrder.setOutstandingAmount(orderTotal);
+
+		inventoryOrderRepository.save(invOrder);
+		return inventoryOrderDetailRepository.save(dbOrderDetail);
+
+	}
+	
+	public InventoryOrderDetails changeQtye(String orderId, Long orderDtlId, String changeType)
 			throws GenericException {
 
 		InventoryOrder invOrder = commonOrderService.getInventoryOrderByOrderId(orderId);
