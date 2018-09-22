@@ -23,7 +23,7 @@ public interface ProductService {
 
 	Product getProductByName(String name);
 
-	List<String> getAllProductNames();
+	List<String> getAllProductNamesByCategory(String category);
 
 	void updateAavilabilityStatus(String barcode, boolean availability) throws GenericException;
 
@@ -49,5 +49,7 @@ public interface ProductService {
 	List<String> getDistinctCategory();
 
 	List<Product> getProductsByCategory(String categoryName);
+	
+	List<String> getDistinctManufacturer();
 
 }

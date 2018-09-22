@@ -22,7 +22,7 @@ import lombok.Setter;
 @Table(name = "inventory_transactions")
 @Getter
 @Setter
-public class InventoryTransaction extends Auditable implements Serializable {
+public class InventoryTransaction extends Auditable {
 
 	private static final long serialVersionUID = 7195801748349100453L;
 

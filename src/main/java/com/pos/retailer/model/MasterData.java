@@ -20,7 +20,11 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class MasterData {
+public class MasterData extends Auditable{
+	
+	
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;

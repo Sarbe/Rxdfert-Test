@@ -44,8 +44,16 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public List<String> getAllProductNames() {
-		return productRepository.findAllProductName();
+	public List<String> getAllProductNamesByCategory(String category) {
+		if (StringUtils.trimToEmpty(category).equals("ALL"))
+			return productRepository.findAllProductName();
+		else
+			return productRepository.findAllProductNameByCatrgory(category);
+	}
+
+	@Override
+	public List<String> getDistinctManufacturer() {
+		return productRepository.findDistinctManufacturer();
 	}
 
 	@Override

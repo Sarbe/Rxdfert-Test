@@ -1,7 +1,5 @@
 package com.pos.retailer.model;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,7 +21,7 @@ import lombok.Setter;
 @Table(name = "inventory_order_details")
 @Getter
 @Setter
-public class InventoryOrderDetails extends Auditable implements Serializable {
+public class InventoryOrderDetails extends Auditable {
 
 	private static final long serialVersionUID = 3902874255810197321L;
 

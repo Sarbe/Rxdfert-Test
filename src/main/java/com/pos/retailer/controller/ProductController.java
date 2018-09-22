@@ -41,11 +41,6 @@ public class ProductController {
 		return new ResponseWrapper<List<Product>>(HttpStatus.OK, this.productService.getAllProducts()).sendResponse();
 	}
 
-	@GetMapping("/allNames")
-	public ResponseEntity<?> getAllProductNames() {
-		return new ResponseWrapper<>(HttpStatus.OK, this.productService.getAllProductNames()).sendResponse();
-	}
-
 	@GetMapping("/barcode/{barcode}")
 	public ResponseEntity<?> getProductByBarcode(@PathVariable String barcode) {
 		return new ResponseWrapper<>(HttpStatus.OK, this.productService.getProductByBarcode(barcode)).sendResponse();
@@ -61,7 +56,6 @@ public class ProductController {
 		chckInvSts();
 		return new ResponseWrapper<Product>(HttpStatus.OK, this.productService.saveProduct(product)).sendResponse();
 	}
-
 
 	@GetMapping("/{barcode}/{status}")
 	public ResponseEntity<?> setProductAvailStaus(@PathVariable String barcode, @PathVariable boolean status)
@@ -81,7 +75,17 @@ public class ProductController {
 		return new ResponseWrapper<>(HttpStatus.OK, this.productService.getProductsByCategory(categoryName))
 				.sendResponse();
 	}
-	
+
+	@GetMapping("/allPrdNames/{category}")
+	public ResponseEntity<?> getAllProductNames(@PathVariable String category) {
+		return new ResponseWrapper<>(HttpStatus.OK, this.productService.getAllProductNamesByCategory(category))
+				.sendResponse();
+	}
+
+	@GetMapping("/allMfgNames")
+	public ResponseEntity<?> getAllManufacturerNames(@PathVariable String mfg) {
+		return new ResponseWrapper<>(HttpStatus.OK, this.productService.getDistinctManufacturer()).sendResponse();
+	}
 	/*
 	 * @GetMapping("barcode/{barcode}/download") public ResponseEntity<Resource>
 	 * download(String param) throws IOException { File file = new

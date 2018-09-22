@@ -1,6 +1,5 @@
 package com.pos.retailer.model;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -23,7 +22,7 @@ import lombok.Setter;
 @Table(name = "inventory_order")
 @Getter
 @Setter
-public class InventoryOrder extends Auditable implements Serializable {
+public class InventoryOrder extends Auditable{
 
 	private static final long serialVersionUID = 3902874255810197321L;
 	@Id

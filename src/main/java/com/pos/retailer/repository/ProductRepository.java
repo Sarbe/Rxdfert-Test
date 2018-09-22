@@ -25,6 +25,10 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 	@Cacheable("products")
 	public List<String> findAllProductName();
 	
+	@Query("SELECT productName FROM Product P WHERE category = ?1 ORDER BY productName ASC")
+	@Cacheable("products")
+	public List<String> findAllProductNameByCatrgory(String category);
+	
 	public List<Product> findAllByOrderByProductNameAsc();
 
 	public Optional<Product> findByBarcodeAndAvailabilityTrue(String barcode);
@@ -34,11 +38,13 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 	@Query("select p from Product p WHERE stockQty <= thresholdQty")
 	List<Product> findByThresholdQtyLessThanStockQty();
 
-	@Query(nativeQuery = false, value = "select distinct(p.category) from Product p order by p.category")
+	@Query(nativeQuery = false, value = "select distinct(p.category) from Product p where category is not null order by p.category Asc")
 	public List<String> findDistinctCategoryOrderByCategory();
 	
 	List<Product> findByCategoryOrderByProductName(String category);
 
+	@Query("select distinct(manufacturer) from Product p where manufacturer is not null order by manufacturer Asc")
+	public List<String> findDistinctManufacturer();
 	
 
 }

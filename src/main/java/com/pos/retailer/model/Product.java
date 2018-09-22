@@ -1,6 +1,5 @@
 package com.pos.retailer.model;
 
-import java.io.Serializable;
 import java.time.LocalDate;
 
 import javax.persistence.Column;
@@ -25,7 +24,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Product extends Auditable implements Serializable {
+public class Product extends Auditable {
 	private static final long serialVersionUID = 1L;
 
 	@Id

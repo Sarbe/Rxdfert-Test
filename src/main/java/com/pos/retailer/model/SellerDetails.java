@@ -1,7 +1,5 @@
 package com.pos.retailer.model;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,7 +21,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class SellerDetails implements Serializable {
+public class SellerDetails extends Auditable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
