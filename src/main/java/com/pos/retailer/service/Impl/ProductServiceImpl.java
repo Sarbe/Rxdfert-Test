@@ -20,7 +20,8 @@ import com.pos.retailer.repository.InventoryTransactionRepository;
 import com.pos.retailer.repository.ProductRepository;
 import com.pos.retailer.service.ProductService;
 import com.pos.retailer.service.SequenceGeneratorService;
-import com.pos.retailer.utility.BarCodeManager;
+import com.pos.retailer.utility.EAN13Barcode;
+import com.pos.retailer.utility.EAN8Barcode;
 
 @Service
 @Transactional
@@ -34,9 +35,6 @@ public class ProductServiceImpl implements ProductService {
 
 	@Autowired
 	SequenceGeneratorService sequenceGeneratorService;
-
-	@Autowired
-	BarCodeManager ean13barcode;
 
 	@Override
 	public List<Product> getAllProducts() {
@@ -86,25 +84,33 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public Product saveProduct(Product product) throws GenericException {
 
-		if (StringUtils.isEmpty(product.getProductName()) || product.getMaxRetailPrice() == 0
-				|| product.getSellPrice() == 0 || product.getBuyPrice() == 0 || StringUtils.isEmpty(product.getUom())) {
+		if (product.checkEmpty()) {
 			throw new GenericException("Enter all mandatory details.");
 		}
 
 		String barcode = StringUtils.trimToEmpty(product.getBarcode());
 
 		if (barcode.isEmpty()) { // New Product
+			EAN13Barcode ean13barcode =  new EAN13Barcode();
 			Long seq = sequenceGeneratorService.getNextValue("barcode");
 			product.setBarcode(ean13barcode.createBarcode(seq));
 		} else {
 			// check bar code formatting
-			if (barcode.length() < 13) {
-				throw new GenericException("Barcode should be of 13 digit");
+			if (barcode.length() != 13 || barcode.length() != 8) {
+				throw new GenericException("Barcode should be of 8 or 13 digit");
 			} else {
-
-				String checkDigit = ean13barcode.calculateCodeWithcheckSum(barcode.substring(0, 12));
-				if (!checkDigit.equals(barcode.substring(12))) { // Correct Barcode
-					throw new GenericException("Invalid Barcode.");
+				if (barcode.length() == 13) {
+					EAN13Barcode ean13barcode =  new EAN13Barcode();
+					if (!ean13barcode.validate(barcode)) { // Correct Barcode
+						throw new GenericException("Invalid Barcode.");
+					}
+				}else if (barcode.length() == 8) {
+					EAN8Barcode ean8barcode = new EAN8Barcode();
+					if (!ean8barcode.validate(barcode)) { // Correct Barcode
+						throw new GenericException("Invalid Barcode.");
+					}
+				}else {
+					
 				}
 			}
 		}

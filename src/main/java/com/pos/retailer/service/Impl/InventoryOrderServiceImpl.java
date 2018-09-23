@@ -231,6 +231,8 @@ public class InventoryOrderServiceImpl implements InventoryOrderService {
 
 		// save to inventory Transaction
 		productService.addInventoryTransactions(transactions);
+		
+		dbInvOrder.setActivityDt(LocalDateTime.now()); // payment time
 		return inventoryOrderRepository.save(dbInvOrder);
 	}
 

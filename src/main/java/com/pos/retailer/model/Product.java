@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
 
@@ -128,4 +129,26 @@ public class Product extends Auditable {
 		this.stockQty = AppConstant.roundedValue(stockQty);
 	}
 
+	///
+	public void setCategory(String category) {
+		this.category = StringUtils.trimToEmpty(category).toUpperCase();
+	}
+
+	public void setProductName(String productName) {
+		this.productName = StringUtils.trimToEmpty(productName).toUpperCase();
+	}
+
+	public void setManufacturer(String manufacturer) {
+		this.manufacturer = StringUtils.trimToEmpty(manufacturer).toUpperCase();
+	}
+
+	public boolean checkEmpty() {
+		if (StringUtils.isEmpty(this.productName) || this.maxRetailPrice == 0
+				|| this.sellPrice == 0 || this.buyPrice == 0 || StringUtils.isEmpty(this.uom)) {
+			return true;
+		}else {
+			return false;
+		}
+		
+	}
 }

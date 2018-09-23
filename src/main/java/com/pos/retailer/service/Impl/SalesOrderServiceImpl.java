@@ -173,27 +173,25 @@ public class SalesOrderServiceImpl implements SalesOrderService {
 		if (salesOrderDetails == null || salesOrderDetails.isEmpty()) {
 			throw new GenericException("Please add some item to order first.");
 		}
+		
+		
+		// verify and update stock
+		/*InventoryTransaction transc = null;
+		List<InventoryTransaction> transactions = new ArrayList<>();
+		
+		for (SalesOrderDetails salesOrderDtl : salesOrderDetails) {
+			Product inventory = productRepository.findByBarcode(salesOrderDtl.getBarcode()).get();
+			inventory.decreaseStockQty(salesOrderDtl.getQty());// decrease
+			productRepository.save(inventory);
 
-		// Amount Calculation
-		// double orderSubTotal = 0;
-		// double orderGrandTotal = 0;
-		// double orderTotalTax = 0;
-		// double mrpTotalTax = 0;
-		//
-		// for (SalesOrderDetails salesOrderDtl : salesOrderDetails) {
-		//
-		// orderGrandTotal += salesOrderDtl.getTotalAmount();
-		// orderSubTotal += salesOrderDtl.getSubTotal();
-		// orderTotalTax += salesOrderDtl.getTax();
-		// mrpTotalTax += salesOrderDtl.getMrp() * salesOrderDtl.getQty();
-		// }
-		//
-		// salesOrder.setGrandTotal(orderGrandTotal);
-		// salesOrder.setOutstandingAmount(orderGrandTotal);
-		// salesOrder.setSubTotal(orderSubTotal);
-		// salesOrder.setTaxAmount(orderTotalTax);
-		// salesOrder.setTotalMrp(mrpTotalTax);
+			transc = new InventoryTransaction(salesOrderDtl.getProductName(), salesOrderDtl.getBarcode(),
+					salesOrderDtl.getUom(), AppConstant.STOCK_OUT, salesOrderDtl.getQty(), dbSalesOrder.getPartyName(),
+					dbSalesOrder.getGstinNumber(), "Stocking Out for sales : " + dbSalesOrder.getOrderId());
 
+			transactions.add(transc);
+		}*/
+		////////
+		
 		salesOrder.calculateOrderPrice(salesOrderDetails);
 
 		salesOrder.setOrderSts(AppConstant.ORDER_SAVED);
@@ -284,6 +282,7 @@ public class SalesOrderServiceImpl implements SalesOrderService {
 			salesOrderRepository.save(dbSalesOrder);
 		}
 
+		dbSalesOrder.setActivityDt(LocalDateTime.now());
 		dbSalesOrder = salesOrderRepository.save(dbSalesOrder);
 
 		SalesOrderDto sdto = new SalesOrderDto();
