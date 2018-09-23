@@ -29,8 +29,8 @@ ADD COLUMN `updated_by` varchar(255) DEFAULT NULL;
 update `retailer`.`customer` 
 set `updated_by` = 'SYSTEM',
     `last_modified_date` = '2018-09-15',
-    `creation_date` '2018-09-15',
-    `created_by`'SYSTEM';
+    `creation_date`= '2018-09-15',
+    `created_by`='SYSTEM';
 	
 	
 4.

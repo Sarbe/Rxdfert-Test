@@ -96,7 +96,7 @@ public class ProductServiceImpl implements ProductService {
 			product.setBarcode(ean13barcode.createBarcode(seq));
 		} else {
 			// check bar code formatting
-			if (barcode.length() != 13 || barcode.length() != 8) {
+			if (barcode.length() != 13 && barcode.length() != 8) {
 				throw new GenericException("Barcode should be of 8 or 13 digit");
 			} else {
 				if (barcode.length() == 13) {
