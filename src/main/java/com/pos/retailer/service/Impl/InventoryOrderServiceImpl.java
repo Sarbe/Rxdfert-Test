@@ -145,7 +145,6 @@ public class InventoryOrderServiceImpl implements InventoryOrderService {
 		if (dbInvOrder.getOrderSts().equals(AppConstant.ORDER_CONFIRMED))
 			throw new GenericException("Order has already been confirmed");
 
-		invOrder.setPartyName(StringUtils.trimToEmpty(invOrder.getPartyName()).toUpperCase());
 		CustomerDetails customer = new CustomerDetails(AppConstant.VENDOR, invOrder.getPartyName(),
 				invOrder.getContactNbr(), invOrder.getGstinNumber(), "");
 

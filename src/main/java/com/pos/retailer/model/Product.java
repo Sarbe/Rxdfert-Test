@@ -143,12 +143,13 @@ public class Product extends Auditable {
 	}
 
 	public boolean checkEmpty() {
-		if (StringUtils.isEmpty(this.productName) || this.maxRetailPrice == 0
-				|| this.sellPrice == 0 || this.buyPrice == 0 || StringUtils.isEmpty(this.uom)) {
+		if (StringUtils.isEmpty(this.productName) || StringUtils.isEmpty(this.category)
+				|| StringUtils.isEmpty(this.manufacturer) || this.maxRetailPrice == 0 || this.sellPrice == 0
+				|| this.buyPrice == 0 || StringUtils.isEmpty(this.uom)) {
 			return true;
-		}else {
+		} else {
 			return false;
 		}
-		
+
 	}
 }

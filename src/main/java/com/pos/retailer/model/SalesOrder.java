@@ -150,7 +150,10 @@ public class SalesOrder extends Auditable {
 	}
 
 	///////////////////////////////
-
+	public void setPartyName(String partyName) {
+		this.partyName = StringUtils.trimToEmpty(partyName).toUpperCase();
+	}
+	
 	@Override
 	public String toString() {
 		return ReflectionToStringBuilder.toString(this, ToStringStyle.SHORT_PREFIX_STYLE);

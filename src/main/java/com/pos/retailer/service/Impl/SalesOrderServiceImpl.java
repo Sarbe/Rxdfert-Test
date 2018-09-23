@@ -100,13 +100,22 @@ public class SalesOrderServiceImpl implements SalesOrderService {
 
 	@Override
 	public SalesOrderDto getFullSalesDetails(String id) throws GenericException {
-		SalesOrderDto sdto = new SalesOrderDto();
 
 		SalesOrder salesOrder = getSalesOrderById(id);
-		sdto.setSales(salesOrder);
+		List<SalesOrderDetails> salesOrderDetails = salesOrderDetailRepository.findByOrderId(id);
 
-		List<SalesOrderDetails> salesOrderDtls = salesOrderDetailRepository.findByOrderId(id);
-		sdto.setSalesDetails(salesOrderDtls);
+		if (!salesOrder.getOrderSts().equals(AppConstant.ORDER_CONFIRMED)) {
+			for (SalesOrderDetails salesOrderDtl : salesOrderDetails) {
+				Product inventory = productRepository.findByBarcode(salesOrderDtl.getBarcode()).get();
+				if (salesOrderDtl.getQty() > inventory.getStockQty()) {
+					salesOrderDtl.setStockAvailable(false);
+				}
+			}
+		}
+
+		SalesOrderDto sdto = new SalesOrderDto();
+		sdto.setSales(salesOrder);
+		sdto.setSalesDetails(salesOrderDetails);
 
 		return sdto;
 
@@ -158,7 +167,6 @@ public class SalesOrderServiceImpl implements SalesOrderService {
 		if (dbSalesOrder.getOrderSts().equals(AppConstant.ORDER_CONFIRMED))
 			throw new GenericException("Order has already been confirmed");
 
-		salesOrder.setPartyName(StringUtils.trimToEmpty(salesOrder.getPartyName()).toUpperCase());
 		// check if customer data present
 		CustomerDetails customer = new CustomerDetails(AppConstant.CUSTOMER, salesOrder.getPartyName(),
 				salesOrder.getContactNbr(), salesOrder.getGstinNumber(), salesOrder.getAddress());
@@ -173,25 +181,22 @@ public class SalesOrderServiceImpl implements SalesOrderService {
 		if (salesOrderDetails == null || salesOrderDetails.isEmpty()) {
 			throw new GenericException("Please add some item to order first.");
 		}
-		
-		
-		// verify and update stock
-		/*InventoryTransaction transc = null;
-		List<InventoryTransaction> transactions = new ArrayList<>();
-		
+
+		// verify stock availability
+		boolean outOfStock = false;
 		for (SalesOrderDetails salesOrderDtl : salesOrderDetails) {
 			Product inventory = productRepository.findByBarcode(salesOrderDtl.getBarcode()).get();
-			inventory.decreaseStockQty(salesOrderDtl.getQty());// decrease
-			productRepository.save(inventory);
+			if (salesOrderDtl.getQty() > inventory.getStockQty()) {
+				salesOrderDtl.setStockAvailable(false);
+				outOfStock = true;
+			}
+		}
 
-			transc = new InventoryTransaction(salesOrderDtl.getProductName(), salesOrderDtl.getBarcode(),
-					salesOrderDtl.getUom(), AppConstant.STOCK_OUT, salesOrderDtl.getQty(), dbSalesOrder.getPartyName(),
-					dbSalesOrder.getGstinNumber(), "Stocking Out for sales : " + dbSalesOrder.getOrderId());
-
-			transactions.add(transc);
-		}*/
+		if (outOfStock) {
+			throw new GenericException("Please remove out of stock products");
+		}
 		////////
-		
+
 		salesOrder.calculateOrderPrice(salesOrderDetails);
 
 		salesOrder.setOrderSts(AppConstant.ORDER_SAVED);

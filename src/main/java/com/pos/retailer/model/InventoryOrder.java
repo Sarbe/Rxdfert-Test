@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
 
@@ -115,6 +116,10 @@ public class InventoryOrder extends Auditable{
 	}
 	////////
 
+	public void setPartyName(String partyName) {
+		this.partyName = StringUtils.trimToEmpty(partyName).toUpperCase();
+	}
+	
 	@Override
 	public String toString() {
 		return ReflectionToStringBuilder.toString(this, ToStringStyle.SHORT_PREFIX_STYLE);

@@ -51,10 +51,12 @@ public class CustomerDetails extends Auditable {
 			@Size(max = 30) String gstinNumber, @Size(max = 100) String address) {
 		super();
 		this.customerType = customerType;
-		this.partyName = partyName;
+		this.partyName = StringUtils.trimToEmpty(partyName).toUpperCase();
 		this.contactNbr = contactNbr;
 		this.address = address;
 		this.gstinNumber = gstinNumber;
+		
+		
 	}
 
 	public boolean checkEmpty() {
