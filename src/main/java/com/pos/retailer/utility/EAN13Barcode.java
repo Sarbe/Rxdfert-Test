@@ -8,6 +8,7 @@ import java.io.OutputStream;
 
 import org.apache.commons.lang.StringUtils;
 import org.krysalis.barcode4j.impl.upcean.EAN13Bean;
+import org.krysalis.barcode4j.impl.upcean.EAN8Bean;
 import org.krysalis.barcode4j.impl.upcean.UPCEANLogicImpl;
 import org.krysalis.barcode4j.output.bitmap.BitmapCanvasProvider;
 import org.springframework.stereotype.Component;
@@ -15,10 +16,10 @@ import org.springframework.stereotype.Component;
 import com.google.zxing.WriterException;
 
 @Component
-public class EANBarcode implements BarCodeManager {
+public class EAN13Barcode implements BarCodeManager {
 	private static int countryCode = 890;
 
-	public EANBarcode() {
+	public EAN13Barcode() {
 
 	}
 
@@ -70,5 +71,14 @@ public class EANBarcode implements BarCodeManager {
 		UPCEANLogicImpl impl = generator.createLogicImpl();
 		return String.valueOf(impl.calcChecksum(barcode12));
 	}
+	
+	public boolean validate(String barcode) {
+		String checkDigit = calculateCodeWithcheckSum(barcode.substring(0, 12));
+		if (!checkDigit.equals(barcode.substring(12)))
+			return false;
+		else
+			return true;
+	}
+
 
 }
