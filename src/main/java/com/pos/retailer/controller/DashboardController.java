@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.pos.retailer.component.ResponseWrapper;
 import com.pos.retailer.exception.GenericException;
 import com.pos.retailer.model.MultiPayment;
-import com.pos.retailer.model.SearchCriteria;
+import com.pos.retailer.report.OutStandingReport.OutstandingSummary;
 import com.pos.retailer.service.CommonOrderService;
 
 @RestController
@@ -54,11 +54,11 @@ public class DashboardController {
 	
 	///////////////////////
 
-	@PostMapping("/search")
+	/*@PostMapping("/search")
 	public ResponseEntity<?> searchOrders(@RequestBody SearchCriteria search) throws GenericException {
 		return new ResponseWrapper<>(HttpStatus.OK, this.commonOrderService.getSummaryBySearchCriteriaGroupedBy(search))
 				.sendResponse();
-	}
+	}*/
 
 	@PostMapping("/{orderId}/multiPayment")
 	public ResponseEntity<?> multiPayment(@RequestBody MultiPayment paymnet) throws GenericException {
@@ -68,11 +68,11 @@ public class DashboardController {
 	}
 
 	
-/*	@GetMapping("/party/{custType}")
-	public ResponseEntity<?> partyDetails(@PathVariable String custType) {
+	@PostMapping("/party/outstanding")
+	public ResponseEntity<?> partyDetails(@RequestBody OutstandingSummary dtl) {
 		return new ResponseWrapper<>("Party Details", HttpStatus.OK,
-				commonOrderService.getGroupedPartyDetails(custType)).sendResponse();
-	}*/
+				commonOrderService.getDetailedOutstandingsForOneParty(dtl.getOrderType(), dtl.getPartyName())).sendResponse();
+	}
 
 	
 }

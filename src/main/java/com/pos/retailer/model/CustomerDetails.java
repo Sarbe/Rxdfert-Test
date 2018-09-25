@@ -23,18 +23,17 @@ public class CustomerDetails extends Auditable {
 	private static final long serialVersionUID = -3804936607275220286L;
 
 	@Id
-	@Size(max = 15)
-	@Column(name = "contact_nbr")
-	private String contactNbr;
+	@Size(max = 50)
+	@Column(name = "party_name")
+	private String partyName;
 
 	@Id
 	@Column(name = "cust_type")
 	private String customerType;
 
-	@Size(max = 50)
-	@Column(name = "party_name")
-	// @EmbeddedId
-	private String partyName;
+	@Size(max = 15)
+	@Column(name = "contact_nbr")
+	private String contactNbr;
 
 	@Size(max = 100)
 	@Column(name = "address", nullable = true)
@@ -46,17 +45,19 @@ public class CustomerDetails extends Auditable {
 
 	@Transient
 	private String actions = "";
-	
+
 	public CustomerDetails(String customerType, @Size(max = 50) String partyName, @Size(max = 15) String contactNbr,
 			@Size(max = 30) String gstinNumber, @Size(max = 100) String address) {
 		super();
 		this.customerType = customerType;
-		this.partyName = StringUtils.trimToEmpty(partyName).toUpperCase();
+		setPartyName(partyName);
 		this.contactNbr = contactNbr;
 		this.address = address;
 		this.gstinNumber = gstinNumber;
-		
-		
+	}
+
+	public void setPartyName(String partyName) {
+		this.partyName = StringUtils.trimToEmpty(partyName).toUpperCase();
 	}
 
 	public boolean checkEmpty() {
@@ -70,9 +71,9 @@ public class CustomerDetails extends Auditable {
 		super();
 	}
 
-	public CustomerDetails(@Size(max = 15) String contactNbr, String customerType) {
+	public CustomerDetails(@Size(max = 15) String partyName, String customerType) {
 		super();
-		this.contactNbr = contactNbr;
+		setPartyName(partyName);
 		this.customerType = customerType;
 	}
 

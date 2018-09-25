@@ -68,13 +68,13 @@ public class ReportServiceImpl implements ReportService {
 			throw new GenericException("Order yet not confirmed.");
 		}
 
-/*		if (StringUtils.isEmpty(salesOrder.getReceiptNumber())) {
-			Long seq = sequenceGeneratorService.getNextValue("invoiceNbr");
-			String receiprtNbr = "INV/1" + StringUtils.leftPad(seq.toString(), 10, "0");
-			salesOrder.setReceiptNumber(receiprtNbr);
-			salesOrderRepository.save(salesOrder);
-		}
-*/
+		/*
+		 * if (StringUtils.isEmpty(salesOrder.getReceiptNumber())) { Long seq =
+		 * sequenceGeneratorService.getNextValue("invoiceNbr"); String receiprtNbr =
+		 * "INV/1" + StringUtils.leftPad(seq.toString(), 10, "0");
+		 * salesOrder.setReceiptNumber(receiprtNbr);
+		 * salesOrderRepository.save(salesOrder); }
+		 */
 		// order Dto
 		SalesOrderDto sdto = new SalesOrderDto();
 		sdto.setSales(salesOrder);
@@ -150,22 +150,21 @@ public class ReportServiceImpl implements ReportService {
 	}
 
 	@Override
-	public List<OutstandingSummary> getOutstandingDetails(String requestType) {
+	public List<OutstandingSummary> getOutstandingDetails(String orderType) {
 
-		List<CustomOutstanding> dbSummary = salesOrderRepository.findOutstandings();
+		List<CustomOutstanding> dbSummary = new ArrayList<>();
 
-		if (requestType.equals(AppConstant.PURCHASE)) {
+		if (orderType.equals(AppConstant.PURCHASE)) {
 			// get details for seller outstanding
-			dbSummary = inventoryRepository.findOutstandings();
+			dbSummary = inventoryRepository.findOutstandingsForAll();
 
-		} else if (requestType.equals(AppConstant.SALES)) {
+		} else if (orderType.equals(AppConstant.SALES)) {
 			// get details for customer outstanding
-			dbSummary = salesOrderRepository.findOutstandings();
-
+			dbSummary = salesOrderRepository.findOutstandingsForAll();
 		}
 
 		List<OutstandingSummary> summaryList = new ArrayList<>();
-		
+
 		for (CustomOutstanding summary : dbSummary) {
 			OutstandingSummary os = new OutstandingSummary();
 			os.setContactNbr(summary.getContactNbr());
@@ -174,7 +173,7 @@ public class ReportServiceImpl implements ReportService {
 			os.setDiscount(summary.getDiscount());
 			os.setPartyName(summary.getPartyName());
 			os.setTotalAmount(summary.getTotalAmount());
-			
+			os.setOrderType(summary.getOrderType());
 			summaryList.add(os);
 		}
 

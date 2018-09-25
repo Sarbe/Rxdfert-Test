@@ -28,56 +28,52 @@ public interface InventoryOrderRepository extends JpaRepository<InventoryOrder, 
 
 	public List<InventoryOrder> findBySettled(boolean isSettled);
 
-	@Query(value = "select distinct io.partyName,io.gstinNumber from InventoryOrder io")
+	@Query(value = "SELECT distinct io.partyName,io.gstinNumber FROM InventoryOrder io ")
 	public List<Object[]> findDistictVendorDetails();
 
-	@Query(value = "select io.order_id from inventory_order io "
-			+ " where not exists (select iod.order_detail_id from inventory_order_details iod where iod.order_id = io.order_id) "
-			+ " order by io.order_id asc", nativeQuery = true)
+	@Query(value = "SELECT io.order_id FROM inventory_order io "
+			+ " WHERE NOT EXISTS (SELECT iod.order_detail_id FROM inventory_order_details iod "
+			+ " WHERE iod.order_id = io.order_id) "
+			+ " ORDER BY io.order_id asc", nativeQuery = true)
 	public String[] findEmptyOrders();
-
-	@Query(value = "SELECT io.contact_nbr AS contactNbr , c.party_name AS partyName, "
-			+ " io.order_id AS orderId, grand_total AS totalAmount,0 AS discount, outstanding AS outstanding "
-			+ " FROM retailer.inventory_order io, customer c "
-			+ " where io.contact_nbr = c.contact_nbr and order_sts = '" + AppConstant.ORDER_CONFIRMED + "' "
-			+ " and outstanding > 0 and c.cust_type = '" + AppConstant.VENDOR
-			+ "' ORDER BY c.party_name ASC ", nativeQuery = true)
-	public List<CustomOutstanding> findOutstandings();
 
 	public List<InventoryOrder> findByOrderStsInOrderByActivityDtDesc(List<String> status);
 
 	public List<InventoryOrder> findByOrderStsOrderByActivityDtDesc(String status);
 
-	//////////////////
-	// search
-	@Query(value = "SELECT io.contact_nbr AS contactNbr , c.party_name AS partyName, "
-			+ " sum(outstanding) AS outstanding, '' AS orderId,  0 As totalAmount, 0 AS discount "
-			+ " FROM retailer.inventory_order io, customer c " + " where io.contact_nbr = c.contact_nbr and order_sts = '"
-			+ AppConstant.ORDER_CONFIRMED + "' " + " and outstanding > 0 and c.cust_type = '" + AppConstant.CUSTOMER
-			+ "' and c.party_name = ? ", nativeQuery = true)
-	public List<CustomOutstanding> findOutstandingsByPartyName(String contactNbr);
 
-	@Query(value = "SELECT io.contact_nbr AS contactNbr , c.party_name AS partyName, "
-			+ " sum(outstanding) AS outstanding ,'' AS orderId,  0 As totalAmount, 0 AS discount "
-			+ " FROM retailer.inventory_order io, customer c " + " where io.contact_nbr = c.contact_nbr and order_sts = '"
-			+ AppConstant.ORDER_CONFIRMED + "' " + " and outstanding > 0 and c.cust_type = '" + AppConstant.CUSTOMER
-			+ "' and io.contact_nbr = ? GROUP BY io.contact_nbr ", nativeQuery = true)
-	public List<CustomOutstanding> findOutstandingsByContactNbr(String contactNbr);
-
-	// detailed Order
-	////////////
-	@Query(value = "SELECT io.order_id, io.outstanding AS outstanding,io.contact_nbr AS contactNbr, "
-			+ " c.party_name AS partyName,  0 As totalAmount, 0 AS discount  "
-			+ " FROM retailer.inventory_order io, customer c " + " where io.contact_nbr = c.contact_nbr and order_sts = '"
-			+ AppConstant.ORDER_CONFIRMED + "' " + " and outstanding > 0 and c.cust_type = '" + AppConstant.CUSTOMER
-			+ "' and c.party_name = ? ", nativeQuery = true)
-	public List<CustomOutstanding> findOutstandingOrdersByPartyName(String partyName);
-
-	@Query(value = "SELECT io.order_id, io.outstanding AS outstanding,io.contact_nbr AS contactNbr,"
-			+ " c.party_name AS partyName, 0 As totalAmount, 0 AS discount   "
-			+ " FROM retailer.inventory_order io, customer c " + " where io.contact_nbr = c.contact_nbr and order_sts = '"
-			+ AppConstant.ORDER_CONFIRMED + "' " + " and outstanding > 0 and c.cust_type = '" + AppConstant.CUSTOMER
-			+ "' and io.contact_nbr = ? ", nativeQuery = true)
-	public List<CustomOutstanding> findOutstandingOrdersByContactNbr(String contactNbr);
-
+	
+	@Query(value = "SELECT  GROUP_CONCAT(io.contact_nbr SEPARATOR ', ')  AS contactNbr , c.party_name AS partyName, '' As orderId, "
+			+ " SUM(outstanding) AS outstanding,  SUM(grand_total) As totalAmount, 0 AS discount, '"+AppConstant.PURCHASE+"' As orderType "
+			+ " FROM retailer.inventory_order io, customer c " 
+			+ " WHERE io.party_name = c.party_name "
+			+ " AND order_sts = '" + AppConstant.ORDER_CONFIRMED + "' " 
+			+ " AND outstanding > 0 "
+			+ " AND c.cust_type = '" + AppConstant.VENDOR+"'"
+			+ " GROUP BY c.party_name ", nativeQuery = true)
+	public List<CustomOutstanding> findOutstandingsForAll();
+	
+	
+	@Query(value = "SELECT  GROUP_CONCAT(io.contact_nbr SEPARATOR ', ')  AS contactNbr , c.party_name AS partyName, '' As orderId, "
+			+ " SUM(outstanding) AS outstanding,  SUM(grand_total) As totalAmount, 0 AS discount, '"+AppConstant.PURCHASE+"' As orderType "
+			+ " FROM retailer.inventory_order io, customer c " 
+			+ " WHERE io.party_name = c.party_name "
+			+ " AND order_sts = '" + AppConstant.ORDER_CONFIRMED + "' " 
+			+ " AND outstanding > 0 "
+			+ " AND c.cust_type = '" + AppConstant.VENDOR+"'"
+			+ " AND c.party_name = ? "
+			+ " GROUP BY c.party_name ", nativeQuery = true)
+	public List<CustomOutstanding> findOutstandingForOneParty(String partyName);
+	
+	
+	@Query(value = "SELECT io.contact_nbr AS contactNbr , c.party_name AS partyName, orderId As orderId, "
+			+ " outstanding AS outstanding,  total_amount As totalAmount, discount AS discount, '"+AppConstant.PURCHASE+"' As orderType "
+			+ " FROM retailer.inventory_order io, customer c " 
+			+ " WHERE io.party_name = c.party_name "
+			+ " AND order_sts = '" + AppConstant.ORDER_CONFIRMED + "' " 
+			+ " AND outstanding > 0 "
+			+ " AND c.cust_type = '" + AppConstant.VENDOR+"'"
+			+ " AND c.party_name = ? ", nativeQuery = true)
+	public List<CustomOutstanding> findDetailedOutstandingForOneParty(String partyName);
+	
 }

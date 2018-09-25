@@ -65,7 +65,8 @@ public class OutStandingReport extends ReportUtility {
 		private double totalAmount;
 		private double discount;
 		private double outstanding;
-
+		private String orderType;
+		
 		@Override
 		public int hashCode() {
 			final int prime = 31;

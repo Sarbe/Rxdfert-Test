@@ -7,8 +7,7 @@ import com.pos.retailer.model.CountBean;
 import com.pos.retailer.model.InventoryOrder;
 import com.pos.retailer.model.MultiPayment;
 import com.pos.retailer.model.SalesOrder;
-import com.pos.retailer.model.SearchCriteria;
-import com.pos.retailer.repository.model.CustomOutstanding;
+import com.pos.retailer.report.OutStandingReport.OutstandingSummary;
 
 public interface CommonOrderService {
 
@@ -19,13 +18,9 @@ public interface CommonOrderService {
 	CountBean getCounts();
 
 	void getOrderNbrs();
-	
-	List<CustomOutstanding> getSummaryBySearchCriteriaGroupedBy(SearchCriteria search) throws GenericException;
-	
-	List<CustomOutstanding> multiplePayment(MultiPayment paymnet) throws GenericException;
 
-//	List<CustomPartyDetails> getGroupedPartyDetails(String custType);
+	List<OutstandingSummary> multiplePayment(MultiPayment paymnet) throws GenericException;
 
+	List<OutstandingSummary> getDetailedOutstandingsForOneParty(String orderType, String partyName);
 
-	
 }

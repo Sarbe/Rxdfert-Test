@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,12 +18,13 @@ import com.pos.retailer.model.InventoryOrder;
 import com.pos.retailer.model.MultiPayment;
 import com.pos.retailer.model.PaymentDetails;
 import com.pos.retailer.model.SalesOrder;
-import com.pos.retailer.model.SearchCriteria;
+import com.pos.retailer.report.OutStandingReport.OutstandingSummary;
 import com.pos.retailer.repository.InventoryOrderRepository;
 import com.pos.retailer.repository.ProductRepository;
 import com.pos.retailer.repository.SalesOrderRepository;
 import com.pos.retailer.repository.model.CustomOutstanding;
 import com.pos.retailer.service.CommonOrderService;
+import com.pos.retailer.service.InventoryOrderService;
 import com.pos.retailer.service.SalesOrderService;
 
 @Service
@@ -38,6 +40,9 @@ public class CommonOrderServiceImpl implements CommonOrderService {
 
 	@Autowired
 	private InventoryOrderRepository inventoryOrderRepository;
+
+	@Autowired
+	private InventoryOrderService inventoryOrderService;
 
 	@Autowired
 	private ProductRepository productRepository;
@@ -91,75 +96,93 @@ public class CommonOrderServiceImpl implements CommonOrderService {
 
 	}
 
-	@Override
-	public List<CustomOutstanding> getSummaryBySearchCriteriaGroupedBy(SearchCriteria search) throws GenericException {
-
-		if(search.isEmpty()) {
-			throw new GenericException("Please enter all search criteria");
-		}
-		
-		List<CustomOutstanding> summary = new ArrayList<>();
-
-		if (search.getOrderType().equals(AppConstant.SALES)) {
-			if (search.getSearchType().equals(AppConstant.PARTY_NAME)) {
-				summary = salesOrderRepository.findOutstandingsByPartyName(search.getSearchValue().toUpperCase());
-			} else if (search.getSearchType().equals(AppConstant.CONTACT_NBR)) {
-				summary = salesOrderRepository.findOutstandingsByContactNbr(search.getSearchValue());
-			}
-		} else {
-			if (search.getSearchType().equals(AppConstant.PARTY_NAME)) {
-				summary = inventoryOrderRepository.findOutstandingsByPartyName(search.getSearchValue());
-			} else if (search.getSearchType().equals(AppConstant.CONTACT_NBR)) {
-				summary = inventoryOrderRepository.findOutstandingsByContactNbr(search.getSearchValue());
-			}
-		}
-
-		return summary;
-	}
-	
-	
-	public List<CustomOutstanding> getDetailsBySearchCriteriaGroupedBy(SearchCriteria search) {
-
-		List<CustomOutstanding> summary = new ArrayList<>();
-
-		if (search.getOrderType().equals(AppConstant.SALES)) {
-			if (search.getSearchType().equals(AppConstant.PARTY_NAME)) {
-				summary = salesOrderRepository.findOutstandingOrdersByPartyName(search.getSearchValue());
-			} else if (search.getSearchType().equals(AppConstant.CONTACT_NBR)) {
-				summary = salesOrderRepository.findOutstandingOrdersByContactNbr(search.getSearchValue());
-			}
-		} else {
-			if (search.getSearchType().equals(AppConstant.PARTY_NAME)) {
-				summary = inventoryOrderRepository.findOutstandingOrdersByPartyName(search.getSearchValue());
-			} else if (search.getSearchType().equals(AppConstant.CONTACT_NBR)) {
-				summary = inventoryOrderRepository.findOutstandingOrdersByContactNbr(search.getSearchValue());
-			}
-		}
-
-		return summary;
-	}
+	//////////////////
+	/////////////////
 
 	@Override
-	public List<CustomOutstanding> multiplePayment(MultiPayment payment) throws GenericException {
+	public List<OutstandingSummary> getDetailedOutstandingsForOneParty(String orderType, String partyName) {
 
-		List<CustomOutstanding> summary = getDetailsBySearchCriteriaGroupedBy(payment.getSearchCriteria());
-		
+		List<CustomOutstanding> detailedOutstanding = new ArrayList<>();
+
+		if (orderType.equals(AppConstant.PURCHASE)) {
+			// get details for seller outstanding
+			detailedOutstanding = inventoryOrderRepository.findDetailedOutstandingForOneParty(partyName);
+
+		} else if (orderType.equals(AppConstant.SALES)) {
+			// get details for customer outstanding
+			detailedOutstanding = salesOrderRepository.findDetailedOutstandingForOneParty(partyName);
+		}
+
+		List<OutstandingSummary> summaryList = customToToalOutStanding(detailedOutstanding);
+
+		return summaryList;
+	}
+
+	public List<OutstandingSummary> getOutstandingsForOneParty(String orderType, String partyName) {
+
+		List<CustomOutstanding> detailedOutstanding = new ArrayList<>();
+
+		if (orderType.equals(AppConstant.PURCHASE)) {
+			// get details for seller outstanding
+			detailedOutstanding = inventoryOrderRepository.findOutstandingForOneParty(partyName);
+
+		} else if (orderType.equals(AppConstant.SALES)) {
+			// get details for customer outstanding
+			detailedOutstanding = salesOrderRepository.findOutstandingForOneParty(partyName);
+		}
+
+		List<OutstandingSummary> summaryList = customToToalOutStanding(detailedOutstanding);
+
+		return summaryList;
+	}
+
+	private List<OutstandingSummary> customToToalOutStanding(List<CustomOutstanding> detailedOutstanding) {
+		List<OutstandingSummary> summaryList = new ArrayList<>();
+
+		for (CustomOutstanding summary : detailedOutstanding) {
+			OutstandingSummary os = new OutstandingSummary();
+			os.setContactNbr(summary.getContactNbr());
+			os.setOrderId(summary.getOrderId());
+			os.setOutstanding(summary.getOutstanding());
+			os.setDiscount(summary.getDiscount());
+			os.setPartyName(summary.getPartyName());
+			os.setTotalAmount(summary.getTotalAmount());
+			os.setOrderType(summary.getOrderType());
+
+			summaryList.add(os);
+		}
+
+		return summaryList;
+
+	}
+
+	@Override
+	public List<OutstandingSummary> multiplePayment(MultiPayment payment) throws GenericException {
+
 		double receivedAmount = payment.getAmount();
 		if (receivedAmount == 0) {
 			throw new GenericException("Entered Amount can not be 0");
 		}
 
-		for (CustomOutstanding customOutstanding : summary) {
+		List<OutstandingSummary> summary = getDetailedOutstandingsForOneParty(payment.getOrderType(),
+				payment.getPartyName());
+
+		for (OutstandingSummary outstanding : summary) {
 			if (receivedAmount > 0) {
 				double paidAmount = 0;
-				if (customOutstanding.getOutstanding() > receivedAmount) {
+				if (outstanding.getOutstanding() > receivedAmount) {
 					paidAmount = receivedAmount;
 				} else {
-					paidAmount = customOutstanding.getOutstanding();
+					paidAmount = outstanding.getOutstanding();
 				}
 
-				salesOrderService.updatePaymentDetails(customOutstanding.getOrderId(),
-						new PaymentDetails(paidAmount, payment.getPaymentMode()));
+				if (StringUtils.trimToEmpty(payment.getOrderType()).equals(AppConstant.SALES)) {
+					salesOrderService.updatePaymentDetails(outstanding.getOrderId(),
+							new PaymentDetails(paidAmount, payment.getPaymentMode()));
+				} else if (StringUtils.trimToEmpty(payment.getOrderType()).equals(AppConstant.PURCHASE)) {
+					inventoryOrderService.updatePaymentDetails(outstanding.getOrderId(),
+							new PaymentDetails(paidAmount, payment.getPaymentMode()));
+				}
 
 				receivedAmount -= paidAmount;
 				if (receivedAmount == 0) {
@@ -169,7 +192,11 @@ public class CommonOrderServiceImpl implements CommonOrderService {
 			}
 		}
 
-		return getSummaryBySearchCriteriaGroupedBy(payment.getSearchCriteria());
+		List<OutstandingSummary> detailedOutstanding = getOutstandingsForOneParty(payment.getOrderType(),
+				payment.getPartyName());
+
+		return detailedOutstanding;
+
 	}
 
 }

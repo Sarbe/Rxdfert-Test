@@ -12,5 +12,7 @@ public interface CustomOutstanding {
 	double getDiscount();
 
 	double getOutstanding();
+	
+	String getOrderType();
 
 }
