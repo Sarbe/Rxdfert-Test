@@ -137,10 +137,10 @@
 					<datasetRun subDataset="Dataset1" uuid="41951456-dcc3-4e10-a452-c14c3d9116ab">
 						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{summary})]]></dataSourceExpression>
 					</datasetRun>
-					<jr:column width="90" uuid="6748bbb9-2480-46f2-88cc-4f0899c758ea">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
+					<jr:columnGroup width="555" uuid="414be87b-d763-4919-922b-2f0b59b325f7">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Columns [6]"/>
 						<jr:groupHeader groupName="nameGrp">
-							<jr:cell style="Table_CH" height="24" rowSpan="1">
+							<jr:cell style="Table_CH" height="30" rowSpan="1">
 								<box>
 									<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 									<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
@@ -148,309 +148,301 @@
 									<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 								</box>
 								<textField>
-									<reportElement x="0" y="0" width="90" height="24" uuid="8cd628e7-6cac-437a-8022-be634546e34e"/>
+									<reportElement x="0" y="0" width="555" height="30" uuid="8cd628e7-6cac-437a-8022-be634546e34e"/>
+									<box>
+										<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+										<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+										<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+										<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									</box>
 									<textElement verticalAlignment="Middle">
-										<font fontName="Roboto" isBold="true"/>
+										<font fontName="Roboto" isBold="true" isUnderline="false"/>
 										<paragraph leftIndent="5"/>
 									</textElement>
 									<textFieldExpression><![CDATA[$F{partyName}]]></textFieldExpression>
 								</textField>
 							</jr:cell>
 						</jr:groupHeader>
-						<jr:groupFooter groupName="nameGrp">
-							<jr:cell style="totalRowStyle" height="24" rowSpan="1">
+						<jr:column width="90" uuid="6748bbb9-2480-46f2-88cc-4f0899c758ea">
+							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
+							<jr:groupFooter groupName="nameGrp">
+								<jr:cell style="totalRowStyle" height="24" rowSpan="1">
+									<box>
+										<pen lineWidth="0.5"/>
+										<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+										<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+										<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#DDDDDD"/>
+										<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									</box>
+									<staticText>
+										<reportElement x="0" y="0" width="90" height="24" uuid="f9012d8e-5297-4f85-bb17-ee7d00465ead"/>
+										<textElement verticalAlignment="Middle">
+											<font fontName="Roboto" isBold="true"/>
+											<paragraph leftIndent="5"/>
+										</textElement>
+										<text><![CDATA[Total]]></text>
+									</staticText>
+								</jr:cell>
+							</jr:groupFooter>
+							<jr:columnHeader style="Table_TH" height="25" rowSpan="1">
+								<box>
+									<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									<bottomPen lineWidth="1.5" lineStyle="Solid" lineColor="#DDDDDD"/>
+									<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+								</box>
+								<staticText>
+									<reportElement x="0" y="0" width="90" height="25" uuid="d12376ff-19bb-43dc-b92e-2cc9b1f8d3a5"/>
+									<textElement verticalAlignment="Middle">
+										<font fontName="Roboto" size="12" isBold="true"/>
+										<paragraph leftIndent="5"/>
+									</textElement>
+									<text><![CDATA[Party Name]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell style="Table_TD" height="24">
 								<box>
 									<pen lineWidth="0.5"/>
+									<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#DDDDDD"/>
+									<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+								</box>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="110" uuid="50f144fb-d329-406a-b6bc-2bf104731ade">
+							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
+							<jr:groupFooter groupName="nameGrp">
+								<jr:cell style="totalRowStyle" height="24" rowSpan="1">
+									<box>
+										<pen lineWidth="0.5"/>
+										<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+										<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+										<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#DDDDDD"/>
+										<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									</box>
+								</jr:cell>
+							</jr:groupFooter>
+							<jr:columnHeader style="Table_TH" height="25" rowSpan="1">
+								<box>
+									<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									<bottomPen lineWidth="1.5" lineStyle="Solid" lineColor="#DDDDDD"/>
+									<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+								</box>
+								<staticText>
+									<reportElement x="0" y="0" width="110" height="25" uuid="8088ed37-718b-423f-86b2-908ce5ebbf42"/>
+									<textElement verticalAlignment="Middle">
+										<font fontName="Roboto" size="12" isBold="true"/>
+										<paragraph leftIndent="5"/>
+									</textElement>
+									<text><![CDATA[OrderId]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell style="Table_TD" height="24">
+								<box>
+									<pen lineWidth="0.5"/>
+									<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#DDDDDD"/>
+									<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+								</box>
+								<textField isBlankWhenNull="true">
+									<reportElement x="0" y="0" width="110" height="24" forecolor="#302F2F" uuid="3acb47cc-3568-45c8-ad76-772b1402055d"/>
+									<textElement verticalAlignment="Middle">
+										<font fontName="Roboto"/>
+										<paragraph leftIndent="5"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{orderId}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="110" uuid="5d271568-385c-4180-a666-b6de569ea54c">
+							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
+							<jr:groupFooter groupName="nameGrp">
+								<jr:cell style="totalRowStyle" height="24" rowSpan="1">
+									<box>
+										<pen lineWidth="0.5"/>
+										<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+										<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+										<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#DDDDDD"/>
+										<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									</box>
+								</jr:cell>
+							</jr:groupFooter>
+							<jr:columnHeader style="Table_TH" height="25" rowSpan="1">
+								<box>
+									<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									<bottomPen lineWidth="1.5" lineStyle="Solid" lineColor="#DDDDDD"/>
+									<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+								</box>
+								<staticText>
+									<reportElement x="0" y="0" width="110" height="25" uuid="2aefd1b4-adf8-4d22-9510-12a73fa1ca83"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="Roboto" size="12" isBold="true"/>
+										<paragraph leftIndent="5"/>
+									</textElement>
+									<text><![CDATA[Contact No]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell style="Table_TD" height="24">
+								<box>
+									<pen lineWidth="0.5"/>
+									<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#DDDDDD"/>
+									<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+								</box>
+								<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+									<reportElement x="0" y="0" width="110" height="24" forecolor="#302F2F" uuid="b9fd6549-97f7-4d0b-8863-70ab6f4487df"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="Roboto"/>
+										<paragraph leftIndent="5"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{contactNbr}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="90" uuid="84eaf6d7-cef5-48e4-af75-0deaae395ad0">
+							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column4"/>
+							<jr:groupFooter groupName="nameGrp">
+								<jr:cell style="totalRowStyle" height="24" rowSpan="1">
+									<box>
+										<pen lineWidth="0.5"/>
+										<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+										<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+										<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#DDDDDD"/>
+										<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									</box>
+								</jr:cell>
+							</jr:groupFooter>
+							<jr:columnHeader style="Table_TH" height="25" rowSpan="1">
+								<box>
+									<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									<bottomPen lineWidth="1.5" lineStyle="Solid" lineColor="#DDDDDD"/>
+									<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+								</box>
+								<staticText>
+									<reportElement x="0" y="0" width="90" height="25" uuid="2949c571-28aa-4ca9-8fc4-0f167e358778"/>
+									<textElement textAlignment="Right" verticalAlignment="Middle">
+										<font fontName="Roboto" size="12" isBold="true"/>
+										<paragraph leftIndent="5" rightIndent="5"/>
+									</textElement>
+									<text><![CDATA[Total Amount]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell style="Table_TD" height="24">
+								<box>
+									<pen lineWidth="0.5"/>
+									<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#DDDDDD"/>
+									<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+								</box>
+								<textField isBlankWhenNull="true">
+									<reportElement x="0" y="0" width="90" height="24" forecolor="#302F2F" uuid="78ff24ac-ddef-47b1-a47a-4defc88e2189"/>
+									<textElement textAlignment="Right" verticalAlignment="Middle">
+										<font fontName="Roboto"/>
+										<paragraph rightIndent="5"/>
+									</textElement>
+									<textFieldExpression><![CDATA[String.format("%.2f",$F{totalAmount})]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="70" uuid="1b46ee53-41c4-4bb7-9117-fde5103c2c4e">
+							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column5"/>
+							<jr:groupFooter groupName="nameGrp">
+								<jr:cell style="totalRowStyle" height="24" rowSpan="1">
+									<box>
+										<bottomPen lineWidth="1.0" lineColor="#DDDDDD"/>
+									</box>
+								</jr:cell>
+							</jr:groupFooter>
+							<jr:columnHeader style="Table_TH" height="25" rowSpan="1">
+								<box>
 									<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 									<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 									<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#DDDDDD"/>
 									<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 								</box>
 								<staticText>
-									<reportElement x="0" y="0" width="90" height="24" uuid="f9012d8e-5297-4f85-bb17-ee7d00465ead"/>
-									<textElement verticalAlignment="Middle">
-										<font fontName="Roboto" isBold="true"/>
-										<paragraph leftIndent="5"/>
+									<reportElement mode="Transparent" x="0" y="0" width="70" height="25" uuid="22fea010-87c2-4878-8070-ea874416bb79"/>
+									<box>
+										<pen lineWidth="1.0"/>
+										<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+										<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+										<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+										<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									</box>
+									<textElement textAlignment="Right" verticalAlignment="Middle">
+										<font fontName="Roboto" size="12" isBold="true"/>
+										<paragraph leftIndent="5" rightIndent="5"/>
 									</textElement>
-									<text><![CDATA[Total]]></text>
+									<text><![CDATA[Discount]]></text>
 								</staticText>
-							</jr:cell>
-						</jr:groupFooter>
-						<jr:columnHeader style="Table_TH" height="25" rowSpan="1">
-							<box>
-								<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-								<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-								<bottomPen lineWidth="1.5" lineStyle="Solid" lineColor="#DDDDDD"/>
-								<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-							</box>
-							<staticText>
-								<reportElement x="0" y="0" width="90" height="25" uuid="d12376ff-19bb-43dc-b92e-2cc9b1f8d3a5"/>
-								<textElement verticalAlignment="Middle">
-									<font fontName="Roboto" size="12" isBold="true"/>
-									<paragraph leftIndent="5"/>
-								</textElement>
-								<text><![CDATA[Party Name]]></text>
-							</staticText>
-						</jr:columnHeader>
-						<jr:detailCell style="Table_TD" height="24">
-							<box>
-								<pen lineWidth="0.5"/>
-								<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-								<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-								<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#DDDDDD"/>
-								<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-							</box>
-						</jr:detailCell>
-					</jr:column>
-					<jr:column width="110" uuid="50f144fb-d329-406a-b6bc-2bf104731ade">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
-						<jr:groupHeader groupName="nameGrp">
-							<jr:cell style="Table_CH" height="24" rowSpan="1">
+							</jr:columnHeader>
+							<jr:detailCell style="Table_TD" height="24">
 								<box>
 									<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 									<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 									<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#DDDDDD"/>
 									<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 								</box>
-							</jr:cell>
-						</jr:groupHeader>
-						<jr:groupFooter groupName="nameGrp">
-							<jr:cell style="totalRowStyle" height="24" rowSpan="1">
-								<box>
-									<pen lineWidth="0.5"/>
-									<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-									<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-									<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#DDDDDD"/>
-									<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-								</box>
-							</jr:cell>
-						</jr:groupFooter>
-						<jr:columnHeader style="Table_TH" height="25" rowSpan="1">
-							<box>
-								<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-								<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-								<bottomPen lineWidth="1.5" lineStyle="Solid" lineColor="#DDDDDD"/>
-								<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-							</box>
-							<staticText>
-								<reportElement x="0" y="0" width="110" height="25" uuid="8088ed37-718b-423f-86b2-908ce5ebbf42"/>
-								<textElement verticalAlignment="Middle">
-									<font fontName="Roboto" size="12" isBold="true"/>
-									<paragraph leftIndent="5"/>
-								</textElement>
-								<text><![CDATA[OrderId]]></text>
-							</staticText>
-						</jr:columnHeader>
-						<jr:detailCell style="Table_TD" height="24">
-							<box>
-								<pen lineWidth="0.5"/>
-								<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-								<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-								<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#DDDDDD"/>
-								<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-							</box>
-							<textField isBlankWhenNull="true">
-								<reportElement x="0" y="0" width="110" height="24" uuid="3acb47cc-3568-45c8-ad76-772b1402055d"/>
-								<textElement verticalAlignment="Middle">
-									<font fontName="Roboto"/>
-									<paragraph leftIndent="5"/>
-								</textElement>
-								<textFieldExpression><![CDATA[$F{orderId}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
-					</jr:column>
-					<jr:column width="110" uuid="5d271568-385c-4180-a666-b6de569ea54c">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
-						<jr:groupHeader groupName="nameGrp">
-							<jr:cell style="Table_CH" height="24" rowSpan="1">
+								<textField isBlankWhenNull="true">
+									<reportElement x="0" y="0" width="70" height="24" forecolor="#302F2F" uuid="e87130b9-ca5d-4ebb-a0b5-970d602afa9a"/>
+									<box>
+										<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+										<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+										<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+										<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									</box>
+									<textElement textAlignment="Right" verticalAlignment="Middle">
+										<font fontName="Roboto"/>
+									</textElement>
+									<textFieldExpression><![CDATA[String.format("%.2f",$F{discount})]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="85" uuid="6cd1281e-81d1-4abd-83ef-c853a7d8fe4f">
+							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column6"/>
+							<jr:groupFooter groupName="nameGrp">
+								<jr:cell style="totalRowStyle" height="24" rowSpan="1">
+									<box>
+										<pen lineWidth="0.5"/>
+										<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+										<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+										<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#DDDDDD"/>
+										<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									</box>
+									<textField>
+										<reportElement x="0" y="0" width="85" height="24" uuid="92c3bd2b-e359-4402-b181-dd4ce1d60c22"/>
+										<textElement textAlignment="Right" verticalAlignment="Middle">
+											<font fontName="Roboto"/>
+											<paragraph rightIndent="5"/>
+										</textElement>
+										<textFieldExpression><![CDATA[String.format("%.2f",$V{totalOutstanding})]]></textFieldExpression>
+									</textField>
+								</jr:cell>
+							</jr:groupFooter>
+							<jr:columnHeader style="Table_TH" height="25" rowSpan="1">
 								<box>
 									<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 									<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-									<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#DDDDDD"/>
+									<bottomPen lineWidth="1.5" lineStyle="Solid" lineColor="#DDDDDD"/>
 									<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 								</box>
-							</jr:cell>
-						</jr:groupHeader>
-						<jr:groupFooter groupName="nameGrp">
-							<jr:cell style="totalRowStyle" height="24" rowSpan="1">
-								<box>
-									<pen lineWidth="0.5"/>
-									<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-									<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-									<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#DDDDDD"/>
-									<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-								</box>
-							</jr:cell>
-						</jr:groupFooter>
-						<jr:columnHeader style="Table_TH" height="25" rowSpan="1">
-							<box>
-								<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-								<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-								<bottomPen lineWidth="1.5" lineStyle="Solid" lineColor="#DDDDDD"/>
-								<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-							</box>
-							<staticText>
-								<reportElement x="0" y="0" width="110" height="25" uuid="2aefd1b4-adf8-4d22-9510-12a73fa1ca83"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="Roboto" size="12" isBold="true"/>
-									<paragraph leftIndent="5"/>
-								</textElement>
-								<text><![CDATA[Contact No]]></text>
-							</staticText>
-						</jr:columnHeader>
-						<jr:detailCell style="Table_TD" height="24">
-							<box>
-								<pen lineWidth="0.5"/>
-								<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-								<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-								<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#DDDDDD"/>
-								<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-							</box>
-							<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-								<reportElement x="0" y="0" width="110" height="24" uuid="b9fd6549-97f7-4d0b-8863-70ab6f4487df"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="Roboto"/>
-									<paragraph leftIndent="5"/>
-								</textElement>
-								<textFieldExpression><![CDATA[$F{contactNbr}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
-					</jr:column>
-					<jr:column width="90" uuid="84eaf6d7-cef5-48e4-af75-0deaae395ad0">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column4"/>
-						<jr:groupHeader groupName="nameGrp">
-							<jr:cell style="Table_CH" height="24" rowSpan="1">
-								<box>
-									<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-									<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-									<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#DDDDDD"/>
-									<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-								</box>
-							</jr:cell>
-						</jr:groupHeader>
-						<jr:groupFooter groupName="nameGrp">
-							<jr:cell style="totalRowStyle" height="24" rowSpan="1">
-								<box>
-									<pen lineWidth="0.5"/>
-									<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-									<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-									<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#DDDDDD"/>
-									<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-								</box>
-							</jr:cell>
-						</jr:groupFooter>
-						<jr:columnHeader style="Table_TH" height="25" rowSpan="1">
-							<box>
-								<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-								<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-								<bottomPen lineWidth="1.5" lineStyle="Solid" lineColor="#DDDDDD"/>
-								<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-							</box>
-							<staticText>
-								<reportElement x="0" y="0" width="90" height="25" uuid="2949c571-28aa-4ca9-8fc4-0f167e358778"/>
-								<textElement textAlignment="Right" verticalAlignment="Middle">
-									<font fontName="Roboto" size="12" isBold="true"/>
-									<paragraph leftIndent="5" rightIndent="5"/>
-								</textElement>
-								<text><![CDATA[Total Amount]]></text>
-							</staticText>
-						</jr:columnHeader>
-						<jr:detailCell style="Table_TD" height="24">
-							<box>
-								<pen lineWidth="0.5"/>
-								<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-								<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-								<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#DDDDDD"/>
-								<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-							</box>
-							<textField isBlankWhenNull="true">
-								<reportElement x="0" y="0" width="90" height="24" uuid="78ff24ac-ddef-47b1-a47a-4defc88e2189"/>
-								<textElement textAlignment="Right" verticalAlignment="Middle">
-									<font fontName="Roboto"/>
-									<paragraph rightIndent="5"/>
-								</textElement>
-								<textFieldExpression><![CDATA[String.format("%.2f",$F{totalAmount})]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
-					</jr:column>
-					<jr:column width="70" uuid="1b46ee53-41c4-4bb7-9117-fde5103c2c4e">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column5"/>
-						<jr:groupHeader groupName="nameGrp">
-							<jr:cell style="Table_CH" height="24" rowSpan="1">
-								<box>
-									<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-									<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-									<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#DDDDDD"/>
-									<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-								</box>
-							</jr:cell>
-						</jr:groupHeader>
-						<jr:groupFooter groupName="nameGrp">
-							<jr:cell style="totalRowStyle" height="24" rowSpan="1">
-								<box>
-									<bottomPen lineWidth="1.0" lineColor="#DDDDDD"/>
-								</box>
-							</jr:cell>
-						</jr:groupFooter>
-						<jr:columnHeader style="Table_TH" height="25" rowSpan="1">
-							<box>
-								<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-								<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-								<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#DDDDDD"/>
-								<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-							</box>
-							<staticText>
-								<reportElement mode="Transparent" x="0" y="0" width="70" height="25" uuid="22fea010-87c2-4878-8070-ea874416bb79"/>
-								<box>
-									<pen lineWidth="1.0"/>
-									<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-									<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-									<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-									<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-								</box>
-								<textElement textAlignment="Right" verticalAlignment="Middle">
-									<font fontName="Roboto" size="12" isBold="true"/>
-									<paragraph leftIndent="5" rightIndent="5"/>
-								</textElement>
-								<text><![CDATA[Discount]]></text>
-							</staticText>
-						</jr:columnHeader>
-						<jr:detailCell style="Table_TD" height="24">
-							<box>
-								<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-								<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-								<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#DDDDDD"/>
-								<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-							</box>
-							<textField isBlankWhenNull="true">
-								<reportElement x="0" y="0" width="70" height="24" uuid="e87130b9-ca5d-4ebb-a0b5-970d602afa9a"/>
-								<box>
-									<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-									<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-									<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-									<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-								</box>
-								<textElement textAlignment="Right" verticalAlignment="Middle">
-									<font fontName="Roboto"/>
-								</textElement>
-								<textFieldExpression><![CDATA[String.format("%.2f",$F{discount})]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
-					</jr:column>
-					<jr:column width="85" uuid="6cd1281e-81d1-4abd-83ef-c853a7d8fe4f">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column6"/>
-						<jr:groupHeader groupName="nameGrp">
-							<jr:cell style="Table_CH" height="24" rowSpan="1">
-								<box>
-									<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-									<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-									<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#DDDDDD"/>
-									<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-								</box>
-							</jr:cell>
-						</jr:groupHeader>
-						<jr:groupFooter groupName="nameGrp">
-							<jr:cell style="totalRowStyle" height="24" rowSpan="1">
+								<staticText>
+									<reportElement x="0" y="0" width="85" height="25" uuid="f626c947-0ff9-4ab6-910d-d069a730b0ca"/>
+									<textElement textAlignment="Right" verticalAlignment="Middle">
+										<font fontName="Roboto" size="12" isBold="true"/>
+										<paragraph leftIndent="5" rightIndent="5"/>
+									</textElement>
+									<text><![CDATA[outstanding]]></text>
+								</staticText>
+							</jr:columnHeader>
+							<jr:detailCell style="Table_TD" height="24">
 								<box>
 									<pen lineWidth="0.5"/>
 									<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
@@ -459,49 +451,16 @@
 									<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 								</box>
 								<textField>
-									<reportElement x="0" y="0" width="85" height="24" uuid="92c3bd2b-e359-4402-b181-dd4ce1d60c22"/>
+									<reportElement x="0" y="0" width="85" height="24" forecolor="#302F2F" uuid="eb5872a2-99ab-4e8f-9ad2-db3bb94be337"/>
 									<textElement textAlignment="Right" verticalAlignment="Middle">
 										<font fontName="Roboto"/>
 										<paragraph rightIndent="5"/>
 									</textElement>
-									<textFieldExpression><![CDATA[String.format("%.2f",$V{totalOutstanding})]]></textFieldExpression>
+									<textFieldExpression><![CDATA[String.format("%.2f",$F{outstanding})]]></textFieldExpression>
 								</textField>
-							</jr:cell>
-						</jr:groupFooter>
-						<jr:columnHeader style="Table_TH" height="25" rowSpan="1">
-							<box>
-								<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-								<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-								<bottomPen lineWidth="1.5" lineStyle="Solid" lineColor="#DDDDDD"/>
-								<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-							</box>
-							<staticText>
-								<reportElement x="0" y="0" width="85" height="25" uuid="f626c947-0ff9-4ab6-910d-d069a730b0ca"/>
-								<textElement textAlignment="Right" verticalAlignment="Middle">
-									<font fontName="Roboto" size="12" isBold="true"/>
-									<paragraph leftIndent="5" rightIndent="5"/>
-								</textElement>
-								<text><![CDATA[outstanding]]></text>
-							</staticText>
-						</jr:columnHeader>
-						<jr:detailCell style="Table_TD" height="24">
-							<box>
-								<pen lineWidth="0.5"/>
-								<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-								<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-								<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#DDDDDD"/>
-								<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-							</box>
-							<textField>
-								<reportElement x="0" y="0" width="85" height="24" uuid="eb5872a2-99ab-4e8f-9ad2-db3bb94be337"/>
-								<textElement textAlignment="Right" verticalAlignment="Middle">
-									<font fontName="Roboto"/>
-									<paragraph rightIndent="5"/>
-								</textElement>
-								<textFieldExpression><![CDATA[String.format("%.2f",$F{outstanding})]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
-					</jr:column>
+							</jr:detailCell>
+						</jr:column>
+					</jr:columnGroup>
 				</jr:table>
 			</componentElement>
 		</band>

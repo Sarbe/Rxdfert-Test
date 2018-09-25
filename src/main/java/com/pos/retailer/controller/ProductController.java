@@ -83,7 +83,7 @@ public class ProductController {
 	}
 
 	@GetMapping("/allMfgNames")
-	public ResponseEntity<?> getAllManufacturerNames(@PathVariable String mfg) {
+	public ResponseEntity<?> getAllManufacturerNames() {
 		return new ResponseWrapper<>(HttpStatus.OK, this.productService.getDistinctManufacturer()).sendResponse();
 	}
 	/*

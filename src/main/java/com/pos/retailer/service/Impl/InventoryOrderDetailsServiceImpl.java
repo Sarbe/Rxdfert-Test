@@ -178,6 +178,7 @@ public class InventoryOrderDetailsServiceImpl implements InventoryOrderDetailsSe
 			throw new GenericException("Quantity cannot be less than 1.");
 		}
 
+		dbOrderDetail.setQty(qty);
 		// Order Detail Price Calculation
 		dbOrderDetail.calculateAmount();
 		dbOrderDetail = inventoryOrderDetailRepository.save(dbOrderDetail);
