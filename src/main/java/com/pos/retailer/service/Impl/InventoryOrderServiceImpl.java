@@ -184,23 +184,25 @@ public class InventoryOrderServiceImpl implements InventoryOrderService {
 		} else if (dbInvOrder.getOutstandingAmount() < payment.getPaidAmount()) {
 			throw new GenericException("Paid Amount cannot be greater than outstanding amount.");
 		}
+		
+		dbInvOrder.setOutstandingAmount(dbInvOrder.getOutstandingAmount() - payment.getPaidAmount());
 
-		if (dbInvOrder.getOutstandingAmount() == payment.getPaidAmount()) {
-			dbInvOrder.setPaymentType(AppConstant.PAY_NOW);
+		if (dbInvOrder.getOutstandingAmount() == 0) {
 			dbInvOrder.setSettled(true);
+			payment.setPaymentType(AppConstant.PAY_NOW);
 		} else {
-			dbInvOrder.setPaymentType(AppConstant.PAY_LATER);
 			dbInvOrder.setSettled(false);
+			payment.setPaymentType(AppConstant.PAY_LATER);
 		}
 
-		dbInvOrder.setOutstandingAmount(dbInvOrder.getOutstandingAmount() - payment.getPaidAmount());
+		dbInvOrder.setPaymentType(payment.getPaymentType());
 
 		// set status
 		dbInvOrder.setOrderSts(AppConstant.ORDER_CONFIRMED);
 
 		// save
 		PaymentHistory history = new PaymentHistory(AppConstant.PURCHASE, dbInvOrder.getOrderId().toString(),
-				payment.getPaymentMode(), dbInvOrder.getGrandTotal(), payment.getPaidAmount(),
+				payment.getPaymentType(),payment.getPaymentMode(), dbInvOrder.getGrandTotal(), payment.getPaidAmount(),
 				dbInvOrder.getOutstandingAmount());
 		paymentHistoryService.savePaymentDetails(history);
 
@@ -249,19 +251,11 @@ public class InventoryOrderServiceImpl implements InventoryOrderService {
 			throw new GenericException("Paid Amount cannot be greater than outstanding amount.");
 		}
 
-		if (dbInvOrder.getOutstandingAmount() == payment.getPaidAmount()) {
-			dbInvOrder.setPaymentType(AppConstant.PAY_NOW);
-			dbInvOrder.setSettled(true);
-		} else {
-			dbInvOrder.setPaymentType(AppConstant.PAY_LATER);
-			dbInvOrder.setSettled(false);
-		}
-
 		dbInvOrder.setOutstandingAmount(dbInvOrder.getOutstandingAmount() - payment.getPaidAmount());
 
 		// save
 		PaymentHistory history = new PaymentHistory(AppConstant.PURCHASE, dbInvOrder.getOrderId().toString(),
-				payment.getPaymentMode(), dbInvOrder.getGrandTotal(), payment.getPaidAmount(),
+				AppConstant.PAY_LATER, payment.getPaymentMode(), dbInvOrder.getGrandTotal(), payment.getPaidAmount(),
 				dbInvOrder.getOutstandingAmount());
 		paymentHistoryService.savePaymentDetails(history);
 

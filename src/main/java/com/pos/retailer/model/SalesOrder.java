@@ -84,7 +84,7 @@ public class SalesOrder extends Auditable {
 
 	@Column(name = "payment_type")
 	private String paymentType = StringUtils.EMPTY;// = AppConstant.PAY_LATER; // NOW/LATER
-
+	
 
 	/*
 	 * @JsonManagedReference

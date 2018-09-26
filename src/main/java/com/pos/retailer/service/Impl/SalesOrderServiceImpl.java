@@ -218,7 +218,7 @@ public class SalesOrderServiceImpl implements SalesOrderService {
 		// throw new GenericException("Order has already been confirmed");
 
 		if (StringUtils.trimToEmpty(payment.getPaymentMode()).isEmpty()) {
-			payment.setPaymentMode(AppConstant.PAY_LATER);
+			payment.setPaymentType(AppConstant.PAY_LATER);
 		}
 
 		if (dbSalesOrder.getOutstandingAmount() == 0 || dbSalesOrder.isSettled()) {
@@ -239,24 +239,21 @@ public class SalesOrderServiceImpl implements SalesOrderService {
 		// instantDisc);
 
 		dbSalesOrder.setOutstandingAmount(dbSalesOrder.getOutstandingAmount() - payment.getPaidAmount() - instantDisc);
-		// String salePaymentType =
-		// StringUtils.stripToEmpty(dbSalesOrder.getPaymentType());
-		dbSalesOrder.setPaymentType(payment.getPaymentMode());
 
 		if (dbSalesOrder.getOutstandingAmount() == 0) {
 			dbSalesOrder.setSettled(true);
-			payment.setPaymentMode(AppConstant.PAY_NOW);
+			payment.setPaymentType(AppConstant.PAY_NOW);
 		} else {
 			dbSalesOrder.setSettled(false);
 		}
-
+		dbSalesOrder.setPaymentType(payment.getPaymentType());
 		// set status
 		dbSalesOrder.setOrderSts(AppConstant.ORDER_CONFIRMED);
 
 		// save
 		PaymentHistory history = new PaymentHistory(AppConstant.SALES, dbSalesOrder.getOrderId(),
-				payment.getPaymentMode(), dbSalesOrder.getGrandTotal(), payment.getPaidAmount(),
-				dbSalesOrder.getOutstandingAmount());
+				payment.getPaymentType(), payment.getPaymentMode(), dbSalesOrder.getGrandTotal(),
+				payment.getPaidAmount(), dbSalesOrder.getOutstandingAmount());
 		paymentHistoryService.savePaymentDetails(history);
 
 		// update stock
@@ -322,8 +319,8 @@ public class SalesOrderServiceImpl implements SalesOrderService {
 
 		// save
 		PaymentHistory history = new PaymentHistory(AppConstant.SALES, dbSalesOrder.getOrderId(),
-				payment.getPaymentMode(), dbSalesOrder.getGrandTotal(), payment.getPaidAmount(),
-				dbSalesOrder.getOutstandingAmount());
+				AppConstant.PAY_LATER, payment.getPaymentMode(), dbSalesOrder.getGrandTotal(),
+				payment.getPaidAmount(), dbSalesOrder.getOutstandingAmount());
 		paymentHistoryService.savePaymentDetails(history);
 
 		return salesOrderRepository.save(dbSalesOrder);

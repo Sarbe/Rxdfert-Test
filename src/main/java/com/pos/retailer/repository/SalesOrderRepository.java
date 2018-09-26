@@ -51,7 +51,7 @@ public interface SalesOrderRepository extends JpaRepository<SalesOrder, String> 
 	public List<CustomOutstanding> findOutstandingForOneParty(String partyName);
 	
 	
-	@Query(value = "SELECT so.contact_nbr AS contactNbr , c.party_name AS partyName, orderId As orderId, "
+	@Query(value = "SELECT so.contact_nbr AS contactNbr , c.party_name AS partyName, order_id As orderId, "
 			+ " outstanding AS outstanding,  grand_total As totalAmount, discount AS discount, '"+AppConstant.SALES+"' As orderType "
 			+ " FROM retailer.sales_order so, customer c " 
 			+ " WHERE so.party_name = c.party_name "

@@ -59,3 +59,13 @@ ADD COLUMN `updated_by` varchar(255) DEFAULT NULL;
 7. DROP TABLE `retailer`.`vendors`;
 8.
 DROP TABLE `retailer`.`staff`;
+
+9.
+ALTER TABLE `retailer`.`customer` 
+CHANGE COLUMN `party_name` `party_name` VARCHAR(50) NOT NULL ,
+DROP PRIMARY KEY,
+ADD PRIMARY KEY (`cust_type`, `party_name`);
+
+10.
+ALTER TABLE `retailer`.`payment_transaction` 
+ADD COLUMN `payment_type` VARCHAR(10) NULL AFTER `payment_mode`;

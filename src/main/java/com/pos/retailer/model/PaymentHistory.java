@@ -25,7 +25,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class PaymentHistory extends Auditable{
+public class PaymentHistory extends Auditable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -37,7 +37,10 @@ public class PaymentHistory extends Auditable{
 	private String orderId;
 
 	@Column(name = "payment_mode")
-	private String paymentMode;
+	private String paymentMode; // = CASH/CARD/APP
+
+	@Column(name = "payment_type")
+	private String paymentType;// Now/Later
 
 	@Column(name = "total_amount")
 	private double totalAmount;
@@ -52,13 +55,15 @@ public class PaymentHistory extends Auditable{
 	@Column(name = "transaction_dt", nullable = false)
 	private LocalDateTime transactionDt = LocalDateTime.now();
 
-	public PaymentHistory(String orderType, String orderId, String paymentMode, double totalAmount, double paidAmount,
-			double outstandingAmount) {
+	public PaymentHistory(String orderType, String orderId, String paymentType, String paymentMode, double totalAmount,
+			double paidAmount, double outstandingAmount) {
 		super();
 		this.orderType = orderType;
 		this.orderId = orderId;
-		this.paidAmount = paidAmount;
-		this.outstandingAmount = outstandingAmount;
+		setPaidAmount(paidAmount);
+		setOutstandingAmount(outstandingAmount);
+		this.paymentMode = paymentMode;
+		this.paymentType = paymentType;
 	}
 
 	@Override

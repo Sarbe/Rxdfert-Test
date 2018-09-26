@@ -66,7 +66,7 @@ public interface InventoryOrderRepository extends JpaRepository<InventoryOrder, 
 	public List<CustomOutstanding> findOutstandingForOneParty(String partyName);
 	
 	
-	@Query(value = "SELECT io.contact_nbr AS contactNbr , c.party_name AS partyName, orderId As orderId, "
+	@Query(value = "SELECT io.contact_nbr AS contactNbr , c.party_name AS partyName, order_id As orderId, "
 			+ " outstanding AS outstanding,  total_amount As totalAmount, discount AS discount, '"+AppConstant.PURCHASE+"' As orderType "
 			+ " FROM retailer.inventory_order io, customer c " 
 			+ " WHERE io.party_name = c.party_name "
