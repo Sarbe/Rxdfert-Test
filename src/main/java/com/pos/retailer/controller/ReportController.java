@@ -122,7 +122,7 @@ public class ReportController {
 		requestType = StringUtils.trimToEmpty(requestType).equals(AppConstant.PURCHASE) ? AppConstant.PURCHASE
 				: AppConstant.SALES;
 
-		List<OutstandingSummary> summary = reportService.getOutstandingDetails(requestType);
+		List<OutstandingSummary> summary = reportService.getOutstandingDetails(requestType,viewType);
 		SellerDetails sd = masterDataService.getSellerDetails();
 		if (viewType.equals(AppConstant.REPORT_DOWNLOAD)) {
 

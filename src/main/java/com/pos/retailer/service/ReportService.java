@@ -14,7 +14,7 @@ public interface ReportService {
 
 	StockInput getStockHistory(StockInput input) throws GenericException, Exception;
 
-	List<OutstandingSummary> getOutstandingDetails(String requestType);
+	List<OutstandingSummary> getOutstandingDetails(String requestType, String viewType);
 
 
 }

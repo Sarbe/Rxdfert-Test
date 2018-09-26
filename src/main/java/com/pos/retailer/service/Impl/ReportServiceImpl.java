@@ -150,17 +150,24 @@ public class ReportServiceImpl implements ReportService {
 	}
 
 	@Override
-	public List<OutstandingSummary> getOutstandingDetails(String orderType) {
+	public List<OutstandingSummary> getOutstandingDetails(String orderType, String viewType) {
 
 		List<CustomOutstanding> dbSummary = new ArrayList<>();
 
 		if (orderType.equals(AppConstant.PURCHASE)) {
 			// get details for seller outstanding
-			dbSummary = inventoryRepository.findOutstandingsForAll();
+			if (viewType.equals(AppConstant.REPORT_VIEW))
+				dbSummary = inventoryRepository.findOutstandingsForAll();
+			else
+				dbSummary = inventoryRepository.findDetailedOutstandingForAll();
 
 		} else if (orderType.equals(AppConstant.SALES)) {
 			// get details for customer outstanding
-			dbSummary = salesOrderRepository.findOutstandingsForAll();
+			if (viewType.equals(AppConstant.REPORT_VIEW))
+				dbSummary = salesOrderRepository.findOutstandingsForAll();
+			else
+				dbSummary = salesOrderRepository.findDetailedOutstandingForAll();
+
 		}
 
 		List<OutstandingSummary> summaryList = new ArrayList<>();

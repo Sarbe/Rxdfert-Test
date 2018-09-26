@@ -28,7 +28,7 @@ public interface SalesOrderRepository extends JpaRepository<SalesOrder, String> 
 			+ " ORDER BY so.order_id asc ", nativeQuery = true)
 	public String[] findEmptyOrders();
 
-	@Query(value = "SELECT  GROUP_CONCAT(so.contact_nbr SEPARATOR ', ')  AS contactNbr , c.party_name AS partyName, '' As orderId, "
+	@Query(value = "SELECT  GROUP_CONCAT(distinct so.contact_nbr SEPARATOR ', ')  AS contactNbr , c.party_name AS partyName, '' As orderId, "
 			+ " SUM(outstanding) AS outstanding,  SUM(grand_total) As totalAmount, SUM(discount) AS discount, '"+AppConstant.SALES+"' As orderType "
 			+ " FROM retailer.sales_order so, customer c " 
 			+ " WHERE so.party_name = c.party_name "
@@ -39,7 +39,7 @@ public interface SalesOrderRepository extends JpaRepository<SalesOrder, String> 
 	public List<CustomOutstanding> findOutstandingsForAll();
 	
 	
-	@Query(value = "SELECT  GROUP_CONCAT(so.contact_nbr SEPARATOR ', ')  AS contactNbr , c.party_name AS partyName, '' As orderId, "
+	@Query(value = "SELECT  GROUP_CONCAT(distinct so.contact_nbr SEPARATOR ', ')  AS contactNbr , c.party_name AS partyName, '' As orderId, "
 			+ " SUM(outstanding) AS outstanding,  SUM(grand_total) As totalAmount, SUM(discount) AS discount, '"+AppConstant.SALES+"' As orderType "
 			+ " FROM retailer.sales_order so, customer c " 
 			+ " WHERE so.party_name = c.party_name "
@@ -60,6 +60,15 @@ public interface SalesOrderRepository extends JpaRepository<SalesOrder, String> 
 			+ " AND c.cust_type = '" + AppConstant.CUSTOMER+"'"
 			+ " AND c.party_name = ? ", nativeQuery = true)
 	public List<CustomOutstanding> findDetailedOutstandingForOneParty(String partyName);
+	
+	@Query(value = "SELECT so.contact_nbr AS contactNbr , c.party_name AS partyName, order_id As orderId, "
+			+ " outstanding AS outstanding,  grand_total As totalAmount, discount AS discount, '"+AppConstant.SALES+"' As orderType "
+			+ " FROM retailer.sales_order so, customer c " 
+			+ " WHERE so.party_name = c.party_name "
+			+ " AND order_sts = '" + AppConstant.ORDER_CONFIRMED + "' " 
+			+ " AND outstanding > 0 "
+			+ " AND c.cust_type = '" + AppConstant.CUSTOMER+"'" , nativeQuery = true)
+	public List<CustomOutstanding> findDetailedOutstandingForAll();
 	
 	
 }
