@@ -60,7 +60,7 @@ public class DashboardController {
 				.sendResponse();
 	}*/
 
-	@PostMapping("/{orderId}/multiPayment")
+	@PostMapping("/multiPayment")
 	public ResponseEntity<?> multiPayment(@RequestBody MultiPayment paymnet) throws GenericException {
 
 		return new ResponseWrapper<>("Payment Details updated.", HttpStatus.OK,
