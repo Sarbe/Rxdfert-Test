@@ -1,10 +1,9 @@
 package com.pos.retailer.model;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-
 import org.apache.commons.lang.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
+
+import com.pos.retailer.component.AppConstant;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -22,14 +21,12 @@ public class PaymentDetails {
 	private double instantDiscount;
 
 	public void setPaidAmount(double paidAmount) {
-		BigDecimal bd = new BigDecimal(paidAmount).setScale(2, RoundingMode.FLOOR);
-        this.paidAmount = bd.doubleValue();
+        this.paidAmount = AppConstant.roundedValue(paidAmount);
 	}
 
 
 	public void setInstantDiscount(double instantDiscount) {
-		BigDecimal bd = new BigDecimal(instantDiscount).setScale(2, RoundingMode.FLOOR);
-        this.instantDiscount = bd.doubleValue();
+        this.instantDiscount = AppConstant.roundedValue(instantDiscount);
 	}
 	
 	@Override
@@ -38,10 +35,10 @@ public class PaymentDetails {
 	}
 
 
-	public PaymentDetails(double paidAmount, String paymentType) {
+	public PaymentDetails(double paidAmount, String paymentMode) {
 		super();
-		this.paidAmount = paidAmount;
-		this.paymentType = paymentType;
+		setPaidAmount(paidAmount);
+		this.paymentMode = paymentMode;
 	}
 
 

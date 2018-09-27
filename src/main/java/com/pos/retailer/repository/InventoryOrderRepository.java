@@ -43,7 +43,8 @@ public interface InventoryOrderRepository extends JpaRepository<InventoryOrder, 
 
 
 	
-	@Query(value = "SELECT  GROUP_CONCAT(distinct io.contact_nbr SEPARATOR ', ')  AS contactNbr , c.party_name AS partyName, '' As orderId, "
+	@Query(value = "SELECT  GROUP_CONCAT(distinct io.contact_nbr SEPARATOR ', ')  AS contactNbr ,"
+			+ " c.party_name AS partyName, count(order_id) As orderId, "
 			+ " SUM(outstanding) AS outstanding,  SUM(grand_total) As totalAmount, 0 AS discount, '"+AppConstant.PURCHASE+"' As orderType "
 			+ " FROM retailer.inventory_order io, customer c " 
 			+ " WHERE io.party_name = c.party_name "
@@ -54,7 +55,8 @@ public interface InventoryOrderRepository extends JpaRepository<InventoryOrder, 
 	public List<CustomOutstanding> findOutstandingsForAll();
 	
 	
-	@Query(value = "SELECT  GROUP_CONCAT(distinct io.contact_nbr SEPARATOR ', ')  AS contactNbr , c.party_name AS partyName, '' As orderId, "
+	@Query(value = "SELECT  GROUP_CONCAT(distinct io.contact_nbr SEPARATOR ', ')  AS contactNbr ,"
+			+ " c.party_name AS partyName, count(order_id) As orderId, "
 			+ " SUM(outstanding) AS outstanding,  SUM(grand_total) As totalAmount, 0 AS discount, '"+AppConstant.PURCHASE+"' As orderType "
 			+ " FROM retailer.inventory_order io, customer c " 
 			+ " WHERE io.party_name = c.party_name "
@@ -73,7 +75,8 @@ public interface InventoryOrderRepository extends JpaRepository<InventoryOrder, 
 			+ " AND order_sts = '" + AppConstant.ORDER_CONFIRMED + "' " 
 			+ " AND outstanding > 0 "
 			+ " AND c.cust_type = '" + AppConstant.VENDOR+"'"
-			+ " AND c.party_name = ? ", nativeQuery = true)
+			+ " AND c.party_name = ? "
+			+ " ORDER BY activity_dt ASC ", nativeQuery = true)
 	public List<CustomOutstanding> findDetailedOutstandingForOneParty(String partyName);
 	
 	@Query(value = "SELECT io.contact_nbr AS contactNbr , c.party_name AS partyName, order_id As orderId, "
