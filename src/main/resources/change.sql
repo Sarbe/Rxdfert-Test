@@ -69,3 +69,13 @@ ADD PRIMARY KEY (`cust_type`, `party_name`);
 10.
 ALTER TABLE `retailer`.`payment_transaction` 
 ADD COLUMN `payment_type` VARCHAR(10) NULL AFTER `payment_mode`;
+
+11.
+
+ALTER TABLE `retailer`.`master_data` 
+CHANGE COLUMN `description` `description` VARCHAR(200) NOT NULL ;
+
+INSERT INTO `retailer`.`master_data` (`id`, `abbreviation`, `category`, `description`) VALUES ('9', 'Line 1', 'TNC', 'All goods purchased are to be checked upon delivery.');
+INSERT INTO `retailer`.`master_data` (`id`, `abbreviation`, `category`, `description`) VALUES ('10', 'Line 2', 'TNC', 'Goods once sold can not be returned or exchanged.');
+INSERT INTO `retailer`.`master_data` (`id`, `abbreviation`, `category`, `description`) VALUES ('11', 'Line 3', 'TNC', 'We don\'t give guarantee of any product sold.');
+

@@ -9,6 +9,7 @@ import java.util.List;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
 
+import com.pos.retailer.model.MasterData;
 import com.pos.retailer.model.SalesOrder;
 import com.pos.retailer.model.SalesOrderDetails;
 import com.pos.retailer.model.SalesOrderDto;
@@ -77,15 +78,17 @@ public class InvoiceBillReport extends ReportUtility {
 		private SellerDetails sellerDetails = new SellerDetails();
 		private SalesOrder sales;
 		private List<SalesOrderDetails> salesDetails = new ArrayList<>();
+		private List<MasterData> tnc = new ArrayList<>();
 
 
 		public InvoiceDto(String loggedInUser, SellerDetails sellerDetails, SalesOrder sales,
-				List<SalesOrderDetails> salesDetails) {
+				List<SalesOrderDetails> salesDetails,List<MasterData> tnc) {
 			super();
 			this.loggedInUser = loggedInUser;
 			this.sellerDetails = sellerDetails;
 			this.sales = sales;
 			this.salesDetails = salesDetails;
+			this.tnc = tnc;
 		}
 		
 

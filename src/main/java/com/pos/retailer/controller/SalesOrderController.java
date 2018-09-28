@@ -4,6 +4,7 @@ import static com.pos.retailer.component.AppConstant.chckInvSts;
 
 import java.security.Principal;
 import java.util.Arrays;
+import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
@@ -23,6 +24,7 @@ import com.pos.retailer.component.AppConstant;
 import com.pos.retailer.component.ResponseWrapper;
 import com.pos.retailer.exception.GenericException;
 import com.pos.retailer.model.InventoryOrder;
+import com.pos.retailer.model.MasterData;
 import com.pos.retailer.model.PaymentDetails;
 import com.pos.retailer.model.SalesDto;
 import com.pos.retailer.model.SalesOrder;
@@ -113,7 +115,8 @@ public class SalesOrderController {
 
 		String userName = StringUtils.trimToEmpty(p.getName()).toUpperCase();
 		SellerDetails seller = masterDataService.getSellerDetails();
-		InvoiceDto invDto = new InvoiceDto(userName, seller, sdto.getSales(), sdto.getSalesDetails());
+		List<MasterData> tncs = masterDataService.getDataByCategory("TNC");
+		InvoiceDto invDto = new InvoiceDto(userName, seller, sdto.getSales(), sdto.getSalesDetails(), tncs);
 
 		return new ResponseWrapper<>(HttpStatus.OK, invDto).sendResponse();
 	}
@@ -135,7 +138,9 @@ public class SalesOrderController {
 		String userName = StringUtils.trimToEmpty(p.getName()).toUpperCase();
 		SalesOrderDto sdto = this.salesOrderService.receivePayment(orderId, payment);
 		SellerDetails seller = masterDataService.getSellerDetails();
-		InvoiceDto invDto = new InvoiceDto(userName, seller, sdto.getSales(), sdto.getSalesDetails());
+		List<MasterData> tncs = masterDataService.getDataByCategory("TNC");
+
+		InvoiceDto invDto = new InvoiceDto(userName, seller, sdto.getSales(), sdto.getSalesDetails(), tncs);
 		return new ResponseWrapper<>("Payment Details updated.", HttpStatus.OK, invDto).sendResponse();
 	}
 
@@ -206,8 +211,8 @@ public class SalesOrderController {
 
 	@GetMapping("recalc/{orderId}")
 	private ResponseEntity<?> recalculate(@PathVariable String orderId) throws GenericException {
-		
-		 SalesOrderDto sdto = salesOrderService.reCalc(orderId);
+
+		SalesOrderDto sdto = salesOrderService.reCalc(orderId);
 		return new ResponseWrapper<>(HttpStatus.OK, sdto).sendResponse();
 
 	}
