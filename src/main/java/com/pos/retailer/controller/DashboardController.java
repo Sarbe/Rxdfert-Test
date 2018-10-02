@@ -1,6 +1,7 @@
 package com.pos.retailer.controller;
 
 import java.security.Principal;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -8,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -51,28 +53,33 @@ public class DashboardController {
 
 		return new ResponseWrapper<>("All User Details", HttpStatus.OK, authority).sendResponse();
 	}
-	
+
 	///////////////////////
 
-	/*@PostMapping("/search")
-	public ResponseEntity<?> searchOrders(@RequestBody SearchCriteria search) throws GenericException {
-		return new ResponseWrapper<>(HttpStatus.OK, this.commonOrderService.getSummaryBySearchCriteriaGroupedBy(search))
-				.sendResponse();
-	}*/
+	/*
+	 * @PostMapping("/search") public ResponseEntity<?> searchOrders(@RequestBody
+	 * SearchCriteria search) throws GenericException { return new
+	 * ResponseWrapper<>(HttpStatus.OK,
+	 * this.commonOrderService.getSummaryBySearchCriteriaGroupedBy(search))
+	 * .sendResponse(); }
+	 */
 
 	@PostMapping("/multiPayment")
 	public ResponseEntity<?> multiPayment(@RequestBody MultiPayment paymnet) throws GenericException {
 
-		return new ResponseWrapper<>("Payment Details updated.", HttpStatus.OK,
-				this.commonOrderService.multiplePayment(paymnet).get(0)).sendResponse();
+		List<OutstandingSummary> outStandingsList = commonOrderService.multiplePayment(paymnet);
+		OutstandingSummary outStanding = null;
+		if (!ObjectUtils.isEmpty(outStandingsList) && outStandingsList.size() > 0) {
+			outStanding = outStandingsList.get(0);
+		}
+		return new ResponseWrapper<>("Payment Details updated.", HttpStatus.OK, outStanding).sendResponse();
 	}
 
-	
 	@PostMapping("/party/outstanding")
 	public ResponseEntity<?> partyDetails(@RequestBody OutstandingSummary dtl) {
 		return new ResponseWrapper<>("Party Details", HttpStatus.OK,
-				commonOrderService.getDetailedOutstandingsForOneParty(dtl.getOrderType(), dtl.getPartyName())).sendResponse();
+				commonOrderService.getDetailedOutstandingsForOneParty(dtl.getOrderType(), dtl.getPartyName()))
+						.sendResponse();
 	}
 
-	
 }
