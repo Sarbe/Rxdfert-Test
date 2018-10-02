@@ -64,7 +64,7 @@ public class DashboardController {
 	public ResponseEntity<?> multiPayment(@RequestBody MultiPayment paymnet) throws GenericException {
 
 		return new ResponseWrapper<>("Payment Details updated.", HttpStatus.OK,
-				this.commonOrderService.multiplePayment(paymnet)).sendResponse();
+				this.commonOrderService.multiplePayment(paymnet).get(0)).sendResponse();
 	}
 
 	

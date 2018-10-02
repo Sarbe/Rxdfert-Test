@@ -72,7 +72,7 @@ public class InventoryOrderServiceImpl implements InventoryOrderService {
 
 	@Override
 	public List<InventoryOrder> getAllInvOrders() {
-		return inventoryOrderRepository.findAllByOrderByOrderIdDesc();
+		return inventoryOrderRepository.findAllByOrderByActivityDtDesc();
 	}
 
 	@Override

@@ -17,6 +17,7 @@ public interface InventoryOrderRepository extends JpaRepository<InventoryOrder, 
 	public Optional<InventoryOrder> findByOrderIdAndOrderSts(String id, String sts);
 
 	public List<InventoryOrder> findAllByOrderByOrderIdDesc();
+	public List<InventoryOrder> findAllByOrderByActivityDtDesc();
 
 	public List<InventoryOrder> findByBillNbr(String receiptNbr);
 
@@ -69,7 +70,7 @@ public interface InventoryOrderRepository extends JpaRepository<InventoryOrder, 
 	
 	
 	@Query(value = "SELECT io.contact_nbr AS contactNbr , c.party_name AS partyName, order_id As orderId, "
-			+ " outstanding AS outstanding,  grand_total As totalAmount, discount AS discount, '"+AppConstant.PURCHASE+"' As orderType "
+			+ " outstanding AS outstanding,  grand_total As totalAmount, 0 AS discount, '"+AppConstant.PURCHASE+"' As orderType "
 			+ " FROM retailer.inventory_order io, customer c " 
 			+ " WHERE io.party_name = c.party_name "
 			+ " AND order_sts = '" + AppConstant.ORDER_CONFIRMED + "' " 
@@ -80,7 +81,7 @@ public interface InventoryOrderRepository extends JpaRepository<InventoryOrder, 
 	public List<CustomOutstanding> findDetailedOutstandingForOneParty(String partyName);
 	
 	@Query(value = "SELECT io.contact_nbr AS contactNbr , c.party_name AS partyName, order_id As orderId, "
-			+ " outstanding AS outstanding,  grand_total As totalAmount, discount AS discount, '"+AppConstant.PURCHASE+"' As orderType "
+			+ " outstanding AS outstanding,  grand_total As totalAmount, 0 AS discount, '"+AppConstant.PURCHASE+"' As orderType "
 			+ " FROM retailer.inventory_order io, customer c " 
 			+ " WHERE io.party_name = c.party_name "
 			+ " AND order_sts = '" + AppConstant.ORDER_CONFIRMED + "' " 

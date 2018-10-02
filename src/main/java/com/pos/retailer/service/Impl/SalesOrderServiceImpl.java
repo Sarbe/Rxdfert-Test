@@ -80,7 +80,7 @@ public class SalesOrderServiceImpl implements SalesOrderService {
 	@Override
 	public List<SalesOrder> getAllSalesOrders() {
 		logger.info("SalesOrderServiceImpl.getAllSalesOrders()");
-		return salesOrderRepository.findAllByOrderByOrderIdDesc();
+		return salesOrderRepository.findAllByOrderByActivityDtDesc();
 	}
 
 	@Override
