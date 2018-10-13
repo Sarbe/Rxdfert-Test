@@ -5,6 +5,8 @@ import java.io.InputStream;
 
 import org.springframework.core.io.ClassPathResource;
 
+import com.pos.retailer.component.AppConstant;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -66,7 +68,19 @@ public class OutStandingReport extends ReportUtility {
 		private double discount;
 		private double outstanding;
 		private String orderType;
-		
+
+		public void setTotalAmount(double totalAmount) {
+			this.totalAmount = AppConstant.roundedValue(totalAmount);
+		}
+
+		public void setDiscount(double discount) {
+			this.discount = AppConstant.roundedValue(discount);
+		}
+
+		public void setOutstanding(double outstanding) {
+			this.outstanding = AppConstant.roundedValue(outstanding);
+		}
+
 		@Override
 		public int hashCode() {
 			final int prime = 31;

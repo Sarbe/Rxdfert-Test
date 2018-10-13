@@ -41,7 +41,7 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
 			SecurityContextHolder.getContext().setAuthentication(authentication);
 			filterChain.doFilter(req, res);
 		} catch (Exception e) {
-			System.err.println(e.getClass());
+		//	System.err.println(e.getClass());
 			ApiError apiError = new ApiError("EXC_0099", HttpStatus.BAD_REQUEST, e.getMessage(),
 					e.getMessage());
 			

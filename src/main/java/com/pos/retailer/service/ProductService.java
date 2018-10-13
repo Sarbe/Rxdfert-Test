@@ -1,5 +1,6 @@
 package com.pos.retailer.service;
 
+import java.io.InputStream;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -50,6 +51,13 @@ public interface ProductService {
 
 	List<Product> getProductsByCategory(String categoryName);
 	
+	
 	List<String> getDistinctManufacturer();
+
+	//ProductSummary getProductSummary();
+
+	List<Product> processFileData(InputStream is) throws GenericException;
+
+	byte[] writeToXLSXFile(List<Product> products) throws GenericException;
 
 }

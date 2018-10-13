@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.Size;
 
 import org.apache.commons.lang.StringUtils;
@@ -83,6 +84,9 @@ public class Product extends Auditable {
 
 	@Column(nullable = false)
 	private String uom;
+	
+	@Transient
+	private String errMsg;
 
 	// User Defined Function
 

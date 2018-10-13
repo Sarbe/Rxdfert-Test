@@ -3,6 +3,8 @@ package com.pos.retailer.controller;
 
 import static com.pos.retailer.component.AppConstant.chckInvSts;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -15,7 +17,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.pos.retailer.component.ResponseWrapper;
 import com.pos.retailer.exception.GenericException;
@@ -38,7 +42,13 @@ public class ProductController {
 
 	@GetMapping()
 	public ResponseEntity<?> getAllProduct() {
-		return new ResponseWrapper<List<Product>>(HttpStatus.OK, this.productService.getAllProducts()).sendResponse();
+
+		// ProductSummaryDto psd = new ProductSummaryDto();
+		// psd.setProducts(this.productService.getAllProducts());
+		// psd.setSummary(this.productService.getProductSummary());
+
+		return new ResponseWrapper<>("All product details fetched", HttpStatus.OK, this.productService.getAllProducts())
+				.sendResponse();
 	}
 
 	@GetMapping("/barcode/{barcode}")
@@ -119,6 +129,50 @@ public class ProductController {
 	public ResponseEntity<?> closeInvnetory() throws GenericException {
 		productService.closeInventory();
 		return new ResponseWrapper<>("Invnetory Closed", HttpStatus.OK, null).sendResponse();
+	}
+
+	@PostMapping("/uploadFile")
+	public ResponseEntity<?> uploadFile(@RequestParam("file") MultipartFile file) throws GenericException, IOException {
+		String fileName = file.getOriginalFilename();
+		if (!fileName.substring(fileName.lastIndexOf(".") + 1).equalsIgnoreCase("xlsx")) {
+			throw new GenericException("Only file with Extention XLSX is allowed");
+		}
+
+		
+		List<Product> products = productService.processFileData(file.getInputStream());
+		List<Product> failedList = new ArrayList<>();
+		
+		for (Product product : products) {
+			try {
+				if (product.checkEmpty())
+					throw new Exception("All mandatory data is not present.");
+				productService.saveProduct(product);
+			} catch (Exception e) {
+				product.setErrMsg(e.getMessage());
+				failedList.add(product);
+			}
+		}
+
+		
+		if (failedList.size() == 0) {
+			return new ResponseWrapper<>("Data uploaded Successfully", HttpStatus.OK, null).sendResponse();
+		} else {
+
+//			byte b[] = productService.writeToXLSXFile(failedList);
+//
+//			ByteArrayResource resource = new ByteArrayResource(b);
+//
+//			HttpHeaders headers = new HttpHeaders();
+//			headers.add(HttpHeaders.CONTENT_DISPOSITION,
+//					"attachment; filename=Failed_" + System.currentTimeMillis() + ".xlsx");
+//			headers.set("charset", "utf-8");
+//			headers.setContentLength(b.length);
+//			headers.setContentType(new MediaType("application", "vnd.openxmlformats-officedocument.spreadsheetml.sheet"));
+//
+//			return ResponseEntity.ok().headers(headers).body(resource);
+			
+			return new ResponseWrapper<>("Some data got rejected.Please correct and upload those data only.", HttpStatus.OK, failedList).sendResponse();
+		}
 	}
 
 }

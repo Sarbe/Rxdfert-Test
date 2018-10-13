@@ -1,7 +1,5 @@
 package com.pos.retailer.model;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
@@ -15,6 +13,7 @@ import org.apache.commons.lang.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.pos.retailer.component.AppConstant;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -73,18 +72,15 @@ public class PaymentHistory extends Auditable {
 
 	//// Setter override
 	public void setTotalAmount(double totalAmount) {
-		BigDecimal bd = new BigDecimal(totalAmount).setScale(2, RoundingMode.FLOOR);
-		this.totalAmount = bd.doubleValue();
+		this.totalAmount = AppConstant.roundedValue(totalAmount);
 	}
 
 	public void setPaidAmount(double paidAmount) {
-		BigDecimal bd = new BigDecimal(paidAmount).setScale(2, RoundingMode.FLOOR);
-		this.paidAmount = bd.doubleValue();
+		this.paidAmount = AppConstant.roundedValue(paidAmount);
 	}
 
 	public void setOutstandingAmount(double outstandingAmount) {
-		BigDecimal bd = new BigDecimal(outstandingAmount).setScale(2, RoundingMode.FLOOR);
-		this.outstandingAmount = bd.doubleValue();
+		this.outstandingAmount = AppConstant.roundedValue(outstandingAmount);
 	}
 
 }

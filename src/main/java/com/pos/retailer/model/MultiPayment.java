@@ -1,5 +1,7 @@
 package com.pos.retailer.model;
 
+import com.pos.retailer.component.AppConstant;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,4 +12,10 @@ public class MultiPayment {
 	private String paymentMode;
 	private String partyName;
 	private String orderType;
+	
+	public void setAmount(double amount) {
+		this.amount = AppConstant.roundedValue(amount);
+	}
+	
+	
 }
