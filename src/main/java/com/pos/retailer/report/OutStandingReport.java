@@ -28,12 +28,11 @@ public class OutStandingReport extends ReportUtility {
 
 	@Override
 	public void reportMetadata(String reportParams) throws JRException, IOException {
-		
-		
+
 		InputStream resource = new ClassPathResource("Outstandings.jasper").getInputStream();
 		jasperReport = (JasperReport) JRLoader.loadObject(resource);
-		
-		//jasperReport = JasperCompileManager.compileReport("Outstandings.jrxml");
+
+		// jasperReport = JasperCompileManager.compileReport("Outstandings.jrxml");
 
 	}
 
@@ -44,7 +43,7 @@ public class OutStandingReport extends ReportUtility {
 
 	@Override
 	public byte[] generateReportByte(String reportName) throws JRException {
-	//	generateReport(reportName);
+		// generateReport(reportName);
 		return JasperExportManager.exportReportToPdf(jasperPrint);
 	}
 

@@ -8,9 +8,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import com.pos.retailer.model.Product;
+import com.pos.retailer.repository.model.ProductSummary;
 
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
+	
 	public Optional<Product> findByProductId(Long productId);
 
 	public Optional<Product> findByBarcode(String barcode);
@@ -21,6 +23,11 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
 	public List<Product> findByProductNameLike(String name);
 
+	@Query("SELECT new com.pos.retailer.repository.model.ProductSummary(count(barcode), SUM(buyPrice)) FROM Product ")
+	//@Query("SELECT count(barcode) as productCount, SUM(buyPrice) as stockValue FROM Product ")
+	@Cacheable("productSummary")
+	public ProductSummary findAllProductSummary();
+	
 	@Query("SELECT productName FROM Product I ORDER BY productName ASC")
 	@Cacheable("products")
 	public List<String> findAllProductName();

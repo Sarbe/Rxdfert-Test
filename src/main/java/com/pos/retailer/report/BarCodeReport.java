@@ -39,7 +39,7 @@ public class BarCodeReport extends ReportUtility {
 		if (StringUtils.isNotEmpty(reportParam)) {
 			reportNm += reportParam; // report Page size
 		} else {
-			reportNm += "24";
+			reportNm += "48";
 		}
 
 		InputStream resource = new ClassPathResource(reportNm + ".jasper").getInputStream();

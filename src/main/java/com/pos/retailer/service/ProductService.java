@@ -7,6 +7,7 @@ import java.util.List;
 import com.pos.retailer.exception.GenericException;
 import com.pos.retailer.model.InventoryTransaction;
 import com.pos.retailer.model.Product;
+import com.pos.retailer.repository.model.ProductSummary;
 
 public interface ProductService {
 
@@ -54,7 +55,7 @@ public interface ProductService {
 	
 	List<String> getDistinctManufacturer();
 
-	//ProductSummary getProductSummary();
+	ProductSummary getProductSummary();
 
 	List<Product> processFileData(InputStream is) throws GenericException;
 

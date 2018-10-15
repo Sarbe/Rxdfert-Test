@@ -28,6 +28,7 @@ import com.pos.retailer.model.InventoryTransaction;
 import com.pos.retailer.model.Product;
 import com.pos.retailer.repository.InventoryTransactionRepository;
 import com.pos.retailer.repository.ProductRepository;
+import com.pos.retailer.repository.model.ProductSummary;
 import com.pos.retailer.service.ProductService;
 import com.pos.retailer.service.SequenceGeneratorService;
 import com.pos.retailer.utility.EAN13Barcode;
@@ -51,10 +52,10 @@ public class ProductServiceImpl implements ProductService {
 		return productRepository.findAll();
 	}
 
-	// @Override
-	// public ProductSummary getProductSummary() {
-	// return productRepository.findAllProductSummary();
-	// }
+	@Override
+	public ProductSummary getProductSummary() {
+		return productRepository.findAllProductSummary();
+	}
 
 	@Override
 	public List<String> getAllProductNamesByCategory(String category) {
@@ -132,7 +133,7 @@ public class ProductServiceImpl implements ProductService {
 
 		product.setProductName(product.getProductName().toUpperCase().trim());
 		product.setCategory(product.getCategory().toUpperCase().trim());
-		
+
 		// Add to transaction history for the first time add profuct not for the update
 		Optional<Product> dbOptProduct = productRepository.findByBarcode(product.getBarcode());
 		if (!dbOptProduct.isPresent()) {
@@ -343,7 +344,7 @@ public class ProductServiceImpl implements ProductService {
 
 					products.add(prd);
 				}
-				System.out.println("Size >"+products.size());
+				System.out.println("Size >" + products.size());
 
 			}
 		} catch (Exception e) {
@@ -360,20 +361,15 @@ public class ProductServiceImpl implements ProductService {
 
 		// add to database
 
-		/*for (Product product : products) {
-			try {
-				if (product.checkEmpty())
-					throw new Exception("All mandatory data is not present.");
-				saveProduct(product);
-			} catch (Exception e) {
-				product.setErrMsg(e.getMessage());
-				failedProduct.add(product);
-			}
-		}
+		/*
+		 * for (Product product : products) { try { if (product.checkEmpty()) throw new
+		 * Exception("All mandatory data is not present."); saveProduct(product); }
+		 * catch (Exception e) { product.setErrMsg(e.getMessage());
+		 * failedProduct.add(product); } }
+		 * 
+		 * return failedProduct;
+		 */
 
-		return failedProduct;
-*/
-		
 		return products;
 	}
 
@@ -384,7 +380,7 @@ public class ProductServiceImpl implements ProductService {
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		XSSFWorkbook wb = new XSSFWorkbook();
 		XSSFSheet sheet = wb.createSheet(sheetName);
-		
+
 		try {
 			// iterating r number of rows
 			XSSFRow row = null;
@@ -403,15 +399,14 @@ public class ProductServiceImpl implements ProductService {
 
 			}
 			wb.write(baos);
-			
-			
-//			FileOutputStream fileOut = new FileOutputStream("D:/aabb.xlsx");
-//
-//			//write this workbook to an Outputstream.
-//			wb.write(fileOut);
-//			fileOut.flush();
-//			fileOut.close();
-			
+
+			// FileOutputStream fileOut = new FileOutputStream("D:/aabb.xlsx");
+			//
+			// //write this workbook to an Outputstream.
+			// wb.write(fileOut);
+			// fileOut.flush();
+			// fileOut.close();
+
 		} catch (Exception e) {
 			throw new GenericException("Error occured while cretaing the file");
 		} finally {

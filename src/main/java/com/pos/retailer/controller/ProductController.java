@@ -24,6 +24,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.pos.retailer.component.ResponseWrapper;
 import com.pos.retailer.exception.GenericException;
 import com.pos.retailer.model.Product;
+import com.pos.retailer.model.ProductSummaryDto;
 import com.pos.retailer.service.InventoryOrderDetailsService;
 import com.pos.retailer.service.ProductService;
 
@@ -43,11 +44,11 @@ public class ProductController {
 	@GetMapping()
 	public ResponseEntity<?> getAllProduct() {
 
-		// ProductSummaryDto psd = new ProductSummaryDto();
-		// psd.setProducts(this.productService.getAllProducts());
-		// psd.setSummary(this.productService.getProductSummary());
+		 ProductSummaryDto psd = new ProductSummaryDto();
+		 psd.setProducts(this.productService.getAllProducts());
+		 psd.setSummary(this.productService.getProductSummary());
 
-		return new ResponseWrapper<>("All product details fetched", HttpStatus.OK, this.productService.getAllProducts())
+		return new ResponseWrapper<>("All product details fetched", HttpStatus.OK, psd)//this.productService.getAllProducts())
 				.sendResponse();
 	}
 
