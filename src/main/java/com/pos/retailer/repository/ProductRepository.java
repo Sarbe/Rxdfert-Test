@@ -23,9 +23,8 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
 	public List<Product> findByProductNameLike(String name);
 
-	@Query("SELECT new com.pos.retailer.repository.model.ProductSummary(count(barcode), SUM(buyPrice)) FROM Product ")
+	@Query("SELECT new com.pos.retailer.repository.model.ProductSummary(count(barcode), SUM(buyPrice*stockQty)) FROM Product ")
 	//@Query("SELECT count(barcode) as productCount, SUM(buyPrice) as stockValue FROM Product ")
-	@Cacheable("productSummary")
 	public ProductSummary findAllProductSummary();
 	
 	@Query("SELECT productName FROM Product I ORDER BY productName ASC")
