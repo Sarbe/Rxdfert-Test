@@ -84,14 +84,14 @@ public class InventoryOrderDetailsServiceImpl implements InventoryOrderDetailsSe
 
 			// Price Calculation for order detail
 			dbOrderDetail.calculateAmount();
-			orderDetail = inventoryOrderDetailRepository.save(orderDetail);
+			dbOrderDetail = inventoryOrderDetailRepository.save(dbOrderDetail);
 
 			// Price Calculation for order
 			List<InventoryOrderDetails> invOrderDetails = getOrderDetailsByOrderId(invOrder.getOrderId());
 			invOrder.calculateOrderAmount(invOrderDetails);
 			inventoryOrderRepository.save(invOrder);
 
-			return orderDetail;
+			return dbOrderDetail;
 		} else {
 
 			orderDetail.setMaxRetailPrice(optionalProduct.get().getMaxRetailPrice());
