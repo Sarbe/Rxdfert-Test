@@ -8,12 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.pos.retailer.component.AppConstant;
+import com.pos.retailer.config.MyCorsFilter;
 import com.pos.retailer.model.AppUser;
 import com.pos.retailer.model.MasterData;
 import com.pos.retailer.model.SellerDetails;
@@ -28,6 +30,16 @@ public class InventoryApplication implements CommandLineRunner {
 
 	public static void main(String[] args) {
 		SpringApplication.run(InventoryApplication.class, args);
+	}
+
+	@Bean
+	public FilterRegistrationBean<MyCorsFilter> corsFilterRegistration() {
+		FilterRegistrationBean<MyCorsFilter> registrationBean = new FilterRegistrationBean<MyCorsFilter>(
+				new MyCorsFilter());
+		registrationBean.setName("CORS Filter");
+		registrationBean.addUrlPatterns("/*");
+		registrationBean.setOrder(1);
+		return registrationBean;
 	}
 
 	@Bean
