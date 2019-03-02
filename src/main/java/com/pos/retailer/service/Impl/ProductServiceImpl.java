@@ -20,6 +20,8 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.pos.retailer.component.AppConstant;
@@ -53,16 +55,20 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public ProductSummary getProductSummary() {
+	public ProductSummary getProductSummary(String categoryName) {
+		if (StringUtils.trimToEmpty(categoryName).equals("ALL"))
 		return productRepository.findAllProductSummary();
+		
+		else
+			return productRepository.findAllProductSummaryByCategory(categoryName);
 	}
 
 	@Override
-	public List<String> getAllProductNamesByCategory(String category) {
-		if (StringUtils.trimToEmpty(category).equals("ALL"))
+	public List<String> getAllProductNamesByCategory(String categoryName) {
+		if (StringUtils.trimToEmpty(categoryName).equals("ALL"))
 			return productRepository.findAllProductName();
 		else
-			return productRepository.findAllProductNameByCatrgory(category);
+			return productRepository.findAllProductNameByCatrgory(categoryName);
 	}
 
 	@Override
@@ -304,10 +310,13 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public List<Product> getProductsByCategory(String categoryName) {
+	public List<Product> getProductsByCategory(String categoryName, int pageNbr) {
+		
+		Pageable page = PageRequest.of(pageNbr, 20);
+		
 		if (StringUtils.trimToEmpty(categoryName).equals("ALL"))
-			return productRepository.findAllByOrderByProductNameAsc();
-		return productRepository.findByCategoryOrderByProductName(categoryName);
+			return productRepository.findAllByOrderByProductNameAsc(page);
+		return productRepository.findByCategoryOrderByProductName(categoryName, page);
 	}
 
 	// read and persist from xlxs file

@@ -50,12 +50,11 @@ public interface ProductService {
 
 	List<String> getDistinctCategory();
 
-	List<Product> getProductsByCategory(String categoryName);
-	
+	List<Product> getProductsByCategory(String categoryName, int pageNbr);
 	
 	List<String> getDistinctManufacturer();
 
-	ProductSummary getProductSummary();
+	ProductSummary getProductSummary(String categoryName);
 
 	List<Product> processFileData(InputStream is) throws GenericException;
 

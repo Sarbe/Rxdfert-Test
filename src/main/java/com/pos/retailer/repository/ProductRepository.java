@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -24,8 +25,12 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 	public List<Product> findByProductNameLike(String name);
 
 	@Query("SELECT new com.pos.retailer.repository.model.ProductSummary(count(barcode), SUM(buyPrice*stockQty)) FROM Product ")
-	//@Query("SELECT count(barcode) as productCount, SUM(buyPrice) as stockValue FROM Product ")
 	public ProductSummary findAllProductSummary();
+
+	@Query("SELECT new com.pos.retailer.repository.model.ProductSummary(count(barcode), SUM(buyPrice*stockQty)) FROM Product where"
+			+ " category = ?1 ")
+	public ProductSummary findAllProductSummaryByCategory(String category);
+
 	
 	@Query("SELECT productName FROM Product I ORDER BY productName ASC")
 	@Cacheable("products")
@@ -35,7 +40,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 	@Cacheable("products")
 	public List<String> findAllProductNameByCatrgory(String category);
 	
-	public List<Product> findAllByOrderByProductNameAsc();
+	public List<Product> findAllByOrderByProductNameAsc(Pageable page);
 
 	public Optional<Product> findByBarcodeAndAvailabilityTrue(String barcode);
 
@@ -47,7 +52,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 	@Query(nativeQuery = false, value = "select distinct(p.category) from Product p where category is not null order by p.category Asc")
 	public List<String> findDistinctCategoryOrderByCategory();
 	
-	List<Product> findByCategoryOrderByProductName(String category);
+	List<Product> findByCategoryOrderByProductName(String category,Pageable page);
 
 	@Query("select distinct(manufacturer) from Product p where manufacturer is not null order by manufacturer Asc")
 	public List<String> findDistinctManufacturer();

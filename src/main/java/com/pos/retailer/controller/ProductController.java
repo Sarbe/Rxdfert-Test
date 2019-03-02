@@ -41,7 +41,7 @@ public class ProductController {
 	@Autowired
 	InventoryOrderDetailsService inventoryOrderDetailsService;
 
-	@GetMapping()
+/*	@GetMapping()
 	public ResponseEntity<?> getAllProduct() {
 
 		 ProductSummaryDto psd = new ProductSummaryDto();
@@ -50,7 +50,7 @@ public class ProductController {
 
 		return new ResponseWrapper<>("All product details fetched", HttpStatus.OK, psd)//this.productService.getAllProducts())
 				.sendResponse();
-	}
+	}*/
 
 	@GetMapping("/barcode/{barcode}")
 	public ResponseEntity<?> getProductByBarcode(@PathVariable String barcode) {
@@ -81,10 +81,14 @@ public class ProductController {
 		return new ResponseWrapper<>(HttpStatus.OK, this.productService.getDistinctCategory()).sendResponse();
 	}
 
-	@GetMapping("/category/{categoryName}")
-	public ResponseEntity<?> getPrdocutsByCategory(@PathVariable String categoryName) {
-		return new ResponseWrapper<>(HttpStatus.OK, this.productService.getProductsByCategory(categoryName))
-				.sendResponse();
+	@GetMapping("/category/{categoryName}/{pageNbr}")
+	public ResponseEntity<?> getPrdocutsByCategory(@PathVariable String categoryName, @PathVariable int pageNbr) {
+		
+		 ProductSummaryDto psd = new ProductSummaryDto();
+		 psd.setProducts(this.productService.getProductsByCategory(categoryName, pageNbr));
+		 psd.setSummary(this.productService.getProductSummary(categoryName));
+		
+		return new ResponseWrapper<>(HttpStatus.OK, psd).sendResponse();
 	}
 
 	@GetMapping("/allPrdNames/{category}")

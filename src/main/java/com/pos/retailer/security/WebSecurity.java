@@ -39,16 +39,16 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 		auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder);
 	}
 
-	@Bean
+/*	@Bean
 	CorsConfigurationSource corsConfigurationSource() {
 		final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
 
 		CorsConfiguration config = new CorsConfiguration();// .applyPermitDefaultValues()
-		config.setAllowCredentials(true);
+		config.setAllowCredentials(true);	
 		config.addAllowedOrigin("*");
 		config.addExposedHeader(
 				"Authorization, x-xsrf-token, Access-Control-Allow-Headers, Origin, Accept, X-Requested-With, "
-						+ "Content-Type, Access-Control-Request-Method, Custom-Filter-Header");
+						+ "Content-Type, Access-Control-Request-Method, Access-Control-Allow-Methods, Custom-Filter-Header");
 		config.addAllowedHeader("*");
 		config.addAllowedMethod("OPTIONS");
 		config.addAllowedMethod("GET");
@@ -57,5 +57,5 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 		config.addAllowedMethod("DELETE");
 		source.registerCorsConfiguration("/**", config);
 		return source;
-	}
+	}*/
 }

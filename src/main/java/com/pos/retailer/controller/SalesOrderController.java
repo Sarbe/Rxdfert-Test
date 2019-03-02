@@ -209,7 +209,7 @@ public class SalesOrderController {
 				.sendResponse();
 	}
 
-	@GetMapping("recalc/{orderId}")
+	@GetMapping("/recalc/{orderId}")
 	private ResponseEntity<?> recalculate(@PathVariable String orderId) throws GenericException {
 
 		SalesOrderDto sdto = salesOrderService.reCalc(orderId);

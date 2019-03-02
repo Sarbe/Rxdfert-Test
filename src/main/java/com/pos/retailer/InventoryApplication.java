@@ -41,6 +41,8 @@ public class InventoryApplication implements CommandLineRunner {
 		registrationBean.setOrder(1);
 		return registrationBean;
 	}
+	
+	
 
 	@Bean
 	public BCryptPasswordEncoder bCryptPasswordEncoder() {
