@@ -21,8 +21,10 @@ import com.pos.retailer.model.SalesOrder;
 import com.pos.retailer.report.OutStandingReport.OutstandingSummary;
 import com.pos.retailer.repository.InventoryOrderRepository;
 import com.pos.retailer.repository.ProductRepository;
+import com.pos.retailer.repository.SalesOrderDetailRepository;
 import com.pos.retailer.repository.SalesOrderRepository;
 import com.pos.retailer.repository.model.CustomOutstanding;
+import com.pos.retailer.repository.model.ProductOverview;
 import com.pos.retailer.service.CommonOrderService;
 import com.pos.retailer.service.InventoryOrderService;
 import com.pos.retailer.service.SalesOrderService;
@@ -37,6 +39,9 @@ public class CommonOrderServiceImpl implements CommonOrderService {
 
 	@Autowired
 	private SalesOrderService salesOrderService;
+	
+	@Autowired
+	private SalesOrderDetailRepository salesOrderDetailRepository;
 
 	@Autowired
 	private InventoryOrderRepository inventoryOrderRepository;
@@ -197,6 +202,13 @@ public class CommonOrderServiceImpl implements CommonOrderService {
 
 		return detailedOutstanding;
 
+	}
+
+	
+	// Chart Service
+	@Override
+	public List<ProductOverview> getProductOverView(String barcode) {
+		return this.salesOrderDetailRepository.productSaleOverview(barcode);
 	}
 
 }

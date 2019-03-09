@@ -60,4 +60,8 @@ public interface ProductService {
 
 	byte[] writeToXLSXFile(List<Product> products) throws GenericException;
 
+	List<Product> searchProduct(String searchCriteria);
+
+	
+
 }

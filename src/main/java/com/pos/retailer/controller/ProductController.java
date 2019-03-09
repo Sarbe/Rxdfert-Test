@@ -25,6 +25,8 @@ import com.pos.retailer.component.ResponseWrapper;
 import com.pos.retailer.exception.GenericException;
 import com.pos.retailer.model.Product;
 import com.pos.retailer.model.ProductSummaryDto;
+import com.pos.retailer.repository.model.ProductSummary;
+import com.pos.retailer.service.CommonOrderService;
 import com.pos.retailer.service.InventoryOrderDetailsService;
 import com.pos.retailer.service.ProductService;
 
@@ -37,6 +39,9 @@ public class ProductController {
 
 	@Autowired
 	ProductService productService;
+	
+	@Autowired
+	CommonOrderService commonOrderService;
 
 	@Autowired
 	InventoryOrderDetailsService inventoryOrderDetailsService;
@@ -62,6 +67,18 @@ public class ProductController {
 		return new ResponseWrapper<>(HttpStatus.OK, this.productService.getProductByName(name)).sendResponse();
 	}
 
+	@GetMapping("/search/{searchCriteria}")
+	public ResponseEntity<?> searchProduct(@PathVariable String searchCriteria) {
+		
+		
+		 ProductSummaryDto psd = new ProductSummaryDto();
+		 psd.setProducts(this.productService.searchProduct(searchCriteria));
+		 ProductSummary ps = new ProductSummary(0, 0);
+		 psd.setSummary(ps);
+		
+		return new ResponseWrapper<>(HttpStatus.OK, psd).sendResponse();
+	}
+	
 	@PostMapping
 	public ResponseEntity<?> saveProduct(@RequestBody Product product) throws GenericException {
 		chckInvSts();
@@ -136,6 +153,19 @@ public class ProductController {
 		return new ResponseWrapper<>("Invnetory Closed", HttpStatus.OK, null).sendResponse();
 	}
 
+	
+	
+	// Chart
+		@GetMapping("/chart/{barcode}")
+		public ResponseEntity<?> productSaleView(@PathVariable String barcode) {
+
+			this.commonOrderService.getProductOverView(barcode);
+			return new ResponseWrapper<>(HttpStatus.OK, this.commonOrderService.getProductOverView(barcode)).sendResponse();
+		}
+	
+	
+	
+	
 	@PostMapping("/uploadFile")
 	public ResponseEntity<?> uploadFile(@RequestParam("file") MultipartFile file) throws GenericException, IOException {
 		String fileName = file.getOriginalFilename();

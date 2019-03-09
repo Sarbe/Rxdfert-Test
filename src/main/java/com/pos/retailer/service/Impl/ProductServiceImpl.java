@@ -86,6 +86,11 @@ public class ProductServiceImpl implements ProductService {
 		return productRepository.findByProductNameLike(name);
 
 	}
+	
+	@Override
+	public List<Product> searchProduct(String searchCriteria) {
+		return productRepository.findByProductNameLikeSearchCriteria(searchCriteria.toUpperCase());
+	}
 
 	@Override
 	public Product getProductByName(String name) {

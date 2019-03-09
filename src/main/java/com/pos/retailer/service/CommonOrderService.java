@@ -8,6 +8,7 @@ import com.pos.retailer.model.InventoryOrder;
 import com.pos.retailer.model.MultiPayment;
 import com.pos.retailer.model.SalesOrder;
 import com.pos.retailer.report.OutStandingReport.OutstandingSummary;
+import com.pos.retailer.repository.model.ProductOverview;
 
 public interface CommonOrderService {
 
@@ -22,5 +23,7 @@ public interface CommonOrderService {
 	List<OutstandingSummary> multiplePayment(MultiPayment paymnet) throws GenericException;
 
 	List<OutstandingSummary> getDetailedOutstandingsForOneParty(String orderType, String partyName);
+
+	List<ProductOverview> getProductOverView(String barcode);
 
 }

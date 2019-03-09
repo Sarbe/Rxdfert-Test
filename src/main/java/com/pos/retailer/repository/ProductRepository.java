@@ -49,13 +49,21 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 	@Query("select p from Product p WHERE stockQty <= thresholdQty")
 	List<Product> findByThresholdQtyLessThanStockQty();
 
-	@Query(nativeQuery = false, value = "select distinct(p.category) from Product p where category is not null order by p.category Asc")
+	@Query(nativeQuery = false, value = "select distinct(p.category) from Product p "
+			+ " where category is not null order by p.category Asc")
 	public List<String> findDistinctCategoryOrderByCategory();
 	
 	List<Product> findByCategoryOrderByProductName(String category,Pageable page);
 
-	@Query("select distinct(manufacturer) from Product p where manufacturer is not null order by manufacturer Asc")
+	@Query("select distinct(manufacturer) from Product p where manufacturer is not null "
+			+ " ORDER BY manufacturer Asc")
 	public List<String> findDistinctManufacturer();
+
+	@Query("select p from Product p where productName like %?1% OR barcode like %?1% "
+			+ " ORDER BY productName ASC")
+	public List<Product> findByProductNameLikeSearchCriteria(String searchCriteria);
+	
+
 	
 
 }
