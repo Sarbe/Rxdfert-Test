@@ -24,8 +24,9 @@ public interface SalesOrderDetailRepository extends JpaRepository<SalesOrderDeta
 			+ " ORDER BY productName ASC")
 	public List<Product> findByProductNameLikeSearchCriteria(String searchCriteria);*/
 	
-	@Query("SELECT DATE_FORMAT(CREATION_DATE,'%b %Y') AS cdate,COUNT(9) AS count FROM  SalesOrderDetails "
-			+ " WHERE barcode = ?1 GROUP BY DATE_FORMAT(CREATION_DATE,'%b %Y') ORDER BY CREATION_DATE ASC ")
+	@Query("SELECT DATE(CREATION_DATE) AS cdate,SUM(qty) AS count FROM  SalesOrderDetails "
+			+ " WHERE barcode = ?1 GROUP BY DATE(CREATION_DATE) ORDER BY CREATION_DATE ASC ")
+
 	public List<ProductOverview> productSaleOverview(String barcode);
 
 }
